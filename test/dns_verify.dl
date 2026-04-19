@@ -16,6 +16,7 @@
 // ==========================================
 // 3. 基础辅助视图 (Helpers)
 // ==========================================
+
 .decl GlobalRecord(zone: Domain, name: Domain, type: RType, data: Content)
 GlobalRecord(z, n, t, d) :- ZoneRecord(_, z, n, t, _, d).
 
@@ -25,17 +26,100 @@ DomainExists(n) :- GlobalRecord(_, n, _, _).
 .decl CNAME_Edge(src: Domain, dst: Domain)
 CNAME_Edge(src, as(dst, Domain)) :- GlobalRecord(_, src, "CNAME", dst).
 
+.decl AllNames(name: Domain)
+AllNames(n) :- ZoneRecord(_, _, n, _, _, _).
+AllNames(as(d, Domain)) :-
+    ZoneRecord(_, _, _, t, _, d),
+    (t = "CNAME"; t = "DNAME"; t = "NS"; t = "MX"; t = "PTR"; t = "SRV").
+
+.decl DotScan(name: Domain, i: number)
+DotScan(n, 0) :- AllNames(n).
+DotScan(n, i + 1) :-
+    DotScan(n, i),
+    i < strlen(n),
+    substr(n, i, 1) != ".".
+
+.decl FirstDot(name: Domain, pos: number)
+FirstDot(n, pos) :- DotScan(n, pos), substr(n, pos, 1) = ".".
+
+.decl ParentOf(parent: Domain, child: Domain)
+ParentOf(parent, child) :-
+    AllNames(child),
+    FirstDot(child, pos),
+    pos < strlen(child) - 1,
+    parent = substr(child, pos + 1, strlen(child) - pos - 1).
+
+.decl IsDescendant(child: Domain, ancestor: Domain)
+IsDescendant(c, p) :- ParentOf(p, c).
+IsDescendant(c, a) :- ParentOf(p, c), IsDescendant(p, a).
+
+.decl ZoneApex(zone: Domain)
+ZoneApex(z) :- ZoneRecord(_, z, z, "SOA", _, _).
+
+.decl ExplicitRecord(name: Domain)
+ExplicitRecord(n) :- ZoneRecord(_, _, n, _, _, _).
+
+.decl EmptyNonTerminal(name: Domain)
+EmptyNonTerminal(n) :- ParentOf(n, c), ExplicitRecord(c), !ExplicitRecord(n).
+EmptyNonTerminal(n) :- ParentOf(n, c), EmptyNonTerminal(c), !ExplicitRecord(n).
+
+.decl NodeExists(name: Domain)
+NodeExists(n) :- ExplicitRecord(n).
+NodeExists(n) :- EmptyNonTerminal(n).
+
+.decl WildcardRecord(encloser: Domain)
+WildcardRecord(e) :-
+    ZoneRecord(_, _, w, _, _, _),
+    match("^\\*\\..*$", w),
+    e = substr(w, 2, strlen(w) - 2).
+
+.decl CoveredByWildcard(query: Domain, encloser: Domain)
+CoveredByWildcard(q, e) :-
+    AllNames(q),
+    WildcardRecord(e),
+    ParentOf(e, q),
+    !NodeExists(q).
+
+.decl Resolvable(name: Domain)
+Resolvable(n) :- NodeExists(n).
+Resolvable(n) :- CoveredByWildcard(n, _).
+
+.decl BelongsToZone(name: Domain, zone: Domain)
+BelongsToZone(n, z) :-
+    ZoneApex(z),
+    (n = z ; IsDescendant(n, z)).
+
+.decl InBailiwick(ns: Domain, zone: Domain)
+InBailiwick(ns, z) :-
+    ZoneApex(z),
+    (ns = z ; IsDescendant(ns, z)).
+
+.decl DNAME_Edge(src: Domain, dst: Domain)
+DNAME_Edge(src, dst) :-
+    AllNames(src),
+    ZoneRecord(_, _, owner, "DNAME", _, target_content),
+    target = as(target_content, Domain),
+    IsDescendant(src, owner),
+    len_s = strlen(src),
+    len_o = strlen(owner),
+    prefix = substr(src, 0, len_s - len_o),
+    dst = cat(prefix, target).
+
+.decl AliasEdge(src: Domain, dst: Domain)
+AliasEdge(s, d) :- CNAME_Edge(s, d).
+AliasEdge(s, d) :- DNAME_Edge(s, d).
+
 .decl CNAME_Path(src: Domain, dst: Domain)
-CNAME_Path(src, dst) :- CNAME_Edge(src, dst).
+CNAME_Path(src, dst) :- AliasEdge(src, dst).
 CNAME_Path(src, final) :-
     CNAME_Path(src, mid),
-    CNAME_Edge(mid, final),
+    AliasEdge(mid, final),
     src != final.
 
 .decl Rewrite_Terminal(src: Domain, final: Domain)
 Rewrite_Terminal(src, final) :-
     CNAME_Path(src, final),
-    !CNAME_Edge(final, _).
+    !AliasEdge(final, _).
 
 // ==========================================
 // 4. 属性验证规则 (Verification Rules)
@@ -54,39 +138,54 @@ ParentNS(p, c, ns) :- ZoneRecord(_, p, c, "NS", _, ns), p != c.
 ChildNS(c, ns) :- ZoneRecord(_, c, c, "NS", _, ns).
 
 // 父区有、子区没有
-Error_DelegationConsistency(p, c, ns, "Parent has NS, Child missing") :-
+Error_DelegationConsistency(p, c, ns, "NS set mismatch between parent and child") :-
+    ParentOf(p, c),
     ParentNS(p, c, ns),
     !ChildNS(c, ns).
 
 // 子区有、父区没有
-Error_DelegationConsistency(p, c, ns, "Child has NS, Parent missing") :-
+Error_DelegationConsistency(p, c, ns, "NS set mismatch between parent and child") :-
+    ParentOf(p, c),
     ParentNS(p, c, _),
-    ChildNS(c, ns),
-    !ParentNS(p, c, ns).
-
-// 父子区同名 NS 的 A 不一致
-Error_DelegationConsistency(p, c, ns, "Inconsistent A records for NS") :-
-    ParentNS(p, c, ns),
-    ns_name = as(ns, Domain),
     (
-        (ZoneRecord(_, p, ns_name, "A", _, _), !ZoneRecord(_, c, ns_name, "A", _, _))
+        (ParentNS(p, c, ns), !ChildNS(c, ns))
         ;
-        (!ZoneRecord(_, p, ns_name, "A", _, _), ZoneRecord(_, c, ns_name, "A", _, _))
-        ;
-        (ZoneRecord(_, p, ns_name, "A", _, ip1), ZoneRecord(_, c, ns_name, "A", _, ip2), ip1 != ip2)
+        (ChildNS(c, ns), !ParentNS(p, c, ns))
     ).
 
-// 父子区同名 NS 的 AAAA 不一致
-Error_DelegationConsistency(p, c, ns, "Inconsistent AAAA records for NS") :-
-    ParentNS(p, c, ns),
-    ns_name = as(ns, Domain),
+.decl NSRequiresCheck(ns: Domain, parent: Domain, child: Domain)
+
+// 来自父域授权的 in-bailiwick NS
+NSRequiresCheck(ns, p, c) :-
+    ParentOf(p, c),
+    ParentNS(p, c, ns_content),
+    ns = as(ns_content, Domain),
+    InBailiwick(ns, c).
+
+// 来自子域 apex 声明但不在父域授权中的 in-bailiwick NS
+NSRequiresCheck(ns, p, c) :-
+    ParentOf(p, c),
+    ChildNS(c, ns_content),
+    ns = as(ns_content, Domain),
+    InBailiwick(ns, c),
+    !ParentNS(p, c, ns_content).
+
+Error_DelegationConsistency(parent, child, as(ns, Content), "Inconsistent A/AAAA records for NS") :-
+    NSRequiresCheck(ns, parent, child),
     (
-        (ZoneRecord(_, p, ns_name, "AAAA", _, _), !ZoneRecord(_, c, ns_name, "AAAA", _, _))
+        (ZoneRecord(_, parent, ns, "A", _, _), !ZoneRecord(_, child, ns, "A", _, _))
         ;
-        (!ZoneRecord(_, p, ns_name, "AAAA", _, _), ZoneRecord(_, c, ns_name, "AAAA", _, _))
+        (ZoneRecord(_, child, ns, "A", _, _), !ZoneRecord(_, parent, ns, "A", _, _))
         ;
-        (ZoneRecord(_, p, ns_name, "AAAA", _, ip1), ZoneRecord(_, c, ns_name, "AAAA", _, ip2), ip1 != ip2)
+        (ZoneRecord(_, parent, ns, "A", _, ip_parent), ZoneRecord(_, child, ns, "A", _, ip_child), ip_parent != ip_child)
+        ;
+        (ZoneRecord(_, parent, ns, "AAAA", _, _), !ZoneRecord(_, child, ns, "AAAA", _, _))
+        ;
+        (ZoneRecord(_, child, ns, "AAAA", _, _), !ZoneRecord(_, parent, ns, "AAAA", _, _))
+        ;
+        (ZoneRecord(_, parent, ns, "AAAA", _, ip_parent), ZoneRecord(_, child, ns, "AAAA", _, ip_child), ip_parent != ip_child)
     ).
+
 
 // ------------------------------------------
 // 2. Finding all aliases
@@ -95,6 +194,7 @@ Error_DelegationConsistency(p, c, ns, "Inconsistent AAAA records for NS") :-
 .output Info_AliasChain
 
 Info_AliasChain(src, dst) :- CNAME_Path(src, dst).
+
 
 // ------------------------------------------
 // 3. Lame Delegation
@@ -105,31 +205,63 @@ Info_AliasChain(src, dst) :- CNAME_Path(src, dst).
 .decl HasSOA(server: ServerID, zone: Domain)
 HasSOA(s, z) :- ZoneRecord(s, z, z, "SOA", _, _).
 
-Error_LameDelegation(child, ns, "Lame Delegation: NS not authoritative") :-
-    ParentNS(_, child, ns),
+Error_LameDelegation(child, ns, "NS server not authoritative") :-
+    ParentOf(parent, child),
+    ParentNS(parent, child, ns),
     ns_id = as(ns, ServerID),
     !HasSOA(ns_id, child).
 
-// ------------------------------------------
-// 4. Number of Hops & 5. Number of Rewrites
-// ------------------------------------------
-.decl RewriteChainLength(src: Domain, len: number)
-
-.decl Error_ExcessiveRewrites(src: Domain, rewrite_count: number, msg: symbol)
-.output Error_ExcessiveRewrites
-
-RewriteChainLength(src, 1) :- CNAME_Edge(src, _).
-RewriteChainLength(src, n + 1) :-
-    CNAME_Edge(src, mid),
-    RewriteChainLength(mid, n),
-    n < 20.
-
-Error_ExcessiveRewrites(src, n, "Too many rewrites") :-
-    RewriteChainLength(src, n),
-    n > 20.
 
 // ------------------------------------------
-// 6. Response Consistency
+// 4. Missing Glue Records
+// ------------------------------------------
+.decl Error_MissingGlueRecords(child: Domain, ns_server: Domain, msg: symbol)
+.output Error_MissingGlueRecords
+
+Error_MissingGlueRecords(c, ns, "Missing glue for in-bailiwick NS") :-
+    ParentOf(p, c),
+    ParentNS(p, c, ns_content),
+    ns = as(ns_content, Domain),
+    InBailiwick(ns, c),
+    !ZoneRecord(_, p, ns, "A", _, _),
+    !ZoneRecord(_, p, ns, "AAAA", _, _).
+
+
+// ------------------------------------------
+// 5. Cyclic Zone Dependency
+// ------------------------------------------
+.decl Error_CyclicZoneDependency(domain: Domain, server: Domain, msg: symbol)
+.output Error_CyclicZoneDependency
+
+.decl NSDepends(server1: Domain, server2: Domain, domain: Domain)
+NSDepends(svr1, svr2, dmn) :-
+    ZoneRecord(svr1_id, _, dmn, "NS", _, ns_content),
+    svr1 = as(svr1_id, Domain),
+    svr2 = as(ns_content, Domain),
+    svr1 != svr2.
+
+.decl NSReachable(server1: Domain, server2: Domain, domain: Domain)
+NSReachable(svr1, svr2, dmn) :- NSDepends(svr1, svr2, dmn).
+NSReachable(svr1, svr3, dmn) :-
+    NSReachable(svr1, svr2, dmn),
+    NSDepends(svr2, svr3, dmn).
+
+Error_CyclicZoneDependency(domain, server, "Cyclic NS dependency detected") :-
+    NSReachable(server, server, domain).
+
+
+// ------------------------------------------
+// 6. Rewrite Loop
+// ------------------------------------------
+.decl Error_RewriteLoop(name: Domain, msg: symbol)
+.output Error_RewriteLoop
+
+Error_RewriteLoop(n, "Rewrite loop detected") :-
+    CNAME_Path(n, n).
+
+
+// ------------------------------------------
+// 7. Response Consistency
 // ------------------------------------------
 .decl Error_ResponseInconsistency(zone: Domain, name: Domain, type: RType, s1: ServerID, s2: ServerID)
 .output Error_ResponseInconsistency
@@ -140,18 +272,29 @@ Error_ResponseInconsistency(z, n, t, s1, s2) :-
     s1 != s2,
     data1 != data2.
 
+
 // ------------------------------------------
-// 7. Rewrite Blackholing
+// 8. Rewrite Blackholing
 // ------------------------------------------
-.decl Error_RewriteBlackhole(src: Domain, final_target: Domain, msg: symbol)
+.decl Error_RewriteBlackhole(src: Domain, target: Domain, msg: symbol)
 .output Error_RewriteBlackhole
 
-Error_RewriteBlackhole(src, final, "Rewrite chain ends in non-existent domain") :-
-    Rewrite_Terminal(src, final),
-    !DomainExists(final).
+// CNAME blackholing
+Error_RewriteBlackhole(src, target, "CNAME target points to configured domain but is not resolvable") :-
+    CNAME_Edge(src, target),
+    BelongsToZone(target, zone),
+    !Resolvable(target).
+
+// DNAME blackholing
+Error_RewriteBlackhole(owner, target, "DNAME target points to configured domain but is not resolvable") :-
+    ZoneRecord(_, _, owner, "DNAME", _, target_content),
+    target = as(target_content, Domain),
+    BelongsToZone(target, zone),
+    !Resolvable(target).
+
 
 // ------------------------------------------
-// 8. Zero Time To Live
+// 9. Zero Time To Live
 // ------------------------------------------
 .decl Error_ZeroTTL(server: ServerID, name: Domain, type: RType)
 .output Error_ZeroTTL
@@ -160,11 +303,12 @@ Error_ZeroTTL(s, n, t) :-
     ZoneRecord(s, _, n, t, ttl, _),
     ttl = 0.
 
+
 // ------------------------------------------
-// 9. DNAME Substitution Check
+// 10. Query Exceeds Maximum Length
 // ------------------------------------------
-.decl Error_DNAMEOverflow(src: Domain, dname_target: Domain, new_length: number)
-.output Error_DNAMEOverflow
+.decl Error_QueryExceedsMaximumLength(src: Domain, rewritten: Domain, new_length: number)
+.output Error_QueryExceedsMaximumLength
 
 .decl DNAMERecords(zone: Domain, target: Domain)
 DNAMERecords(zone, as(target, Domain)) :- GlobalRecord(zone, zone, "DNAME", target).
@@ -179,11 +323,13 @@ AllDomains(target) :- CNAME_Edge(_, target).
 DNAMECheck(query, zone, target) :-
     AllDomains(query),
     DNAMERecords(zone, target),
-    true.
+    IsDescendant(query, zone).
 
 .decl DNAMELength(query: Domain, target: Domain, length: number)
-DNAMELength(query, target, 300) :- DNAMECheck(query, _, target).
+DNAMELength(query, target, strlen(dst)) :-
+    DNAME_Edge(query, dst),
+    target = dst.
 
-Error_DNAMEOverflow(query, target, length) :-
+Error_QueryExceedsMaximumLength(query, target, length) :-
     DNAMELength(query, target, length),
     length > 255.
