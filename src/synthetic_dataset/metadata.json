@@ -1,0 +1,456 @@
+{
+    "TopNameServers": [
+        "ns1.techuni.edu.",
+        "ns2.techuni.edu."
+    ],
+    "ZoneFiles": [
+        {
+            "FileName": "techuni.edu.txt",
+            "NameServer": "ns1.techuni.edu."
+        },
+        {
+            "FileName": "cs.techuni.edu.txt",
+            "NameServer": "ns1.cs.techuni.edu."
+        },
+        {
+            "FileName": "cs.techuni.edu.txt",
+            "NameServer": "ns2.cs.techuni.edu."
+        },
+        {
+            "FileName": "ee.techuni.edu.txt",
+            "NameServer": "ns1.ee.techuni.edu."
+        },
+        {
+            "FileName": "me.techuni.edu.txt",
+            "NameServer": "ns1.me.techuni.edu."
+        },
+        {
+            "FileName": "me.techuni.edu.txt",
+            "NameServer": "ns2.me.techuni.edu."
+        },
+        {
+            "FileName": "math.techuni.edu.txt",
+            "NameServer": "ns1.math.techuni.edu."
+        },
+        {
+            "FileName": "math.techuni.edu.txt",
+            "NameServer": "ns2.math.techuni.edu."
+        },
+        {
+            "FileName": "math.techuni.edu.txt",
+            "NameServer": "ns3.math.techuni.edu."
+        },
+        {
+            "FileName": "phys.techuni.edu.txt",
+            "NameServer": "ns1.phys.techuni.edu."
+        },
+        {
+            "FileName": "chem.techuni.edu.txt",
+            "NameServer": "ns1.chem.techuni.edu."
+        },
+        {
+            "FileName": "bio.techuni.edu.txt",
+            "NameServer": "ns1.bio.techuni.edu."
+        },
+        {
+            "FileName": "econ.techuni.edu.txt",
+            "NameServer": "ns1.techuni.edu."
+        },
+        {
+            "FileName": "law.techuni.edu.txt",
+            "NameServer": "ns1.law.techuni.edu."
+        },
+        {
+            "FileName": "med.techuni.edu.txt",
+            "NameServer": "ns1.med.techuni.edu."
+        },
+        {
+            "FileName": "art.techuni.edu.txt",
+            "NameServer": "ns1.art.techuni.edu."
+        },
+        {
+            "FileName": "music.techuni.edu.txt",
+            "NameServer": "ns1.music.techuni.edu."
+        },
+        {
+            "FileName": "hist.techuni.edu.txt",
+            "NameServer": "ns1.hist.techuni.edu."
+        },
+        {
+            "FileName": "eng.techuni.edu.txt",
+            "NameServer": "ns1.eng.techuni.edu."
+        },
+        {
+            "FileName": "arch.techuni.edu.txt",
+            "NameServer": "ns1.arch.techuni.edu."
+        },
+        {
+            "FileName": "cycle-a.techuni.edu.txt",
+            "NameServer": "ns1.cycle-b.techuni.edu."
+        },
+        {
+            "FileName": "cycle-b.techuni.edu.txt",
+            "NameServer": "ns1.cycle-a.techuni.edu."
+        },
+        {
+            "FileName": "cycle-x.techuni.edu.txt",
+            "NameServer": "ns1.cycle-y.techuni.edu."
+        },
+        {
+            "FileName": "cycle-y.techuni.edu.txt",
+            "NameServer": "ns1.cycle-z.techuni.edu."
+        },
+        {
+            "FileName": "cycle-z.techuni.edu.txt",
+            "NameServer": "ns1.cycle-x.techuni.edu."
+        },
+        {
+            "FileName": "ai.techuni.edu.txt",
+            "NameServer": "ns1.ai.techuni.edu."
+        },
+        {
+            "FileName": "cyber.techuni.edu.txt",
+            "NameServer": "ns1.cyber.techuni.edu."
+        },
+        {
+            "FileName": "env.techuni.edu.txt",
+            "NameServer": "ns1.env.techuni.edu."
+        },
+        {
+            "FileName": "mba.techuni.edu.txt",
+            "NameServer": "ns1.mba.techuni.edu."
+        },
+        {
+            "FileName": "data.techuni.edu.txt",
+            "NameServer": "ns1.data.techuni.edu."
+        },
+        {
+            "FileName": "robot.techuni.edu.txt",
+            "NameServer": "ns1.robot.techuni.edu."
+        },
+        {
+            "FileName": "nano.techuni.edu.txt",
+            "NameServer": "ns1.nano.techuni.edu."
+        },
+        {
+            "FileName": "aero.techuni.edu.txt",
+            "NameServer": "ns1.aero.techuni.edu."
+        },
+        {
+            "FileName": "civil.techuni.edu.txt",
+            "NameServer": "ns1.civil.techuni.edu."
+        },
+        {
+            "FileName": "mats.techuni.edu.txt",
+            "NameServer": "ns1.mats.techuni.edu."
+        },
+        {
+            "FileName": "nuke.techuni.edu.txt",
+            "NameServer": "ns1.nuke.techuni.edu."
+        },
+        {
+            "FileName": "pharm.techuni.edu.txt",
+            "NameServer": "ns1.pharm.techuni.edu."
+        },
+        {
+            "FileName": "vet.techuni.edu.txt",
+            "NameServer": "ns1.vet.techuni.edu."
+        },
+        {
+            "FileName": "dent.techuni.edu.txt",
+            "NameServer": "ns1.dent.techuni.edu."
+        },
+        {
+            "FileName": "downtown.techuni.edu.txt",
+            "NameServer": "ns1.downtown.techuni.edu."
+        },
+        {
+            "FileName": "riverside.techuni.edu.txt",
+            "NameServer": "ns1.riverside.techuni.edu."
+        },
+        {
+            "FileName": "hillside.techuni.edu.txt",
+            "NameServer": "ns1.hillside.techuni.edu."
+        },
+        {
+            "FileName": "lakeside.techuni.edu.txt",
+            "NameServer": "ns1.lakeside.techuni.edu."
+        },
+        {
+            "FileName": "seaside.techuni.edu.txt",
+            "NameServer": "ns1.seaside.techuni.edu."
+        },
+        {
+            "FileName": "northgate.techuni.edu.txt",
+            "NameServer": "ns1.northgate.techuni.edu."
+        },
+        {
+            "FileName": "southpark.techuni.edu.txt",
+            "NameServer": "ns1.southpark.techuni.edu."
+        },
+        {
+            "FileName": "eastwood.techuni.edu.txt",
+            "NameServer": "ns1.eastwood.techuni.edu."
+        },
+        {
+            "FileName": "westfield.techuni.edu.txt",
+            "NameServer": "ns1.westfield.techuni.edu."
+        },
+        {
+            "FileName": "central.techuni.edu.txt",
+            "NameServer": "ns1.central.techuni.edu."
+        },
+        {
+            "FileName": "innovation.techuni.edu.txt",
+            "NameServer": "ns1.innovation.techuni.edu."
+        },
+        {
+            "FileName": "research-park.techuni.edu.txt",
+            "NameServer": "ns1.research-park.techuni.edu."
+        },
+        {
+            "FileName": "tech-hub.techuni.edu.txt",
+            "NameServer": "ns1.tech-hub.techuni.edu."
+        },
+        {
+            "FileName": "science-park.techuni.edu.txt",
+            "NameServer": "ns1.science-park.techuni.edu."
+        },
+        {
+            "FileName": "medical-center.techuni.edu.txt",
+            "NameServer": "ns1.medical-center.techuni.edu."
+        },
+        {
+            "FileName": "greenfield.techuni.edu.txt",
+            "NameServer": "ns1.greenfield.techuni.edu."
+        },
+        {
+            "FileName": "oakridge.techuni.edu.txt",
+            "NameServer": "ns1.oakridge.techuni.edu."
+        },
+        {
+            "FileName": "pinecrest.techuni.edu.txt",
+            "NameServer": "ns1.pinecrest.techuni.edu."
+        },
+        {
+            "FileName": "maplewood.techuni.edu.txt",
+            "NameServer": "ns1.maplewood.techuni.edu."
+        },
+        {
+            "FileName": "cedarhill.techuni.edu.txt",
+            "NameServer": "ns1.cedarhill.techuni.edu."
+        },
+        {
+            "FileName": "highpoint.techuni.edu.txt",
+            "NameServer": "ns1.highpoint.techuni.edu."
+        },
+        {
+            "FileName": "summit.techuni.edu.txt",
+            "NameServer": "ns1.summit.techuni.edu."
+        },
+        {
+            "FileName": "valley.techuni.edu.txt",
+            "NameServer": "ns1.valley.techuni.edu."
+        },
+        {
+            "FileName": "harbor.techuni.edu.txt",
+            "NameServer": "ns1.harbor.techuni.edu."
+        },
+        {
+            "FileName": "bay.techuni.edu.txt",
+            "NameServer": "ns1.bay.techuni.edu."
+        },
+        {
+            "FileName": "sunrise.techuni.edu.txt",
+            "NameServer": "ns1.sunrise.techuni.edu."
+        },
+        {
+            "FileName": "sunset.techuni.edu.txt",
+            "NameServer": "ns1.sunset.techuni.edu."
+        },
+        {
+            "FileName": "crescent.techuni.edu.txt",
+            "NameServer": "ns1.crescent.techuni.edu."
+        },
+        {
+            "FileName": "diamond.techuni.edu.txt",
+            "NameServer": "ns1.diamond.techuni.edu."
+        },
+        {
+            "FileName": "golden.techuni.edu.txt",
+            "NameServer": "ns1.golden.techuni.edu."
+        },
+        {
+            "FileName": "silver.techuni.edu.txt",
+            "NameServer": "ns1.silver.techuni.edu."
+        },
+        {
+            "FileName": "bronze.techuni.edu.txt",
+            "NameServer": "ns1.bronze.techuni.edu."
+        },
+        {
+            "FileName": "crystal.techuni.edu.txt",
+            "NameServer": "ns1.crystal.techuni.edu."
+        },
+        {
+            "FileName": "emerald.techuni.edu.txt",
+            "NameServer": "ns1.emerald.techuni.edu."
+        },
+        {
+            "FileName": "sapphire.techuni.edu.txt",
+            "NameServer": "ns1.sapphire.techuni.edu."
+        },
+        {
+            "FileName": "ruby.techuni.edu.txt",
+            "NameServer": "ns1.ruby.techuni.edu."
+        },
+        {
+            "FileName": "pearl.techuni.edu.txt",
+            "NameServer": "ns1.pearl.techuni.edu."
+        },
+        {
+            "FileName": "coral.techuni.edu.txt",
+            "NameServer": "ns1.coral.techuni.edu."
+        },
+        {
+            "FileName": "ivory.techuni.edu.txt",
+            "NameServer": "ns1.ivory.techuni.edu."
+        },
+        {
+            "FileName": "jade.techuni.edu.txt",
+            "NameServer": "ns1.jade.techuni.edu."
+        },
+        {
+            "FileName": "amber.techuni.edu.txt",
+            "NameServer": "ns1.amber.techuni.edu."
+        },
+        {
+            "FileName": "onyx.techuni.edu.txt",
+            "NameServer": "ns1.onyx.techuni.edu."
+        },
+        {
+            "FileName": "slate.techuni.edu.txt",
+            "NameServer": "ns1.slate.techuni.edu."
+        },
+        {
+            "FileName": "cobalt.techuni.edu.txt",
+            "NameServer": "ns1.cobalt.techuni.edu."
+        },
+        {
+            "FileName": "titan.techuni.edu.txt",
+            "NameServer": "ns1.titan.techuni.edu."
+        },
+        {
+            "FileName": "phoenix.techuni.edu.txt",
+            "NameServer": "ns1.phoenix.techuni.edu."
+        },
+        {
+            "FileName": "falcon.techuni.edu.txt",
+            "NameServer": "ns1.falcon.techuni.edu."
+        },
+        {
+            "FileName": "eagle.techuni.edu.txt",
+            "NameServer": "ns1.eagle.techuni.edu."
+        },
+        {
+            "FileName": "hawk.techuni.edu.txt",
+            "NameServer": "ns1.hawk.techuni.edu."
+        },
+        {
+            "FileName": "osprey.techuni.edu.txt",
+            "NameServer": "ns1.osprey.techuni.edu."
+        },
+        {
+            "FileName": "wolf.techuni.edu.txt",
+            "NameServer": "ns1.wolf.techuni.edu."
+        },
+        {
+            "FileName": "bear.techuni.edu.txt",
+            "NameServer": "ns1.bear.techuni.edu."
+        },
+        {
+            "FileName": "lion.techuni.edu.txt",
+            "NameServer": "ns1.lion.techuni.edu."
+        },
+        {
+            "FileName": "tiger.techuni.edu.txt",
+            "NameServer": "ns1.tiger.techuni.edu."
+        },
+        {
+            "FileName": "panther.techuni.edu.txt",
+            "NameServer": "ns1.panther.techuni.edu."
+        },
+        {
+            "FileName": "mustang.techuni.edu.txt",
+            "NameServer": "ns1.mustang.techuni.edu."
+        },
+        {
+            "FileName": "stallion.techuni.edu.txt",
+            "NameServer": "ns1.stallion.techuni.edu."
+        },
+        {
+            "FileName": "bronco.techuni.edu.txt",
+            "NameServer": "ns1.bronco.techuni.edu."
+        },
+        {
+            "FileName": "maverick.techuni.edu.txt",
+            "NameServer": "ns1.maverick.techuni.edu."
+        },
+        {
+            "FileName": "ranger.techuni.edu.txt",
+            "NameServer": "ns1.ranger.techuni.edu."
+        },
+        {
+            "FileName": "pioneer.techuni.edu.txt",
+            "NameServer": "ns1.pioneer.techuni.edu."
+        },
+        {
+            "FileName": "explorer.techuni.edu.txt",
+            "NameServer": "ns1.explorer.techuni.edu."
+        },
+        {
+            "FileName": "voyager.techuni.edu.txt",
+            "NameServer": "ns1.voyager.techuni.edu."
+        },
+        {
+            "FileName": "pathfinder.techuni.edu.txt",
+            "NameServer": "ns1.pathfinder.techuni.edu."
+        },
+        {
+            "FileName": "navigator.techuni.edu.txt",
+            "NameServer": "ns1.navigator.techuni.edu."
+        },
+        {
+            "FileName": "horizon.techuni.edu.txt",
+            "NameServer": "ns1.horizon.techuni.edu."
+        },
+        {
+            "FileName": "zenith.techuni.edu.txt",
+            "NameServer": "ns1.zenith.techuni.edu."
+        },
+        {
+            "FileName": "apex.techuni.edu.txt",
+            "NameServer": "ns1.apex.techuni.edu."
+        },
+        {
+            "FileName": "vertex.techuni.edu.txt",
+            "NameServer": "ns1.vertex.techuni.edu."
+        },
+        {
+            "FileName": "nexus.techuni.edu.txt",
+            "NameServer": "ns1.nexus.techuni.edu."
+        },
+        {
+            "FileName": "quantum.techuni.edu.txt",
+            "NameServer": "ns1.quantum.techuni.edu."
+        },
+        {
+            "FileName": "stellar.techuni.edu.txt",
+            "NameServer": "ns1.stellar.techuni.edu."
+        },
+        {
+            "FileName": "nova.techuni.edu.txt",
+            "NameServer": "ns1.nova.techuni.edu."
+        }
+    ]
+}

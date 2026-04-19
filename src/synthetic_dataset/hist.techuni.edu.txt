@@ -1,0 +1,35 @@
+hist.techuni.edu.	86400	IN	SOA	ns1.hist.hist.techuni.edu.	hostmaster.hist.techuni.edu.	2026031401	3600	1800	604800	86400
+hist.techuni.edu.	3600	IN	NS	ns1.hist.techuni.edu.
+hist.techuni.edu.	3600	IN	NS	ns2.hist.techuni.edu.
+ns1.hist.techuni.edu.	3600	IN	A	10.200.16.47
+ns2.hist.techuni.edu.	3600	IN	A	10.162.113.164
+mail.hist.techuni.edu.	3600	IN	A	10.53.254.37
+mail.hist.techuni.edu.	3600	IN	AAAA	2001:db8:a98e:27d6::3cee
+hist.techuni.edu.	3600	IN	MX	10 mail.hist.techuni.edu.
+mail2.hist.techuni.edu.	3600	IN	A	10.163.85.163
+hist.techuni.edu.	3600	IN	MX	20 mail2.hist.techuni.edu.
+hist.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.hist.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host3.hist.techuni.edu.	3600	IN	A	10.228.5.68
+_sip._tcp.hist.techuni.edu.	600	IN	SRV	31 89 4443 svc-host3.hist.techuni.edu.
+_kerberos._tcp.hist.techuni.edu.	1800	IN	SRV	100 14 47214 svc-host3.hist.techuni.edu.
+hist.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+hist.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+archive0.hist.techuni.edu.	3600	IN	A	10.224.214.249
+archive0.hist.techuni.edu.	3600	IN	AAAA	2001:db8:fc75:c1e6::59eb
+archive1.hist.techuni.edu.	300	IN	A	10.245.115.42
+archive2.hist.techuni.edu.	300	IN	AAAA	2001:db8:a32e:85b2::f3a1
+archive3.hist.techuni.edu.	1800	IN	A	10.87.192.42
+archive4.hist.techuni.edu.	300	IN	A	10.173.247.181
+archive4.hist.techuni.edu.	86400	IN	AAAA	2001:db8:547a:de4f::2838
+archive5.hist.techuni.edu.	1800	IN	A	10.105.97.105
+archive7.hist.techuni.edu.	1800	IN	A	10.152.121.25
+archive7.hist.techuni.edu.	7200	IN	AAAA	2001:db8:fb5d:4ea3::df5
+archive8.hist.techuni.edu.	3600	IN	A	10.44.150.211
+archive9.hist.techuni.edu.	300	IN	AAAA	2001:db8:69f5:5777::a361
+archive10.hist.techuni.edu.	300	IN	A	10.242.59.79
+archive11.hist.techuni.edu.	86400	IN	A	10.135.46.165
+archive12.hist.techuni.edu.	3600	IN	A	10.189.95.115
+archive12.hist.techuni.edu.	3600	IN	AAAA	2001:db8:ee1c:86dc::39ec
+archive14.hist.techuni.edu.	86400	IN	A	10.49.43.172
+archive14.hist.techuni.edu.	7200	IN	AAAA	2001:db8:d3f6:747c::8db9

@@ -1,0 +1,41 @@
+phys.techuni.edu.	86400	IN	SOA	ns1.phys.phys.techuni.edu.	hostmaster.phys.techuni.edu.	2026031401	3600	1800	604800	86400
+phys.techuni.edu.	3600	IN	NS	ns1.phys.techuni.edu.
+phys.techuni.edu.	3600	IN	NS	ns-lame.techuni.edu.
+ns1.phys.techuni.edu.	3600	IN	A	10.5.1.1
+mail.phys.techuni.edu.	3600	IN	A	10.233.191.16
+mail.phys.techuni.edu.	3600	IN	AAAA	2001:db8:f766:f9c8::407
+phys.techuni.edu.	3600	IN	MX	10 mail.phys.techuni.edu.
+mail2.phys.techuni.edu.	3600	IN	A	10.210.6.5
+phys.techuni.edu.	3600	IN	MX	20 mail2.phys.techuni.edu.
+phys.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.phys.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host3.phys.techuni.edu.	3600	IN	A	10.8.220.207
+_kerberos._tcp.phys.techuni.edu.	600	IN	SRV	13 13 34367 svc-host3.phys.techuni.edu.
+svc-host2.phys.techuni.edu.	3600	IN	A	10.123.98.159
+_xmpp._tcp.phys.techuni.edu.	7200	IN	SRV	32 46 17520 svc-host2.phys.techuni.edu.
+phys.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+phys.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+detector0.phys.techuni.edu.	3600	IN	AAAA	2001:db8:eb01:7c85::fd80
+detector1.phys.techuni.edu.	300	IN	AAAA	2001:db8:1038:2fdf::67c1
+detector2.phys.techuni.edu.	7200	IN	A	10.243.28.164
+detector2.phys.techuni.edu.	600	IN	AAAA	2001:db8:2a55:ffed::d868
+detector3.phys.techuni.edu.	1800	IN	A	10.48.21.59
+detector3.phys.techuni.edu.	86400	IN	AAAA	2001:db8:f374:8acc::bec
+detector5.phys.techuni.edu.	7200	IN	A	10.16.91.238
+detector6.phys.techuni.edu.	600	IN	A	10.73.203.238
+detector6.phys.techuni.edu.	600	IN	AAAA	2001:db8:7b1f:c73f::ad53
+detector7.phys.techuni.edu.	86400	IN	AAAA	2001:db8:47a7:2827::8034
+detector8.phys.techuni.edu.	300	IN	AAAA	2001:db8:dfca:76db::d6b4
+detector9.phys.techuni.edu.	7200	IN	A	10.203.167.8
+detector11.phys.techuni.edu.	7200	IN	A	10.192.221.48
+detector12.phys.techuni.edu.	7200	IN	AAAA	2001:db8:973b:7e2e::b68f
+detector13.phys.techuni.edu.	1800	IN	A	10.78.194.183
+detector14.phys.techuni.edu.	3600	IN	A	10.162.184.28
+detector14.phys.techuni.edu.	1800	IN	AAAA	2001:db8:e3b4:b847::c2e8
+detector15.phys.techuni.edu.	600	IN	A	10.44.95.111
+detector16.phys.techuni.edu.	3600	IN	A	10.52.13.23
+detector16.phys.techuni.edu.	300	IN	AAAA	2001:db8:a61b:c53d::329
+detector17.phys.techuni.edu.	3600	IN	A	10.43.124.147
+detector18.phys.techuni.edu.	1800	IN	AAAA	2001:db8:9a2d:896c::7e3e
+detector19.phys.techuni.edu.	600	IN	A	10.222.141.108
+detector19.phys.techuni.edu.	300	IN	AAAA	2001:db8:b8e5:80de::f1b9

@@ -1,0 +1,11 @@
+cycle-a.techuni.edu.	86400	IN	SOA	ns1.cycle-b.cycle-a.techuni.edu.	hostmaster.cycle-a.techuni.edu.	2026031401	3600	1800	604800	86400
+cycle-a.techuni.edu.	3600	IN	NS	ns1.cycle-b.techuni.edu.
+node0.cycle-a.techuni.edu.	7200	IN	A	10.234.73.81
+node1.cycle-a.techuni.edu.	300	IN	A	10.249.170.162
+node2.cycle-a.techuni.edu.	300	IN	A	10.2.231.71
+node2.cycle-a.techuni.edu.	600	IN	AAAA	2001:db8:511e:faa9::c904
+node3.cycle-a.techuni.edu.	7200	IN	AAAA	2001:db8:de0f:dbdb::6745
+node4.cycle-a.techuni.edu.	3600	IN	A	10.196.2.10
+node7.cycle-a.techuni.edu.	300	IN	A	10.2.127.58
+node8.cycle-a.techuni.edu.	600	IN	A	10.52.196.129
+node9.cycle-a.techuni.edu.	300	IN	A	10.152.148.117

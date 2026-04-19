@@ -1,0 +1,36 @@
+eng.techuni.edu.	86400	IN	SOA	ns1.eng.eng.techuni.edu.	hostmaster.eng.techuni.edu.	2026031401	3600	1800	604800	86400
+eng.techuni.edu.	3600	IN	NS	ns1.eng.techuni.edu.
+eng.techuni.edu.	3600	IN	NS	ns2.eng.techuni.edu.
+ns1.eng.techuni.edu.	3600	IN	A	10.31.198.210
+ns2.eng.techuni.edu.	3600	IN	A	10.214.243.147
+mail.eng.techuni.edu.	3600	IN	A	10.120.243.77
+mail.eng.techuni.edu.	3600	IN	AAAA	2001:db8:286c:ca23::e71d
+eng.techuni.edu.	3600	IN	MX	10 mail.eng.techuni.edu.
+eng.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.eng.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host5.eng.techuni.edu.	3600	IN	A	10.75.61.244
+_sip._tcp.eng.techuni.edu.	3600	IN	SRV	22 22 63712 svc-host5.eng.techuni.edu.
+svc-host2.eng.techuni.edu.	3600	IN	A	10.98.64.11
+_kerberos._tcp.eng.techuni.edu.	3600	IN	SRV	10 88 28534 svc-host2.eng.techuni.edu.
+eng.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+eng.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+workshop0.eng.techuni.edu.	86400	IN	A	10.75.132.82
+workshop1.eng.techuni.edu.	3600	IN	AAAA	2001:db8:cb72:a6fa::db4c
+workshop2.eng.techuni.edu.	3600	IN	A	10.6.214.29
+workshop3.eng.techuni.edu.	7200	IN	A	10.51.54.145
+workshop6.eng.techuni.edu.	86400	IN	A	10.248.242.10
+workshop6.eng.techuni.edu.	3600	IN	AAAA	2001:db8:49a7:cdae::9ee
+workshop7.eng.techuni.edu.	1800	IN	A	10.121.25.191
+workshop8.eng.techuni.edu.	1800	IN	A	10.10.172.210
+workshop9.eng.techuni.edu.	3600	IN	A	10.50.116.35
+workshop9.eng.techuni.edu.	86400	IN	AAAA	2001:db8:e2df:a448::44f9
+workshop11.eng.techuni.edu.	3600	IN	A	10.108.208.190
+workshop12.eng.techuni.edu.	1800	IN	A	10.28.81.17
+workshop12.eng.techuni.edu.	7200	IN	AAAA	2001:db8:ce88:4573::c7d0
+workshop14.eng.techuni.edu.	600	IN	A	10.102.29.64
+workshop14.eng.techuni.edu.	300	IN	AAAA	2001:db8:b883:65f1::4624
+workshop15.eng.techuni.edu.	3600	IN	A	10.203.63.175
+workshop15.eng.techuni.edu.	1800	IN	AAAA	2001:db8:fa42:e467::2d77
+workshop17.eng.techuni.edu.	1800	IN	A	10.83.132.192
+workshop18.eng.techuni.edu.	300	IN	A	10.197.25.42
+workshop19.eng.techuni.edu.	600	IN	AAAA	2001:db8:7341:69d8::44e3

@@ -1,0 +1,33 @@
+bio.techuni.edu.	86400	IN	SOA	ns1.bio.bio.techuni.edu.	hostmaster.bio.techuni.edu.	2026031401	3600	1800	604800	86400
+bio.techuni.edu.	3600	IN	NS	ns1.bio.techuni.edu.
+bio.techuni.edu.	3600	IN	NS	ns-ghost.techuni.edu.
+ns1.bio.techuni.edu.	3600	IN	A	10.7.1.1
+mail.bio.techuni.edu.	3600	IN	A	10.59.72.90
+mail.bio.techuni.edu.	3600	IN	AAAA	2001:db8:9fb0:afa6::7491
+bio.techuni.edu.	3600	IN	MX	10 mail.bio.techuni.edu.
+bio.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.bio.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host4.bio.techuni.edu.	3600	IN	A	10.49.224.185
+_xmpp._tcp.bio.techuni.edu.	86400	IN	SRV	57 41 4403 svc-host4.bio.techuni.edu.
+svc-host3.bio.techuni.edu.	3600	IN	A	10.22.58.6
+_ldap._tcp.bio.techuni.edu.	1800	IN	SRV	82 14 44378 svc-host3.bio.techuni.edu.
+bio.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+bio.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+microscope2.bio.techuni.edu.	1800	IN	A	10.218.236.60
+microscope3.bio.techuni.edu.	86400	IN	AAAA	2001:db8:dd40:ca89::77a
+microscope5.bio.techuni.edu.	3600	IN	A	10.199.2.181
+microscope5.bio.techuni.edu.	1800	IN	AAAA	2001:db8:2008:3418::ccad
+microscope6.bio.techuni.edu.	1800	IN	AAAA	2001:db8:64e6:ea44::1d2d
+microscope7.bio.techuni.edu.	3600	IN	A	10.160.198.157
+microscope7.bio.techuni.edu.	300	IN	AAAA	2001:db8:b223:b437::d874
+microscope8.bio.techuni.edu.	600	IN	A	10.152.43.173
+microscope8.bio.techuni.edu.	300	IN	AAAA	2001:db8:7a26:9c5a::1df1
+microscope9.bio.techuni.edu.	86400	IN	A	10.72.198.108
+microscope10.bio.techuni.edu.	3600	IN	A	10.95.249.163
+microscope12.bio.techuni.edu.	600	IN	A	10.250.147.36
+microscope12.bio.techuni.edu.	3600	IN	AAAA	2001:db8:1b72:b7d3::f3ac
+microscope13.bio.techuni.edu.	600	IN	A	10.99.196.247
+microscope15.bio.techuni.edu.	86400	IN	A	10.227.250.43
+microscope15.bio.techuni.edu.	300	IN	AAAA	2001:db8:70e9:958c::85f
+microscope16.bio.techuni.edu.	7200	IN	A	10.147.86.200
+microscope18.bio.techuni.edu.	300	IN	A	10.58.137.199

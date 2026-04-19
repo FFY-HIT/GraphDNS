@@ -1,0 +1,94 @@
+ai.techuni.edu.	86400	IN	SOA	ns1.ai.ai.techuni.edu.	hostmaster.ai.techuni.edu.	2026031401	3600	1800	604800	86400
+ai.techuni.edu.	3600	IN	NS	ns1.ai.techuni.edu.
+ns1.ai.techuni.edu.	3600	IN	A	10.20.1.1
+mail.ai.techuni.edu.	3600	IN	A	10.58.49.195
+mail.ai.techuni.edu.	3600	IN	AAAA	2001:db8:7188:11f::5764
+ai.techuni.edu.	3600	IN	MX	10 mail.ai.techuni.edu.
+mail2.ai.techuni.edu.	3600	IN	A	10.149.191.180
+ai.techuni.edu.	3600	IN	MX	20 mail2.ai.techuni.edu.
+ai.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.ai.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host2.ai.techuni.edu.	3600	IN	A	10.252.71.211
+_sip._tcp.ai.techuni.edu.	86400	IN	SRV	95 93 26819 svc-host2.ai.techuni.edu.
+svc-host1.ai.techuni.edu.	3600	IN	A	10.130.100.49
+_xmpp._tcp.ai.techuni.edu.	300	IN	SRV	50 28 29953 svc-host1.ai.techuni.edu.
+ai.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+ai.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+loop1.ai.techuni.edu.	3600	IN	CNAME	loop2.ai.techuni.edu.
+loop2.ai.techuni.edu.	3600	IN	CNAME	loop1.ai.techuni.edu.
+chain-a.ai.techuni.edu.	3600	IN	CNAME	chain-b.ai.techuni.edu.
+chain-b.ai.techuni.edu.	3600	IN	CNAME	chain-c.ai.techuni.edu.
+chain-c.ai.techuni.edu.	3600	IN	CNAME	chain-a.ai.techuni.edu.
+alias1.ai.techuni.edu.	3600	IN	CNAME	alias2.ai.techuni.edu.
+alias2.ai.techuni.edu.	3600	IN	CNAME	real-server.ai.techuni.edu.
+real-server.ai.techuni.edu.	3600	IN	A	10.20.10.1
+stale-link.ai.techuni.edu.	3600	IN	CNAME	deleted-api.ai.techuni.edu.
+old-lab.ai.techuni.edu.	3600	IN	DNAME	merged-lab.ai.techuni.edu.
+legacy-ml.ai.techuni.edu.	3600	IN	DNAME	ml.ai.techuni.edu.
+api.old-lab.ai.techuni.edu.	3600	IN	A	10.20.66.10
+db.old-lab.ai.techuni.edu.	3600	IN	AAAA	2001:db8:20:66::10
+train.legacy-ml.ai.techuni.edu.	3600	IN	A	10.20.77.11
+ml.ai.techuni.edu.	3600	IN	A	10.20.20.1
+project1.ml.ai.techuni.edu.	3600	IN	A	10.20.20.2
+*.sandbox.ai.techuni.edu.	3600	IN	A	10.20.30.1
+known.sandbox.ai.techuni.edu.	3600	IN	A	10.20.30.2
+test-redirect.ai.techuni.edu.	3600	IN	CNAME	random-name.sandbox.ai.techuni.edu.
+gpu0.ai.techuni.edu.	3600	IN	A	10.20.40.1
+gpu0.ai.techuni.edu.	1800	IN	AAAA	2001:db8:372d:d435::be8
+gpu2.ai.techuni.edu.	3600	IN	A	10.234.68.247
+gpu3.ai.techuni.edu.	300	IN	A	10.221.247.237
+gpu4.ai.techuni.edu.	7200	IN	AAAA	2001:db8:58e8:41bb::1a83
+gpu5.ai.techuni.edu.	7200	IN	A	10.164.196.108
+gpu7.ai.techuni.edu.	1800	IN	A	10.150.231.207
+gpu7.ai.techuni.edu.	3600	IN	AAAA	2001:db8:990b:a0b8::b63e
+gpu9.ai.techuni.edu.	600	IN	A	10.148.176.236
+gpu12.ai.techuni.edu.	300	IN	AAAA	2001:db8:b458:f5f3::9533
+gpu13.ai.techuni.edu.	86400	IN	A	10.213.146.225
+gpu15.ai.techuni.edu.	600	IN	A	10.27.28.52
+gpu15.ai.techuni.edu.	600	IN	AAAA	2001:db8:92bf:8049::257d
+gpu17.ai.techuni.edu.	7200	IN	A	10.16.183.209
+gpu19.ai.techuni.edu.	600	IN	A	10.199.121.131
+gpu20.ai.techuni.edu.	86400	IN	AAAA	2001:db8:180d:c35e::6337
+gpu21.ai.techuni.edu.	86400	IN	A	10.160.27.4
+gpu22.ai.techuni.edu.	3600	IN	A	10.115.188.194
+gpu23.ai.techuni.edu.	86400	IN	AAAA	2001:db8:6312:969e::72e6
+gpu24.ai.techuni.edu.	86400	IN	A	10.38.95.247
+gpu24.ai.techuni.edu.	7200	IN	AAAA	2001:db8:3d1b:c120::a68
+gpu25.ai.techuni.edu.	7200	IN	A	10.135.66.42
+gpu26.ai.techuni.edu.	1800	IN	A	10.238.79.11
+gpu26.ai.techuni.edu.	1800	IN	AAAA	2001:db8:1a09:9a30::7d95
+gpu28.ai.techuni.edu.	86400	IN	A	10.162.112.245
+gpu28.ai.techuni.edu.	300	IN	AAAA	2001:db8:5199:d4f4::8b08
+gpu29.ai.techuni.edu.	300	IN	A	10.178.113.227
+gpu29.ai.techuni.edu.	1800	IN	AAAA	2001:db8:a981:b8ba::4b28
+gpu30.ai.techuni.edu.	7200	IN	A	10.243.4.30
+gpu31.ai.techuni.edu.	86400	IN	A	10.124.20.175
+gpu32.ai.techuni.edu.	300	IN	A	10.197.131.139
+gpu33.ai.techuni.edu.	7200	IN	A	10.191.228.125
+gpu33.ai.techuni.edu.	86400	IN	AAAA	2001:db8:6290:a400::838f
+gpu34.ai.techuni.edu.	300	IN	A	10.85.3.161
+gpu34.ai.techuni.edu.	86400	IN	AAAA	2001:db8:6d25:d931::d5ef
+gpu35.ai.techuni.edu.	7200	IN	A	10.222.36.192
+gpu36.ai.techuni.edu.	86400	IN	A	10.169.19.23
+gpu36.ai.techuni.edu.	600	IN	AAAA	2001:db8:80fa:2410::9331
+gpu38.ai.techuni.edu.	3600	IN	A	10.207.221.81
+gpu38.ai.techuni.edu.	86400	IN	AAAA	2001:db8:3c92:305::a435
+gpu39.ai.techuni.edu.	86400	IN	AAAA	2001:db8:174d:252a::5b93
+tpu0.ai.techuni.edu.	86400	IN	AAAA	2001:db8:9a4a:2c4a::4812
+tpu2.ai.techuni.edu.	86400	IN	A	10.15.242.41
+tpu3.ai.techuni.edu.	3600	IN	A	10.151.73.77
+tpu5.ai.techuni.edu.	300	IN	AAAA	2001:db8:4862:3f18::ab2
+tpu6.ai.techuni.edu.	7200	IN	A	10.201.43.79
+tpu6.ai.techuni.edu.	86400	IN	AAAA	2001:db8:b00d:6c68::69a4
+tpu8.ai.techuni.edu.	600	IN	A	10.113.129.50
+tpu8.ai.techuni.edu.	86400	IN	AAAA	2001:db8:1bd8:ec2a::a50a
+tpu9.ai.techuni.edu.	1800	IN	A	10.34.128.26
+tpu9.ai.techuni.edu.	7200	IN	AAAA	2001:db8:f971:a965::5b6e
+tpu10.ai.techuni.edu.	86400	IN	A	10.120.51.73
+tpu11.ai.techuni.edu.	3600	IN	AAAA	2001:db8:a81c:9c81::b187
+tpu12.ai.techuni.edu.	7200	IN	A	10.186.161.246
+tpu13.ai.techuni.edu.	600	IN	A	10.113.223.71
+tpu14.ai.techuni.edu.	86400	IN	A	10.169.245.119
+tpu16.ai.techuni.edu.	86400	IN	A	10.41.143.220
+tpu17.ai.techuni.edu.	86400	IN	AAAA	2001:db8:2726:269a::e462
+tpu18.ai.techuni.edu.	7200	IN	A	10.15.207.197

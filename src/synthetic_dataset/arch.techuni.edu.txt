@@ -1,0 +1,31 @@
+arch.techuni.edu.	86400	IN	SOA	ns1.arch.arch.techuni.edu.	hostmaster.arch.techuni.edu.	2026031401	3600	1800	604800	86400
+arch.techuni.edu.	3600	IN	NS	ns1.arch.techuni.edu.
+arch.techuni.edu.	3600	IN	NS	ns2.arch.techuni.edu.
+arch.techuni.edu.	3600	IN	NS	ns3.arch.techuni.edu.
+ns1.arch.techuni.edu.	3600	IN	A	10.209.10.222
+ns2.arch.techuni.edu.	3600	IN	A	10.4.242.234
+ns3.arch.techuni.edu.	3600	IN	A	10.67.88.154
+mail.arch.techuni.edu.	3600	IN	A	10.4.114.65
+mail.arch.techuni.edu.	3600	IN	AAAA	2001:db8:9c65:8cfe::6c7f
+arch.techuni.edu.	3600	IN	MX	10 mail.arch.techuni.edu.
+arch.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.arch.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host3.arch.techuni.edu.	3600	IN	A	10.111.238.78
+_kerberos._tcp.arch.techuni.edu.	86400	IN	SRV	66 80 26028 svc-host3.arch.techuni.edu.
+svc-host5.arch.techuni.edu.	3600	IN	A	10.52.3.131
+_ldap._tcp.arch.techuni.edu.	86400	IN	SRV	47 72 42425 svc-host5.arch.techuni.edu.
+arch.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+arch.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+model0.arch.techuni.edu.	1800	IN	A	10.152.55.124
+model0.arch.techuni.edu.	1800	IN	AAAA	2001:db8:a678:8dc3::42db
+model2.arch.techuni.edu.	7200	IN	AAAA	2001:db8:7b08:1d11::ce31
+model4.arch.techuni.edu.	1800	IN	A	10.71.13.168
+model5.arch.techuni.edu.	3600	IN	A	10.207.198.189
+model5.arch.techuni.edu.	86400	IN	AAAA	2001:db8:613c:afb3::ba00
+model8.arch.techuni.edu.	1800	IN	AAAA	2001:db8:5708:5cbd::4b36
+model9.arch.techuni.edu.	600	IN	A	10.132.93.243
+model10.arch.techuni.edu.	300	IN	A	10.113.181.58
+model11.arch.techuni.edu.	1800	IN	A	10.190.133.150
+model11.arch.techuni.edu.	300	IN	AAAA	2001:db8:f0ea:1b7b::ddcc
+model14.arch.techuni.edu.	300	IN	A	10.195.152.106
+model14.arch.techuni.edu.	600	IN	AAAA	2001:db8:4654:668d::57ba

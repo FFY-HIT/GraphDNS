@@ -1,0 +1,28 @@
+chem.techuni.edu.	86400	IN	SOA	ns1.chem.chem.techuni.edu.	hostmaster.chem.techuni.edu.	2026031401	3600	1800	604800	86400
+chem.techuni.edu.	3600	IN	NS	ns1.chem.techuni.edu.
+chem.techuni.edu.	3600	IN	NS	ns1.bio.techuni.edu.
+ns1.chem.techuni.edu.	3600	IN	A	10.6.1.1
+mail.chem.techuni.edu.	3600	IN	A	10.126.253.153
+mail.chem.techuni.edu.	3600	IN	AAAA	2001:db8:641e:ea6c::1b63
+chem.techuni.edu.	3600	IN	MX	10 mail.chem.techuni.edu.
+mail2.chem.techuni.edu.	3600	IN	A	10.3.202.86
+chem.techuni.edu.	3600	IN	MX	20 mail2.chem.techuni.edu.
+chem.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.chem.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host4.chem.techuni.edu.	3600	IN	A	10.171.220.209
+_xmpp._tcp.chem.techuni.edu.	86400	IN	SRV	76 18 19690 svc-host4.chem.techuni.edu.
+svc-host3.chem.techuni.edu.	3600	IN	A	10.102.245.81
+_ldap._tcp.chem.techuni.edu.	600	IN	SRV	50 41 19101 svc-host3.chem.techuni.edu.
+chem.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+chem.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+fume-hood2.chem.techuni.edu.	1800	IN	A	10.201.186.30
+fume-hood3.chem.techuni.edu.	7200	IN	A	10.92.13.244
+fume-hood4.chem.techuni.edu.	1800	IN	AAAA	2001:db8:2368:d17b::ac49
+fume-hood5.chem.techuni.edu.	86400	IN	A	10.155.123.65
+fume-hood7.chem.techuni.edu.	7200	IN	A	10.245.205.137
+fume-hood9.chem.techuni.edu.	1800	IN	A	10.43.55.197
+fume-hood9.chem.techuni.edu.	86400	IN	AAAA	2001:db8:b5c3:552a::a5a2
+fume-hood12.chem.techuni.edu.	3600	IN	AAAA	2001:db8:363e:566::193f
+fume-hood13.chem.techuni.edu.	7200	IN	A	10.113.228.96
+fume-hood13.chem.techuni.edu.	86400	IN	AAAA	2001:db8:4d2e:b09f::ff6a
+fume-hood14.chem.techuni.edu.	300	IN	A	10.151.212.236

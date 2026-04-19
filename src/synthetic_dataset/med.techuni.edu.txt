@@ -1,0 +1,36 @@
+med.techuni.edu.	86400	IN	SOA	ns1.med.med.techuni.edu.	hostmaster.med.techuni.edu.	2026031401	3600	1800	604800	86400
+med.techuni.edu.	3600	IN	NS	ns1.med.techuni.edu.
+med.techuni.edu.	3600	IN	NS	ns2.med.techuni.edu.
+ns1.med.techuni.edu.	3600	IN	A	10.9.1.99
+ns2.med.techuni.edu.	3600	IN	A	10.9.1.2
+mail.med.techuni.edu.	3600	IN	A	10.123.255.164
+mail.med.techuni.edu.	3600	IN	AAAA	2001:db8:245b:62d::fca5
+med.techuni.edu.	3600	IN	MX	10 mail.med.techuni.edu.
+mail2.med.techuni.edu.	3600	IN	A	10.162.67.100
+med.techuni.edu.	3600	IN	MX	20 mail2.med.techuni.edu.
+med.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.med.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host5.med.techuni.edu.	3600	IN	A	10.88.241.245
+_xmpp._tcp.med.techuni.edu.	300	IN	SRV	2 76 4426 svc-host5.med.techuni.edu.
+svc-host1.med.techuni.edu.	3600	IN	A	10.134.110.11
+_ldap._tcp.med.techuni.edu.	300	IN	SRV	50 65 18776 svc-host1.med.techuni.edu.
+med.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+med.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+ward1.med.techuni.edu.	86400	IN	A	10.205.42.164
+ward2.med.techuni.edu.	1800	IN	AAAA	2001:db8:2875:6809::f96d
+ward4.med.techuni.edu.	86400	IN	A	10.33.158.179
+ward5.med.techuni.edu.	600	IN	AAAA	2001:db8:2c24:de74::1db2
+ward6.med.techuni.edu.	7200	IN	A	10.28.158.171
+ward7.med.techuni.edu.	86400	IN	AAAA	2001:db8:4640:5cf::29f1
+ward8.med.techuni.edu.	1800	IN	A	10.132.85.96
+ward8.med.techuni.edu.	1800	IN	AAAA	2001:db8:3c71:f07::55c4
+ward9.med.techuni.edu.	300	IN	AAAA	2001:db8:86a1:2775::7f04
+ward10.med.techuni.edu.	1800	IN	A	10.28.255.220
+ward11.med.techuni.edu.	1800	IN	A	10.52.59.59
+ward12.med.techuni.edu.	300	IN	A	10.125.23.121
+ward12.med.techuni.edu.	600	IN	AAAA	2001:db8:5ba0:121b::8d89
+ward14.med.techuni.edu.	600	IN	AAAA	2001:db8:d51f:a3ce::4572
+ward16.med.techuni.edu.	86400	IN	A	10.26.91.58
+ward18.med.techuni.edu.	3600	IN	A	10.144.159.84
+ward18.med.techuni.edu.	3600	IN	AAAA	2001:db8:414:bce2::3360
+ward19.med.techuni.edu.	1800	IN	A	10.124.237.95

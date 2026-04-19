@@ -1,0 +1,23 @@
+econ.techuni.edu.	86400	IN	SOA	ns-actual.econ.econ.techuni.edu.	hostmaster.econ.techuni.edu.	2026031401	3600	1800	604800	86400
+econ.techuni.edu.	3600	IN	NS	ns-lame2.techuni.edu.
+econ.techuni.edu.	3600	IN	NS	ns-lame3.techuni.edu.
+mail.econ.techuni.edu.	3600	IN	A	10.21.225.140
+mail.econ.techuni.edu.	3600	IN	AAAA	2001:db8:6fe4:d9ad::1a38
+econ.techuni.edu.	3600	IN	MX	10 mail.econ.techuni.edu.
+econ.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.econ.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host1.econ.techuni.edu.	3600	IN	A	10.230.134.90
+_ldap._tcp.econ.techuni.edu.	300	IN	SRV	56 16 50832 svc-host1.econ.techuni.edu.
+svc-host2.econ.techuni.edu.	3600	IN	A	10.107.179.221
+_xmpp._tcp.econ.techuni.edu.	86400	IN	SRV	78 81 28061 svc-host2.econ.techuni.edu.
+econ.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+econ.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+tradinglab0.econ.techuni.edu.	600	IN	A	10.105.105.207
+tradinglab0.econ.techuni.edu.	1800	IN	AAAA	2001:db8:8fea:5635::52db
+tradinglab1.econ.techuni.edu.	7200	IN	AAAA	2001:db8:88e1:30c1::22b6
+tradinglab4.econ.techuni.edu.	600	IN	AAAA	2001:db8:7fd5:4ae0::b61e
+tradinglab5.econ.techuni.edu.	600	IN	A	10.201.250.37
+tradinglab6.econ.techuni.edu.	3600	IN	A	10.192.231.20
+tradinglab7.econ.techuni.edu.	7200	IN	AAAA	2001:db8:8e73:bcf6::7467
+tradinglab8.econ.techuni.edu.	300	IN	AAAA	2001:db8:2fb0:eab9::a285
+tradinglab9.econ.techuni.edu.	300	IN	AAAA	2001:db8:cba1:6f87::f7d8

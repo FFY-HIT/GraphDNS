@@ -1,0 +1,442 @@
+
+// =========================================================================
+// 1. 类型定义与输入 (Type Definitions & Input)
+// =========================================================================
+.type ServerID <: symbol
+.type Domain   <: symbol
+.type RType    <: symbol
+.type Content  <: symbol
+.type TTL      <: number
+
+.decl ZoneRecord(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+.input ZoneRecord(IO="stdin")
+
+.decl Error(dimension: symbol, entity: Domain, msg: symbol)
+.output Error
+
+// 可选调试输出
+.decl ShadowRecord(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content, reason: symbol)
+.output ShadowRecord
+
+.decl CleanRecord(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+.output CleanRecord
+
+.decl OrphanRecord(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+.output OrphanRecord
+
+
+// =========================================================================
+// 2. 基础模型 (Core Data Modeling)
+// =========================================================================
+
+// -------------------------------------------------------------------------
+// 2.1 域名层级关系 (Domain Hierarchy)
+// -------------------------------------------------------------------------
+.decl AllNames(name: Domain)
+AllNames(n) :- ZoneRecord(_, _, n, _, _, _).
+AllNames(as(d, Domain)) :-
+    ZoneRecord(_, _, _, t, _, d),
+    (t = "CNAME"; t = "DNAME"; t = "NS"; t = "MX"; t = "PTR"; t = "SRV").
+
+.decl DotScan(name: Domain, i: number)
+DotScan(n, 0) :- AllNames(n).
+DotScan(n, i + 1) :-
+    DotScan(n, i),
+    i < strlen(n),
+    substr(n, i, 1) != ".".
+
+.decl FirstDot(name: Domain, pos: number)
+FirstDot(n, pos) :- DotScan(n, pos), substr(n, pos, 1) = ".".
+
+// 父子关系：parent 是 child 去掉第一个标签后的结果
+.decl ParentOf(parent: Domain, child: Domain)
+ParentOf(parent, child) :-
+    AllNames(child),
+    FirstDot(child, pos),
+    pos < strlen(child) - 1,
+    parent = substr(child, pos + 1, strlen(child) - pos - 1).
+
+// 后代关系
+.decl IsDescendant(child: Domain, ancestor: Domain)
+IsDescendant(c, p) :- ParentOf(p, c).
+IsDescendant(c, a) :- ParentOf(p, c), IsDescendant(p, a).
+
+// -------------------------------------------------------------------------
+// 2.2 区域信息与节点存在性 (Zone & Node Existence)
+// -------------------------------------------------------------------------
+.decl ZoneApex(zone: Domain)
+ZoneApex(z) :- ZoneRecord(_, z, z, "SOA", _, _).
+
+.decl ExplicitRecord(name: Domain)
+ExplicitRecord(n) :- ZoneRecord(_, _, n, _, _, _).
+
+.decl EmptyNonTerminal(name: Domain)
+EmptyNonTerminal(n) :- ParentOf(n, c), ExplicitRecord(c), !ExplicitRecord(n).
+EmptyNonTerminal(n) :- ParentOf(n, c), EmptyNonTerminal(c), !ExplicitRecord(n).
+
+.decl NodeExists(name: Domain)
+NodeExists(n) :- ExplicitRecord(n).
+NodeExists(n) :- EmptyNonTerminal(n).
+
+// -------------------------------------------------------------------------
+// 2.3 单层通配符与可解析性 (Strict 1-Level Wildcard & Resolvability)
+// -------------------------------------------------------------------------
+.decl WildcardRecord(encloser: Domain)
+WildcardRecord(e) :-
+    ZoneRecord(_, _, w, _, _, _),
+    match("^\\*\\..*$", w),
+    e = substr(w, 2, strlen(w) - 2).
+
+.decl CoveredByWildcard(query: Domain, encloser: Domain)
+CoveredByWildcard(q, e) :-
+    AllNames(q),
+    WildcardRecord(e),
+    ParentOf(e, q),
+    !NodeExists(q).
+
+.decl Resolvable(name: Domain)
+Resolvable(n) :- NodeExists(n).
+Resolvable(n) :- CoveredByWildcard(n, _).
+
+// -------------------------------------------------------------------------
+// 2.4 区域归属与辖区关系 (Zone Membership / Bailiwick)
+// -------------------------------------------------------------------------
+.decl BelongsToZone(name: Domain)
+BelongsToZone(n) :-
+    ZoneApex(z),
+    (n = z ; IsDescendant(n, z)).
+
+.decl InBailiwick(ns: Domain, zone: Domain)
+InBailiwick(ns, z) :-
+    AllNames(ns),
+    ZoneApex(z),
+    (ns = z ; IsDescendant(ns, z)).
+
+
+// =========================================================================
+// 3. 影子记录检测与纯化视图 (Shadow Detection & Purified View)
+// =========================================================================
+
+// Glue(r, r_ns) 的实现：
+// 仅保留同一区域文件中的 in-bailiwick A/AAAA 记录，且其 owner 正好是某个 NS 目标名
+.decl GlueRecord(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+GlueRecord(s, z, n, t, ttl, d) :-
+    ZoneRecord(s, z, owner, "NS", _, ns_content),
+    owner != z,
+    n = as(ns_content, Domain),
+    InBailiwick(n, z),
+    ZoneRecord(s, z, n, t, ttl, d),
+    (t = "A"; t = "AAAA").
+
+// NS 授权遮蔽：位于某个 zone cut 严格后代上的记录被遮蔽；
+// 但 in-bailiwick 胶水记录不计入影子记录
+.decl OccNS(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+OccNS(s, z, n, t, ttl, d) :-
+    ZoneRecord(s, z, n, t, ttl, d),
+    ZoneRecord(s, z, cut, "NS", _, _),
+    cut != z,
+    IsDescendant(n, cut),
+    !GlueRecord(s, z, n, t, ttl, d).
+
+// DNAME 子树遮蔽：DNAME owner 的严格后代全部被遮蔽
+.decl OccD(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+OccD(s, z, n, t, ttl, d) :-
+    ZoneRecord(s, z, n, t, ttl, d),
+    ZoneRecord(s, z, owner, "DNAME", _, _),
+    IsDescendant(n, owner).
+
+.decl IsShadow(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+IsShadow(s, z, n, t, ttl, d) :- OccNS(s, z, n, t, ttl, d).
+IsShadow(s, z, n, t, ttl, d) :- OccD(s, z, n, t, ttl, d).
+
+.decl RClean(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+RClean(s, z, n, t, ttl, d) :-
+    ZoneRecord(s, z, n, t, ttl, d),
+    !IsShadow(s, z, n, t, ttl, d).
+
+CleanRecord(s, z, n, t, ttl, d) :- RClean(s, z, n, t, ttl, d).
+
+ShadowRecord(s, z, n, t, ttl, d, "NS_Occlusion")     :- OccNS(s, z, n, t, ttl, d).
+ShadowRecord(s, z, n, t, ttl, d, "DNAME_Occlusion")  :- OccD(s, z, n, t, ttl, d).
+
+Error("Shadow_Record", n, "Occluded by NS delegation") :-
+    OccNS(_, _, n, _, _, _).
+
+Error("Shadow_Record", n, "Occluded by DNAME subtree rewrite") :-
+    OccD(_, _, n, _, _, _).
+
+// =========================================================================
+// 4. 孤儿记录检测 (Orphan Detection on Purified View)
+// 定义：
+// 1) 提取父区中的 delegation NS（owner != origin）
+// 2) 在同一 (server, zone) 中查找所有 A/AAAA 记录
+// 3) 若对某条 A/AAAA 而言，不存在任何 delegation NS 使得：
+//      - 该记录是当前 NS 目标，或
+//      - 该记录位于该 delegation owner 的子树中
+//    且该记录的直接父域名也未在同一区域文件中出现，
+//    则将其标记为疑似孤儿记录
+// =========================================================================
+
+// delegation NS：父区中用于授权子域的 NS 记录
+.decl DelegNS(server: ServerID, zone: Domain, child: Domain, ns_target: Domain)
+DelegNS(s, z, child, ns_target) :-
+    RClean(s, z, child, "NS", _, ns_content),
+    child != z,
+    ns_target = as(ns_content, Domain).
+
+// 同一父区中的地址记录
+.decl ZoneAddrRecord(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+ZoneAddrRecord(s, z, n, t, ttl, d) :-
+    RClean(s, z, n, t, ttl, d),
+    (t = "A"; t = "AAAA").
+
+// 某条地址记录能够被某条 delegation NS 解释：
+// 要么它就是该 NS 当前直接指向的目标；
+// 要么它位于该 delegation owner 所支撑的子树中。
+.decl AnchoredAddrByNS(server: ServerID, zone: Domain, ns_owner: Domain, ns_target: Domain, name: Domain)
+
+AnchoredAddrByNS(s, z, child, ns_target, n) :-
+    DelegNS(s, z, child, ns_target),
+    ZoneAddrRecord(s, z, n, _, _, _),
+    ns_target = n.
+
+AnchoredAddrByNS(s, z, child, ns_target, n) :-
+    DelegNS(s, z, child, ns_target),
+    ZoneAddrRecord(s, z, n, _, _, _),
+    n = child.
+
+AnchoredAddrByNS(s, z, child, ns_target, n) :-
+    DelegNS(s, z, child, ns_target),
+    ZoneAddrRecord(s, z, n, _, _, _),
+    IsDescendant(n, child).
+
+// 该地址记录在同一区域文件中具有直接父域锚点
+.decl HasParentAnchor(server: ServerID, zone: Domain, name: Domain)
+HasParentAnchor(s, z, n) :-
+    ZoneAddrRecord(s, z, n, _, _, _),
+    ParentOf(p, n),
+    RClean(s, z, p, _, _, _).
+
+// 疑似孤儿记录：
+// 不存在任何 delegation NS 能够将该地址记录解释为“当前 NS 目标”或“位于授权子树中”，
+// 且其直接父域名也未在同一区域文件中出现
+.decl SuspectedOrphan(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+SuspectedOrphan(s, z, n, t, ttl, d) :-
+    ZoneAddrRecord(s, z, n, t, ttl, d),
+    DelegNS(s, z, _, _),
+    !AnchoredAddrByNS(s, z, _, _, n),
+    !HasParentAnchor(s, z, n).
+
+OrphanRecord(s, z, n, t, ttl, d) :-
+    SuspectedOrphan(s, z, n, t, ttl, d).
+
+Error("Orphan_Record", n, "Address record is orphan") :-
+    SuspectedOrphan(_, _, n, _, _, _).
+
+// =========================================================================
+// 5. 基于 RClean 的解析路径故障检测 (Validation Rules on Purified View)
+// =========================================================================
+
+// =========================================================================
+// 5.1 No Lame Delegation
+// =========================================================================
+.decl ParentNS(zone: Domain, child: Domain, ns: Content)
+ParentNS(z, c, ns) :- RClean(_, z, c, "NS", _, ns), z != c.
+
+.decl ChildNS(zone: Domain, ns: Content)
+ChildNS(z, ns) :- RClean(_, z, z, "NS", _, ns).
+
+.decl KnownServer(server: Domain)
+KnownServer(svr) :-
+    ZoneRecord(svr_id, _, _, _, _, _),
+    svr = as(svr_id, Domain).
+
+Error("No_Lame_Delegation", c, cat(" NS server not authoritative: ", as(ns_domain, symbol))) :-
+    ParentOf(p, c),
+    ParentNS(p, c, ns_content),
+    ns_domain = as(ns_content, Domain),
+    KnownServer(ns_domain),
+    BelongsToZone(ns_domain),
+    !RClean(as(ns_domain, ServerID), c, c, _, _, _).
+
+// =========================================================================
+// 5.2 Delegation Consistency
+// =========================================================================
+
+// NS 集合一致性
+Error("Delegation_Consistency", c, " NS set mismatch between parent and child") :-
+    ParentOf(p, c),
+    ParentNS(p, c, ns),
+    !ChildNS(c, ns).
+
+Error("Delegation_Consistency", c, " NS set mismatch between parent and child") :-
+    ParentOf(p, c),
+    ParentNS(p, c, _),
+    (
+        (ParentNS(p, c, ns), !ChildNS(c, ns))
+        ;
+        (ChildNS(c, ns), !ParentNS(p, c, ns))
+    ).
+
+.decl NSRequiresCheck(ns: Domain, parent: Domain, child: Domain)
+
+// 来自父域授权的 in-bailiwick NS
+NSRequiresCheck(ns, p, c) :-
+    ParentOf(p, c),
+    ParentNS(p, c, ns_content),
+    ns = as(ns_content, Domain),
+    InBailiwick(ns, c).
+
+// 来自子域 apex 声明但不在父域授权中的 in-bailiwick NS
+NSRequiresCheck(ns, p, c) :-
+    ParentOf(p, c),
+    ChildNS(c, ns_content),
+    ns = as(ns_content, Domain),
+    BelongsToZone(p),
+    InBailiwick(ns, c),
+    !ParentNS(p, c, ns_content).
+
+Error("Delegation_Consistency", child, cat(" Inconsistent A/AAAA records for NS ", as(ns, symbol))) :-
+    NSRequiresCheck(ns, parent, child),
+    (
+        (RClean(_, parent, ns, "A", _, _), !RClean(_, child, ns, "A", _, _))
+        ;
+        (RClean(_, child, ns, "A", _, _), !RClean(_, parent, ns, "A", _, _))
+        ;
+        (RClean(_, parent, ns, "A", _, ip_parent), RClean(_, child, ns, "A", _, ip_child), ip_parent != ip_child)
+        ;
+        (RClean(_, parent, ns, "AAAA", _, _), !RClean(_, child, ns, "AAAA", _, _))
+        ;
+        (RClean(_, child, ns, "AAAA", _, _), !RClean(_, parent, ns, "AAAA", _, _))
+        ;
+        (RClean(_, parent, ns, "AAAA", _, ip_parent), RClean(_, child, ns, "AAAA", _, ip_child), ip_parent != ip_child)
+    ).
+
+// =========================================================================
+// 5.3 No Missing Glue Records
+// =========================================================================
+Error("No_Missing_Glue_Records", c, cat(" Missing glue for in-bailiwick NS: ", as(ns, symbol))) :-
+    ParentOf(p, c),
+    ParentNS(p, c, ns_content),
+    ns = as(ns_content, Domain),
+    InBailiwick(ns, c),
+    !RClean(_, p, ns, "A", _, _),
+    !RClean(_, p, ns, "AAAA", _, _).
+
+// =========================================================================
+// 5.4 No Cyclic Zone Dependency
+// =========================================================================
+.decl NSDepends(server1: Domain, server2: Domain, domain: Domain)
+NSDepends(svr1, svr2, dmn) :-
+    RClean(svr1_id, _, dmn, "NS", _, ns_content),
+    svr1 = as(svr1_id, Domain),
+    svr2 = as(ns_content, Domain),
+    svr1 != svr2.
+
+.decl NSReachable(server1: Domain, server2: Domain, domain: Domain)
+NSReachable(svr1, svr2, dmn) :-
+    NSDepends(svr1, svr2, dmn).
+
+NSReachable(svr1, svr3, dmn) :-
+    NSReachable(svr1, svr2, dmn),
+    NSDepends(svr2, svr3, dmn).
+
+Error("No_Cyclic_Zone_Dependency", domain, cat(" Cyclic NS dependency detected involving server ", as(server, symbol))) :-
+    NSReachable(server, server, domain).
+
+// =========================================================================
+// 5.5 No Rewrite Loops
+// =========================================================================
+.decl EffectiveCNAME(src: Domain, dst: Domain)
+
+// 显式 CNAME
+EffectiveCNAME(src, dst) :-
+    RClean(_, _, src, "CNAME", _, dst_content),
+    dst = as(dst_content, Domain).
+
+// 由通配符生成的 CNAME
+EffectiveCNAME(src, dst) :-
+    CoveredByWildcard(src, e),
+    wc = cat("*.", e),
+    RClean(_, _, wc, "CNAME", _, dst_content),
+    dst = as(dst_content, Domain).
+
+.decl AliasEdge(src: Domain, dst: Domain)
+AliasEdge(src, dst) :- EffectiveCNAME(src, dst).
+
+.decl DNAME_Rewrite(src: Domain, dst: Domain)
+DNAME_Rewrite(src, dst) :-
+    AllNames(src),
+    RClean(_, _, owner, "DNAME", _, target_content),
+    target = as(target_content, Domain),
+    IsDescendant(src, owner),
+    len_s = strlen(src),
+    len_o = strlen(owner),
+    prefix = substr(src, 0, len_s - len_o),
+    dst = cat(prefix, target).
+
+AliasEdge(s, d) :- DNAME_Rewrite(s, d).
+
+.decl AliasPath(src: Domain, dst: Domain)
+AliasPath(s, d) :- AliasEdge(s, d).
+AliasPath(s, d) :- AliasPath(s, m), AliasEdge(m, d).
+
+Error("No_Rewrite_Loops", n, " Rewrite loop detected") :-
+    AliasPath(n, n).
+
+// =========================================================================
+// 5.6 No Query Exceeds Maximum Length
+// =========================================================================
+Error("No_Query_Exceeds_Maximum_Length", src, " Query exceeds 255 bytes after DNAME rewrite") :-
+    DNAME_Rewrite(src, dst),
+    strlen(dst) > 255.
+
+// =========================================================================
+// 5.7 No Zero TTL
+// =========================================================================
+Error("No_Zero_TTL", n, cat(" Zero TTL for ", as(t, symbol))) :-
+    ZoneRecord(_, _, n, t, ttl, _),
+    ttl = 0.
+
+// =========================================================================
+// 5.8 No Rewrite Blackholing
+// =========================================================================
+
+// 基于 RClean 重新定义节点存在性与可解析性
+.decl ExplicitCleanRecord(name: Domain)
+ExplicitCleanRecord(n) :- RClean(_, _, n, _, _, _).
+
+.decl EmptyNonTerminalClean(name: Domain)
+EmptyNonTerminalClean(n) :- ParentOf(n, c), ExplicitCleanRecord(c), !ExplicitCleanRecord(n).
+EmptyNonTerminalClean(n) :- ParentOf(n, c), EmptyNonTerminalClean(c), !ExplicitCleanRecord(n).
+
+.decl NodeExistsClean(name: Domain)
+NodeExistsClean(n) :- ExplicitCleanRecord(n).
+NodeExistsClean(n) :- EmptyNonTerminalClean(n).
+
+.decl WildcardCleanRecord(encloser: Domain)
+WildcardCleanRecord(e) :-
+    RClean(_, _, w, _, _, _),
+    match("^\\*\\..*$", w),
+    e = substr(w, 2, strlen(w) - 2).
+
+.decl CoveredByWildcardClean(query: Domain, encloser: Domain)
+CoveredByWildcardClean(q, e) :-
+    AllNames(q),
+    WildcardCleanRecord(e),
+    ParentOf(e, q),
+    !NodeExistsClean(q).
+
+.decl ResolvableClean(name: Domain)
+ResolvableClean(n) :- NodeExistsClean(n).
+ResolvableClean(n) :- CoveredByWildcardClean(n, _).
+
+Error("No_Rewrite_Blackholing", src, cat(" CNAME target points to domain in configured zone but is not resolvable: ", as(target, symbol))) :-
+    EffectiveCNAME(src, target),
+    BelongsToZone(target),
+    !ResolvableClean(target).
+
+Error("No_Rewrite_Blackholing", owner, cat(" DNAME target points to domain in configured zone but is not resolvable: ", as(target, symbol))) :-
+    RClean(_, _, owner, "DNAME", _, target_content),
+    target = as(target_content, Domain),
+    BelongsToZone(target).

@@ -1,0 +1,100 @@
+me.techuni.edu.	86400	IN	SOA	ns1.me.me.techuni.edu.	hostmaster.me.techuni.edu.	2026031401	3600	1800	604800	86400
+me.techuni.edu.	3600	IN	NS	ns1.me.techuni.edu.
+me.techuni.edu.	3600	IN	NS	ns2.me.techuni.edu.
+ns1.me.techuni.edu.	3600	IN	A	10.3.1.1
+ns1.me.techuni.edu.	3600	IN	AAAA	2001:db8:3::1
+ns2.me.techuni.edu.	3600	IN	A	10.3.1.2
+ns2.me.techuni.edu.	3600	IN	AAAA	2001:db8:3::2
+mail.me.techuni.edu.	3600	IN	A	10.97.146.92
+mail.me.techuni.edu.	3600	IN	AAAA	2001:db8:1879:a9f2::45f2
+me.techuni.edu.	3600	IN	MX	10 mail.me.techuni.edu.
+mail2.me.techuni.edu.	3600	IN	A	10.188.223.228
+me.techuni.edu.	3600	IN	MX	20 mail2.me.techuni.edu.
+me.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.me.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host4.me.techuni.edu.	3600	IN	A	10.197.173.250
+_xmpp._tcp.me.techuni.edu.	600	IN	SRV	63 89 32606 svc-host4.me.techuni.edu.
+svc-host3.me.techuni.edu.	3600	IN	A	10.136.42.187
+_kerberos._tcp.me.techuni.edu.	3600	IN	SRV	10 56 39483 svc-host3.me.techuni.edu.
+me.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+me.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+cad0.me.techuni.edu.	1800	IN	AAAA	2001:db8:a475:3487::1480
+cad1.me.techuni.edu.	1800	IN	A	10.156.228.155
+cad2.me.techuni.edu.	3600	IN	A	10.179.228.11
+cad4.me.techuni.edu.	86400	IN	A	10.29.38.172
+cad5.me.techuni.edu.	86400	IN	A	10.81.15.37
+cad7.me.techuni.edu.	600	IN	A	10.187.185.99
+cad8.me.techuni.edu.	600	IN	A	10.230.189.96
+cad9.me.techuni.edu.	600	IN	A	10.187.203.81
+cad10.me.techuni.edu.	300	IN	A	10.13.95.128
+cad11.me.techuni.edu.	1800	IN	AAAA	2001:db8:e47d:6ddc::ff12
+cad13.me.techuni.edu.	600	IN	AAAA	2001:db8:25ea:e772::2c34
+cad15.me.techuni.edu.	86400	IN	A	10.163.177.182
+cad15.me.techuni.edu.	7200	IN	AAAA	2001:db8:94aa:9993::d9f3
+cad16.me.techuni.edu.	86400	IN	A	10.89.185.131
+cad16.me.techuni.edu.	600	IN	AAAA	2001:db8:471a:7935::ca56
+cad17.me.techuni.edu.	1800	IN	A	10.188.239.206
+cad18.me.techuni.edu.	300	IN	A	10.33.158.102
+cad21.me.techuni.edu.	1800	IN	A	10.37.230.120
+cad22.me.techuni.edu.	7200	IN	A	10.93.66.111
+cad24.me.techuni.edu.	1800	IN	A	10.84.82.83
+cad25.me.techuni.edu.	7200	IN	A	10.145.40.65
+cad25.me.techuni.edu.	7200	IN	AAAA	2001:db8:8c84:4016::a002
+cad26.me.techuni.edu.	7200	IN	A	10.47.86.152
+cad27.me.techuni.edu.	86400	IN	A	10.172.21.212
+cad28.me.techuni.edu.	86400	IN	A	10.135.107.197
+cad29.me.techuni.edu.	86400	IN	AAAA	2001:db8:944f:9aac::7ba3
+sim0.me.techuni.edu.	86400	IN	A	10.207.152.117
+sim0.me.techuni.edu.	300	IN	AAAA	2001:db8:50ef:e113::6a67
+sim1.me.techuni.edu.	600	IN	A	10.174.73.81
+sim2.me.techuni.edu.	1800	IN	A	10.204.66.195
+sim2.me.techuni.edu.	7200	IN	AAAA	2001:db8:365d:a363::3de3
+sim3.me.techuni.edu.	1800	IN	A	10.230.126.37
+sim3.me.techuni.edu.	1800	IN	AAAA	2001:db8:c4af:d615::3f8f
+sim6.me.techuni.edu.	600	IN	AAAA	2001:db8:ff1c:ef02::7faf
+sim8.me.techuni.edu.	3600	IN	A	10.234.123.56
+sim9.me.techuni.edu.	1800	IN	A	10.253.240.74
+sim12.me.techuni.edu.	3600	IN	AAAA	2001:db8:1a31:63a9::5ccf
+sim13.me.techuni.edu.	300	IN	A	10.197.230.196
+sim15.me.techuni.edu.	300	IN	AAAA	2001:db8:c9ad:bf13::cb7f
+sim17.me.techuni.edu.	600	IN	A	10.101.205.129
+sim17.me.techuni.edu.	300	IN	AAAA	2001:db8:4629:aa84::cdd1
+sim18.me.techuni.edu.	3600	IN	A	10.76.71.84
+sim19.me.techuni.edu.	3600	IN	A	10.153.172.130
+sim20.me.techuni.edu.	86400	IN	A	10.153.243.209
+sim20.me.techuni.edu.	1800	IN	AAAA	2001:db8:381e:d544::956e
+sim21.me.techuni.edu.	86400	IN	A	10.13.242.68
+sim23.me.techuni.edu.	86400	IN	A	10.26.245.44
+sim25.me.techuni.edu.	86400	IN	A	10.124.16.147
+sim26.me.techuni.edu.	300	IN	A	10.225.160.108
+sim26.me.techuni.edu.	86400	IN	AAAA	2001:db8:6864:d21c::8078
+sim29.me.techuni.edu.	600	IN	A	10.106.166.170
+cnc0.me.techuni.edu.	600	IN	A	10.235.175.140
+cnc0.me.techuni.edu.	86400	IN	AAAA	2001:db8:875a:f7e6::3139
+cnc1.me.techuni.edu.	1800	IN	AAAA	2001:db8:7321:9860::c56c
+cnc2.me.techuni.edu.	600	IN	A	10.250.162.123
+cnc2.me.techuni.edu.	86400	IN	AAAA	2001:db8:8c02:9359::1f34
+cnc3.me.techuni.edu.	7200	IN	A	10.194.202.210
+cnc3.me.techuni.edu.	600	IN	AAAA	2001:db8:94b6:1589::49a3
+cnc4.me.techuni.edu.	3600	IN	AAAA	2001:db8:834c:f549::36c8
+cnc5.me.techuni.edu.	7200	IN	A	10.138.139.36
+cnc5.me.techuni.edu.	86400	IN	AAAA	2001:db8:7a83:7c23::cff
+cnc7.me.techuni.edu.	3600	IN	AAAA	2001:db8:a91c:f1de::19be
+cnc8.me.techuni.edu.	7200	IN	AAAA	2001:db8:50dd:d056::a724
+cnc10.me.techuni.edu.	600	IN	A	10.147.164.74
+cnc11.me.techuni.edu.	7200	IN	AAAA	2001:db8:76e5:1318::e9ca
+cnc14.me.techuni.edu.	3600	IN	A	10.253.95.240
+cnc15.me.techuni.edu.	300	IN	AAAA	2001:db8:4be:98c6::9166
+cnc17.me.techuni.edu.	3600	IN	A	10.252.68.218
+cnc18.me.techuni.edu.	300	IN	A	10.169.83.188
+cnc19.me.techuni.edu.	600	IN	A	10.7.172.203
+cnc19.me.techuni.edu.	86400	IN	AAAA	2001:db8:62e6:59da::9c68
+cnc22.me.techuni.edu.	86400	IN	A	10.48.94.252
+cnc22.me.techuni.edu.	1800	IN	AAAA	2001:db8:7f00:37f::42c3
+cnc23.me.techuni.edu.	3600	IN	A	10.136.168.78
+cnc24.me.techuni.edu.	1800	IN	A	10.184.120.16
+cnc25.me.techuni.edu.	600	IN	A	10.207.159.177
+cnc25.me.techuni.edu.	1800	IN	AAAA	2001:db8:bc2e:7113::3819
+cnc27.me.techuni.edu.	7200	IN	A	10.191.212.180
+cnc28.me.techuni.edu.	7200	IN	A	10.111.126.175
+cnc29.me.techuni.edu.	3600	IN	AAAA	2001:db8:b93b:27fd::ead1

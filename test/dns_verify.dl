@@ -1,0 +1,189 @@
+// ==========================================
+// 1. 类型定义 (Type Definitions)
+// ==========================================
+.type ServerID <: symbol
+.type Domain <: symbol
+.type RType <: symbol
+.type Content <: symbol
+.type TTL <: number
+
+// ==========================================
+// 2. 输入数据定义 (Input Schema)
+// ==========================================
+.decl ZoneRecord(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+.input ZoneRecord(IO="stdin")
+
+// ==========================================
+// 3. 基础辅助视图 (Helpers)
+// ==========================================
+.decl GlobalRecord(zone: Domain, name: Domain, type: RType, data: Content)
+GlobalRecord(z, n, t, d) :- ZoneRecord(_, z, n, t, _, d).
+
+.decl DomainExists(name: Domain)
+DomainExists(n) :- GlobalRecord(_, n, _, _).
+
+.decl CNAME_Edge(src: Domain, dst: Domain)
+CNAME_Edge(src, as(dst, Domain)) :- GlobalRecord(_, src, "CNAME", dst).
+
+.decl CNAME_Path(src: Domain, dst: Domain)
+CNAME_Path(src, dst) :- CNAME_Edge(src, dst).
+CNAME_Path(src, final) :-
+    CNAME_Path(src, mid),
+    CNAME_Edge(mid, final),
+    src != final.
+
+.decl Rewrite_Terminal(src: Domain, final: Domain)
+Rewrite_Terminal(src, final) :-
+    CNAME_Path(src, final),
+    !CNAME_Edge(final, _).
+
+// ==========================================
+// 4. 属性验证规则 (Verification Rules)
+// ==========================================
+
+// ------------------------------------------
+// 1. Delegation Consistency
+// ------------------------------------------
+.decl Error_DelegationConsistency(parent: Domain, child: Domain, ns: Content, msg: symbol)
+.output Error_DelegationConsistency
+
+.decl ParentNS(parent: Domain, child: Domain, ns: Content)
+ParentNS(p, c, ns) :- ZoneRecord(_, p, c, "NS", _, ns), p != c.
+
+.decl ChildNS(child: Domain, ns: Content)
+ChildNS(c, ns) :- ZoneRecord(_, c, c, "NS", _, ns).
+
+// 父区有、子区没有
+Error_DelegationConsistency(p, c, ns, "Parent has NS, Child missing") :-
+    ParentNS(p, c, ns),
+    !ChildNS(c, ns).
+
+// 子区有、父区没有
+Error_DelegationConsistency(p, c, ns, "Child has NS, Parent missing") :-
+    ParentNS(p, c, _),
+    ChildNS(c, ns),
+    !ParentNS(p, c, ns).
+
+// 父子区同名 NS 的 A 不一致
+Error_DelegationConsistency(p, c, ns, "Inconsistent A records for NS") :-
+    ParentNS(p, c, ns),
+    ns_name = as(ns, Domain),
+    (
+        (ZoneRecord(_, p, ns_name, "A", _, _), !ZoneRecord(_, c, ns_name, "A", _, _))
+        ;
+        (!ZoneRecord(_, p, ns_name, "A", _, _), ZoneRecord(_, c, ns_name, "A", _, _))
+        ;
+        (ZoneRecord(_, p, ns_name, "A", _, ip1), ZoneRecord(_, c, ns_name, "A", _, ip2), ip1 != ip2)
+    ).
+
+// 父子区同名 NS 的 AAAA 不一致
+Error_DelegationConsistency(p, c, ns, "Inconsistent AAAA records for NS") :-
+    ParentNS(p, c, ns),
+    ns_name = as(ns, Domain),
+    (
+        (ZoneRecord(_, p, ns_name, "AAAA", _, _), !ZoneRecord(_, c, ns_name, "AAAA", _, _))
+        ;
+        (!ZoneRecord(_, p, ns_name, "AAAA", _, _), ZoneRecord(_, c, ns_name, "AAAA", _, _))
+        ;
+        (ZoneRecord(_, p, ns_name, "AAAA", _, ip1), ZoneRecord(_, c, ns_name, "AAAA", _, ip2), ip1 != ip2)
+    ).
+
+// ------------------------------------------
+// 2. Finding all aliases
+// ------------------------------------------
+.decl Info_AliasChain(src: Domain, canonical: Domain)
+.output Info_AliasChain
+
+Info_AliasChain(src, dst) :- CNAME_Path(src, dst).
+
+// ------------------------------------------
+// 3. Lame Delegation
+// ------------------------------------------
+.decl Error_LameDelegation(child: Domain, ns_server: Content, msg: symbol)
+.output Error_LameDelegation
+
+.decl HasSOA(server: ServerID, zone: Domain)
+HasSOA(s, z) :- ZoneRecord(s, z, z, "SOA", _, _).
+
+Error_LameDelegation(child, ns, "Lame Delegation: NS not authoritative") :-
+    ParentNS(_, child, ns),
+    ns_id = as(ns, ServerID),
+    !HasSOA(ns_id, child).
+
+// ------------------------------------------
+// 4. Number of Hops & 5. Number of Rewrites
+// ------------------------------------------
+.decl RewriteChainLength(src: Domain, len: number)
+
+.decl Error_ExcessiveRewrites(src: Domain, rewrite_count: number, msg: symbol)
+.output Error_ExcessiveRewrites
+
+RewriteChainLength(src, 1) :- CNAME_Edge(src, _).
+RewriteChainLength(src, n + 1) :-
+    CNAME_Edge(src, mid),
+    RewriteChainLength(mid, n),
+    n < 20.
+
+Error_ExcessiveRewrites(src, n, "Too many rewrites") :-
+    RewriteChainLength(src, n),
+    n > 20.
+
+// ------------------------------------------
+// 6. Response Consistency
+// ------------------------------------------
+.decl Error_ResponseInconsistency(zone: Domain, name: Domain, type: RType, s1: ServerID, s2: ServerID)
+.output Error_ResponseInconsistency
+
+Error_ResponseInconsistency(z, n, t, s1, s2) :-
+    ZoneRecord(s1, z, n, t, _, data1),
+    ZoneRecord(s2, z, n, t, _, data2),
+    s1 != s2,
+    data1 != data2.
+
+// ------------------------------------------
+// 7. Rewrite Blackholing
+// ------------------------------------------
+.decl Error_RewriteBlackhole(src: Domain, final_target: Domain, msg: symbol)
+.output Error_RewriteBlackhole
+
+Error_RewriteBlackhole(src, final, "Rewrite chain ends in non-existent domain") :-
+    Rewrite_Terminal(src, final),
+    !DomainExists(final).
+
+// ------------------------------------------
+// 8. Zero Time To Live
+// ------------------------------------------
+.decl Error_ZeroTTL(server: ServerID, name: Domain, type: RType)
+.output Error_ZeroTTL
+
+Error_ZeroTTL(s, n, t) :-
+    ZoneRecord(s, _, n, t, ttl, _),
+    ttl = 0.
+
+// ------------------------------------------
+// 9. DNAME Substitution Check
+// ------------------------------------------
+.decl Error_DNAMEOverflow(src: Domain, dname_target: Domain, new_length: number)
+.output Error_DNAMEOverflow
+
+.decl DNAMERecords(zone: Domain, target: Domain)
+DNAMERecords(zone, as(target, Domain)) :- GlobalRecord(zone, zone, "DNAME", target).
+
+.decl AllDomains(name: Domain)
+AllDomains(zone) :- GlobalRecord(zone, _, _, _).
+AllDomains(name) :- GlobalRecord(_, name, _, _).
+AllDomains(src) :- CNAME_Edge(src, _).
+AllDomains(target) :- CNAME_Edge(_, target).
+
+.decl DNAMECheck(query: Domain, zone: Domain, target: Domain)
+DNAMECheck(query, zone, target) :-
+    AllDomains(query),
+    DNAMERecords(zone, target),
+    true.
+
+.decl DNAMELength(query: Domain, target: Domain, length: number)
+DNAMELength(query, target, 300) :- DNAMECheck(query, _, target).
+
+Error_DNAMEOverflow(query, target, length) :-
+    DNAMELength(query, target, length),
+    length > 255.

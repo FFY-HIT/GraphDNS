@@ -1,0 +1,50 @@
+cyber.techuni.edu.	86400	IN	SOA	ns1.cyber.cyber.techuni.edu.	hostmaster.cyber.techuni.edu.	2026031401	3600	1800	604800	86400
+cyber.techuni.edu.	3600	IN	NS	ns1.cyber.techuni.edu.
+ns1.cyber.techuni.edu.	3600	IN	A	10.21.1.1
+mail.cyber.techuni.edu.	3600	IN	A	10.241.76.94
+mail.cyber.techuni.edu.	3600	IN	AAAA	2001:db8:c8f5:7255::e436
+cyber.techuni.edu.	3600	IN	MX	10 mail.cyber.techuni.edu.
+cyber.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.cyber.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host4.cyber.techuni.edu.	3600	IN	A	10.46.203.94
+_kerberos._tcp.cyber.techuni.edu.	7200	IN	SRV	1 85 15656 svc-host4.cyber.techuni.edu.
+svc-host5.cyber.techuni.edu.	3600	IN	A	10.84.71.115
+_sip._tcp.cyber.techuni.edu.	600	IN	SRV	22 73 62175 svc-host5.cyber.techuni.edu.
+cyber.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+cyber.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+shared-gpu.cyber.techuni.edu.	3600	IN	CNAME	gpu0.ai.techuni.edu.
+old-ctf.cyber.techuni.edu.	3600	IN	CNAME	retired-ctf-server.cyber.techuni.edu.
+old-range.cyber.techuni.edu.	3600	IN	DNAME	decomm-range.cyber.techuni.edu.
+external-tools.cyber.techuni.edu.	3600	IN	CNAME	tools.github.example.
+honeypot0.cyber.techuni.edu.	600	IN	A	10.247.183.11
+honeypot0.cyber.techuni.edu.	3600	IN	AAAA	2001:db8:76a7:202f::43ad
+honeypot1.cyber.techuni.edu.	300	IN	A	10.105.184.100
+honeypot2.cyber.techuni.edu.	300	IN	A	10.20.165.27
+honeypot3.cyber.techuni.edu.	1800	IN	A	10.134.89.97
+honeypot4.cyber.techuni.edu.	86400	IN	A	10.39.128.97
+honeypot5.cyber.techuni.edu.	3600	IN	A	10.180.176.125
+honeypot6.cyber.techuni.edu.	600	IN	AAAA	2001:db8:e13a:54ca::3ae1
+honeypot7.cyber.techuni.edu.	86400	IN	A	10.143.108.39
+honeypot7.cyber.techuni.edu.	1800	IN	AAAA	2001:db8:3c95:75ef::6a25
+honeypot9.cyber.techuni.edu.	3600	IN	A	10.245.107.152
+honeypot9.cyber.techuni.edu.	3600	IN	AAAA	2001:db8:b7e:7cc2::b0c
+honeypot10.cyber.techuni.edu.	7200	IN	A	10.82.68.162
+honeypot11.cyber.techuni.edu.	600	IN	AAAA	2001:db8:843a:5c2d::8443
+honeypot13.cyber.techuni.edu.	300	IN	A	10.145.43.56
+honeypot15.cyber.techuni.edu.	3600	IN	A	10.73.93.160
+honeypot16.cyber.techuni.edu.	86400	IN	A	10.175.232.153
+honeypot17.cyber.techuni.edu.	3600	IN	A	10.67.55.5
+honeypot17.cyber.techuni.edu.	7200	IN	AAAA	2001:db8:d6ef:4c93::9b03
+honeypot18.cyber.techuni.edu.	3600	IN	A	10.19.60.24
+honeypot19.cyber.techuni.edu.	7200	IN	A	10.0.220.134
+honeypot21.cyber.techuni.edu.	3600	IN	A	10.195.179.151
+honeypot23.cyber.techuni.edu.	3600	IN	A	10.68.130.123
+honeypot24.cyber.techuni.edu.	7200	IN	AAAA	2001:db8:d13a:83ff::3064
+honeypot25.cyber.techuni.edu.	86400	IN	A	10.3.60.134
+honeypot25.cyber.techuni.edu.	86400	IN	AAAA	2001:db8:692c:a1bd::68ab
+honeypot26.cyber.techuni.edu.	600	IN	A	10.218.129.67
+honeypot27.cyber.techuni.edu.	1800	IN	A	10.141.203.194
+honeypot27.cyber.techuni.edu.	7200	IN	AAAA	2001:db8:f706:5b81::5ec7
+honeypot28.cyber.techuni.edu.	3600	IN	A	10.129.157.148
+honeypot28.cyber.techuni.edu.	86400	IN	AAAA	2001:db8:cbd7:46b0::dae2
+honeypot29.cyber.techuni.edu.	600	IN	AAAA	2001:db8:e4a8:52d6::19ac

@@ -1,0 +1,40 @@
+art.techuni.edu.	86400	IN	SOA	ns1.art.art.techuni.edu.	hostmaster.art.techuni.edu.	2026031401	3600	1800	604800	86400
+art.techuni.edu.	3600	IN	NS	ns1.art.techuni.edu.
+art.techuni.edu.	3600	IN	NS	ns2.art.techuni.edu.
+ns1.art.techuni.edu.	3600	IN	A	10.10.1.1
+ns2.art.techuni.edu.	3600	IN	A	10.10.1.2
+mail.art.techuni.edu.	3600	IN	A	10.252.100.188
+mail.art.techuni.edu.	3600	IN	AAAA	2001:db8:7d81:4d17::1a2
+art.techuni.edu.	3600	IN	MX	10 mail.art.techuni.edu.
+art.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.art.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host5.art.techuni.edu.	3600	IN	A	10.177.4.244
+_sip._tcp.art.techuni.edu.	1800	IN	SRV	0 98 43078 svc-host5.art.techuni.edu.
+svc-host4.art.techuni.edu.	3600	IN	A	10.157.53.53
+_xmpp._tcp.art.techuni.edu.	7200	IN	SRV	30 54 32246 svc-host4.art.techuni.edu.
+art.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+art.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+studio1.art.techuni.edu.	1800	IN	A	10.47.22.236
+studio1.art.techuni.edu.	7200	IN	AAAA	2001:db8:d37c:beb7::755e
+studio2.art.techuni.edu.	300	IN	AAAA	2001:db8:445b:c9e8::1329
+studio3.art.techuni.edu.	300	IN	A	10.222.66.61
+studio3.art.techuni.edu.	1800	IN	AAAA	2001:db8:c931:a70a::516d
+studio4.art.techuni.edu.	600	IN	A	10.38.103.35
+studio5.art.techuni.edu.	600	IN	A	10.54.84.116
+studio6.art.techuni.edu.	7200	IN	A	10.183.106.116
+studio6.art.techuni.edu.	1800	IN	AAAA	2001:db8:3d65:2e4b::285a
+studio7.art.techuni.edu.	86400	IN	AAAA	2001:db8:14a6:6e17::d600
+studio8.art.techuni.edu.	86400	IN	AAAA	2001:db8:7f16:b623::6571
+studio9.art.techuni.edu.	86400	IN	A	10.153.133.210
+studio10.art.techuni.edu.	3600	IN	A	10.231.127.25
+studio11.art.techuni.edu.	300	IN	AAAA	2001:db8:1f93:71cf::2177
+studio12.art.techuni.edu.	3600	IN	A	10.190.43.150
+studio13.art.techuni.edu.	300	IN	AAAA	2001:db8:653f:e309::cf2f
+studio14.art.techuni.edu.	1800	IN	A	10.62.21.242
+studio15.art.techuni.edu.	7200	IN	A	10.221.202.128
+studio15.art.techuni.edu.	86400	IN	AAAA	2001:db8:da73:587a::5a9d
+studio16.art.techuni.edu.	600	IN	A	10.140.143.115
+studio17.art.techuni.edu.	7200	IN	A	10.125.151.128
+studio18.art.techuni.edu.	300	IN	A	10.44.143.99
+studio18.art.techuni.edu.	600	IN	AAAA	2001:db8:7f90:9ff::fd4a
+studio19.art.techuni.edu.	86400	IN	A	10.183.245.140

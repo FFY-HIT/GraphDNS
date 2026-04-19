@@ -1,0 +1,79 @@
+ee.techuni.edu.	86400	IN	SOA	ns1.ee.ee.techuni.edu.	hostmaster.ee.techuni.edu.	2026031401	3600	1800	604800	86400
+ee.techuni.edu.	3600	IN	NS	ns1.ee.techuni.edu.
+ee.techuni.edu.	3600	IN	NS	ns-ext.cloudns.example.
+ns1.ee.techuni.edu.	3600	IN	A	10.2.1.1
+ns1.ee.techuni.edu.	3600	IN	AAAA	2001:db8:ee::1
+mail.ee.techuni.edu.	3600	IN	A	10.142.115.207
+mail.ee.techuni.edu.	3600	IN	AAAA	2001:db8:dbb4:d71::9be8
+ee.techuni.edu.	3600	IN	MX	10 mail.ee.techuni.edu.
+ee.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.ee.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host2.ee.techuni.edu.	3600	IN	A	10.139.158.236
+_kerberos._tcp.ee.techuni.edu.	1800	IN	SRV	44 1 11889 svc-host2.ee.techuni.edu.
+_sip._tcp.ee.techuni.edu.	7200	IN	SRV	84 52 4561 svc-host2.ee.techuni.edu.
+ee.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+ee.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+lab0.ee.techuni.edu.	86400	IN	A	10.15.46.192
+lab1.ee.techuni.edu.	3600	IN	A	10.174.80.95
+lab1.ee.techuni.edu.	1800	IN	AAAA	2001:db8:2b7f:1aef::27d5
+lab2.ee.techuni.edu.	7200	IN	A	10.25.41.70
+lab3.ee.techuni.edu.	7200	IN	A	10.226.212.70
+lab3.ee.techuni.edu.	7200	IN	AAAA	2001:db8:3a46:b0ba::6e0f
+lab4.ee.techuni.edu.	86400	IN	A	10.249.157.12
+lab4.ee.techuni.edu.	7200	IN	AAAA	2001:db8:1c0c:3ef::3456
+lab5.ee.techuni.edu.	600	IN	A	10.70.130.75
+lab5.ee.techuni.edu.	300	IN	AAAA	2001:db8:fea9:dc7e::2cfb
+lab6.ee.techuni.edu.	7200	IN	A	10.117.181.19
+lab6.ee.techuni.edu.	86400	IN	AAAA	2001:db8:15a8:df58::4cd
+lab7.ee.techuni.edu.	300	IN	A	10.160.219.147
+lab8.ee.techuni.edu.	3600	IN	AAAA	2001:db8:aad:a648::2c00
+lab11.ee.techuni.edu.	300	IN	A	10.124.223.151
+lab12.ee.techuni.edu.	1800	IN	A	10.173.113.86
+lab13.ee.techuni.edu.	86400	IN	A	10.58.99.232
+lab14.ee.techuni.edu.	86400	IN	A	10.75.120.27
+lab14.ee.techuni.edu.	600	IN	AAAA	2001:db8:58d4:4e44::c29e
+lab15.ee.techuni.edu.	86400	IN	AAAA	2001:db8:fcfc:ed8b::c124
+lab16.ee.techuni.edu.	7200	IN	A	10.229.165.222
+lab17.ee.techuni.edu.	3600	IN	A	10.34.240.114
+lab19.ee.techuni.edu.	300	IN	A	10.158.236.116
+lab19.ee.techuni.edu.	1800	IN	AAAA	2001:db8:92fb:2749::a509
+lab22.ee.techuni.edu.	7200	IN	A	10.21.230.233
+lab23.ee.techuni.edu.	3600	IN	AAAA	2001:db8:4d3d:1fad::7356
+lab24.ee.techuni.edu.	1800	IN	A	10.43.88.11
+lab24.ee.techuni.edu.	3600	IN	AAAA	2001:db8:e0fb:5147::5d29
+lab25.ee.techuni.edu.	1800	IN	A	10.198.209.199
+lab25.ee.techuni.edu.	7200	IN	AAAA	2001:db8:1acf:ab57::10e0
+lab26.ee.techuni.edu.	7200	IN	A	10.197.145.65
+lab28.ee.techuni.edu.	7200	IN	AAAA	2001:db8:4869:b31b::4f6c
+testbench0.ee.techuni.edu.	7200	IN	A	10.43.158.144
+testbench0.ee.techuni.edu.	1800	IN	AAAA	2001:db8:416e:2fd9::a562
+testbench2.ee.techuni.edu.	1800	IN	A	10.92.109.88
+testbench3.ee.techuni.edu.	600	IN	A	10.70.79.20
+testbench3.ee.techuni.edu.	300	IN	AAAA	2001:db8:1353:ac6c::e05c
+testbench4.ee.techuni.edu.	3600	IN	AAAA	2001:db8:4efa:5312::2e4c
+testbench6.ee.techuni.edu.	3600	IN	AAAA	2001:db8:165e:d25c::5d43
+testbench7.ee.techuni.edu.	3600	IN	AAAA	2001:db8:91e2:e5d9::3be8
+testbench8.ee.techuni.edu.	1800	IN	A	10.240.99.95
+testbench9.ee.techuni.edu.	3600	IN	A	10.236.144.200
+testbench9.ee.techuni.edu.	7200	IN	AAAA	2001:db8:d65a:52f9::d120
+testbench10.ee.techuni.edu.	7200	IN	A	10.70.128.14
+testbench12.ee.techuni.edu.	7200	IN	A	10.63.145.22
+testbench13.ee.techuni.edu.	7200	IN	A	10.75.223.24
+testbench14.ee.techuni.edu.	3600	IN	A	10.178.13.107
+testbench14.ee.techuni.edu.	7200	IN	AAAA	2001:db8:bf77:78b7::62dc
+testbench15.ee.techuni.edu.	300	IN	AAAA	2001:db8:a32a:32bb::d6d5
+testbench16.ee.techuni.edu.	600	IN	AAAA	2001:db8:4673:139c::4971
+testbench19.ee.techuni.edu.	7200	IN	A	10.2.40.5
+testbench19.ee.techuni.edu.	600	IN	AAAA	2001:db8:d8b4:38ed::c6b4
+testbench20.ee.techuni.edu.	1800	IN	A	10.62.24.62
+testbench22.ee.techuni.edu.	3600	IN	A	10.8.123.184
+testbench22.ee.techuni.edu.	3600	IN	AAAA	2001:db8:cd:b4a4::3d96
+testbench23.ee.techuni.edu.	600	IN	A	10.43.184.18
+testbench24.ee.techuni.edu.	7200	IN	A	10.10.199.224
+testbench26.ee.techuni.edu.	300	IN	A	10.182.34.89
+testbench26.ee.techuni.edu.	86400	IN	AAAA	2001:db8:3513:aa3f::2228
+testbench27.ee.techuni.edu.	7200	IN	A	10.173.89.213
+testbench28.ee.techuni.edu.	86400	IN	A	10.245.93.208
+testbench28.ee.techuni.edu.	86400	IN	AAAA	2001:db8:ea54:12ef::4b20
+testbench29.ee.techuni.edu.	600	IN	A	10.21.161.239
+testbench29.ee.techuni.edu.	3600	IN	AAAA	2001:db8:f261:81b2::960

@@ -1,0 +1,28 @@
+music.techuni.edu.	86400	IN	SOA	ns1.music.music.techuni.edu.	hostmaster.music.techuni.edu.	2026031401	3600	1800	604800	86400
+music.techuni.edu.	3600	IN	NS	ns1.music.techuni.edu.
+music.techuni.edu.	3600	IN	NS	ns2.music.techuni.edu.
+ns1.music.techuni.edu.	3600	IN	A	10.11.1.1
+ns2.music.techuni.edu.	3600	IN	A	10.11.1.2
+mail.music.techuni.edu.	3600	IN	A	10.176.164.100
+mail.music.techuni.edu.	3600	IN	AAAA	2001:db8:8a76:5c10::6ad
+music.techuni.edu.	3600	IN	MX	10 mail.music.techuni.edu.
+mail2.music.techuni.edu.	3600	IN	A	10.112.15.230
+music.techuni.edu.	3600	IN	MX	20 mail2.music.techuni.edu.
+music.techuni.edu.	3600	IN	TXT	"v=spf1 a mx ip4:10.0.0.0/8 -all"
+_dmarc.music.techuni.edu.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:dmarc@techuni.edu"
+svc-host4.music.techuni.edu.	3600	IN	A	10.183.119.250
+_kerberos._tcp.music.techuni.edu.	600	IN	SRV	12 32 43049 svc-host4.music.techuni.edu.
+svc-host2.music.techuni.edu.	3600	IN	A	10.136.28.196
+_sip._tcp.music.techuni.edu.	600	IN	SRV	73 50 23253 svc-host2.music.techuni.edu.
+music.techuni.edu.	86400	IN	CAA	0 issue "letsencrypt.org"
+music.techuni.edu.	86400	IN	CAA	0 issue "digicert.com"
+studio1.music.techuni.edu.	600	IN	A	10.162.183.234
+studio2.music.techuni.edu.	7200	IN	AAAA	2001:db8:48c1:6060::d632
+studio4.music.techuni.edu.	1800	IN	A	10.89.251.10
+studio4.music.techuni.edu.	600	IN	AAAA	2001:db8:7007:a34::86c6
+studio5.music.techuni.edu.	1800	IN	A	10.103.66.88
+studio7.music.techuni.edu.	300	IN	A	10.75.72.199
+studio7.music.techuni.edu.	7200	IN	AAAA	2001:db8:bad2:2522::5fa4
+studio9.music.techuni.edu.	1800	IN	A	10.154.165.35
+studio12.music.techuni.edu.	86400	IN	A	10.182.114.171
+studio13.music.techuni.edu.	1800	IN	A	10.150.65.46
