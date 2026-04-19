@@ -1,5 +1,5 @@
 
-# LogicDNS
+# LogicDNS: A Large-Scale Framework for DNS Configuration Verification Based on Global Resolution Semantics
 
 <!-- <p align="center">
   <img src="docs/logo.png" alt="LogicDNS Logo" width="160"/>
@@ -12,10 +12,6 @@
   <img src="https://img.shields.io/badge/language-C%2B%2B17%20%7C%20Souffl%C3%A9%202.5-purple" alt="language">
   <img src="https://img.shields.io/badge/domain-DNS%20Security-red" alt="domain">
   <img src="https://img.shields.io/badge/scalability-10M%2B%20records-success" alt="scalability">
-</p>
-
-<p align="center">
-  A Large-Scale Framework for DNS Configuration Verification Based on Global Resolution Semantics
 </p>
 
 ---
