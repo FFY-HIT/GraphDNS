@@ -16,7 +16,9 @@
 #include <optional>
 #include <cctype>
 #include <chrono>
+#include <cstdlib>
 #include <nlohmann/json.hpp>
+
 // 如果是 Windows，需要不同的 Mmap 实现；这里假设是 Linux/Unix 环境
 #ifdef _WIN32
 #include <windows.h>
@@ -24,7 +26,9 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #endif
+
 #include "verifier.cpp"
+
 namespace fs = std::filesystem;
 
 std::ofstream facts_out_file;
@@ -45,13 +49,14 @@ class MappedFile {
 public:
     explicit MappedFile(const fs::path& path) {
 #ifdef _WIN32
-        hFile_ = CreateFileA(path.string().c_str(), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+        hFile_ = CreateFileA(path.string().c_str(), GENERIC_READ, FILE_SHARE_READ, NULL,
+                             OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
         if (hFile_ == INVALID_HANDLE_VALUE) return;
         size_ = GetFileSize(hFile_, NULL);
         if (size_ == 0) return;
         hMap_ = CreateFileMappingA(hFile_, NULL, PAGE_READONLY, 0, 0, NULL);
         if (hMap_ == NULL) return;
-        data_ = (char*)MapViewOfFile(hMap_, FILE_MAP_READ, 0, 0, 0);
+        data_ = static_cast<char*>(MapViewOfFile(hMap_, FILE_MAP_READ, 0, 0, 0));
 #else
         fd_ = open(path.c_str(), O_RDONLY);
         if (fd_ == -1) return;
@@ -59,7 +64,7 @@ public:
         if (fstat(fd_, &sb) == -1) return;
         size_ = static_cast<size_t>(sb.st_size);
         if (size_ == 0) return;
-        data_ = (char*)mmap(nullptr, size_, PROT_READ, MAP_PRIVATE, fd_, 0);
+        data_ = static_cast<char*>(mmap(nullptr, size_, PROT_READ, MAP_PRIVATE, fd_, 0));
         if (data_ == MAP_FAILED) {
             data_ = nullptr;
             size_ = 0;
@@ -92,20 +97,20 @@ inline bool is_rr_type_fast(const char* s, size_t len) {
     char c0 = s[0] & 0xDF;
 
     if (c0 == 'A') {
-        return (len == 1) || (len == 4 && (s[1]&0xDF)=='A' && (s[2]&0xDF)=='A' && (s[3]&0xDF)=='A');
+        return (len == 1) || (len == 4 && (s[1] & 0xDF) == 'A' && (s[2] & 0xDF) == 'A' && (s[3] & 0xDF) == 'A');
     }
     if (c0 == 'N') {
-        if (len == 2 && (s[1]&0xDF) == 'S') return true;
-        if (len == 4 && (s[1]&0xDF)=='S' && (s[2]&0xDF)=='E' && (s[3]&0xDF)=='C') return true;
+        if (len == 2 && (s[1] & 0xDF) == 'S') return true;
+        if (len == 4 && (s[1] & 0xDF) == 'S' && (s[2] & 0xDF) == 'E' && (s[3] & 0xDF) == 'C') return true;
         return false;
     }
-    if (c0 == 'C') return (len == 5); // CNAME
-    if (c0 == 'S') return (len == 3); // SOA, SRV
-    if (c0 == 'M') return (len == 2); // MX
-    if (c0 == 'T') return (len == 3); // TXT
-    if (c0 == 'P') return (len == 3); // PTR
+    if (c0 == 'C') return (len == 5);                 // CNAME
+    if (c0 == 'S') return (len == 3);                 // SOA, SRV
+    if (c0 == 'M') return (len == 2);                 // MX
+    if (c0 == 'T') return (len == 3);                 // TXT
+    if (c0 == 'P') return (len == 3);                 // PTR
     if (c0 == 'D') return (len == 2 || len == 5 || len == 6); // DS, DNAME, DNSKEY
-    if (c0 == 'R') return (len == 5); // RRSIG
+    if (c0 == 'R') return (len == 5);                 // RRSIG
     return false;
 }
 
@@ -148,12 +153,16 @@ inline bool is_blank_or_comment(const char* start, const char* end) {
     return (p >= end || *p == ';');
 }
 
-inline std::string origin_from_filename(const fs::path& path) {
-    std::string origin = to_lower_ascii(path.stem().string()); // 去掉 .txt
+inline std::string normalize_origin(std::string origin) {
+    origin = to_lower_ascii(trim_copy(origin));
     if (!origin.empty() && origin.back() != '.') {
         origin.push_back('.');
     }
     return origin;
+}
+
+inline std::string origin_from_filename(const fs::path& path) {
+    return normalize_origin(path.stem().string()); // 去掉 .txt
 }
 
 inline bool looks_like_rr_class(const char* s, size_t len) {
@@ -425,6 +434,11 @@ void process_file(const fs::path& path,
 // ==========================================
 // 主函数
 // ==========================================
+struct FileMeta {
+    std::string name_server;
+    std::optional<std::string> origin;   // optional: if absent, infer from filename
+};
+
 struct Task {
     fs::path path;
     std::string server_id;
@@ -479,7 +493,8 @@ int main(int argc, char** argv) {
     std::vector<Task> tasks;
     tasks.reserve(10000);
 
-    std::unordered_map<fs::path, std::unordered_map<std::string, std::string>> dir_to_file_ns;
+    // 每个目录对应一个 metadata.json；其中每个文件名对应 FileMeta
+    std::unordered_map<fs::path, std::unordered_map<std::string, FileMeta>> dir_to_file_meta;
 
     try {
         for (const auto& entry : fs::recursive_directory_iterator(root_dir)) {
@@ -490,44 +505,72 @@ int main(int argc, char** argv) {
 
             fs::path parent = p.parent_path();
 
-            if (dir_to_file_ns.find(parent) == dir_to_file_ns.end()) {
+            // 懒加载当前目录的 metadata.json
+            if (dir_to_file_meta.find(parent) == dir_to_file_meta.end()) {
                 fs::path meta_path = parent / "metadata.json";
                 if (!fs::exists(meta_path)) {
                     std::cerr << "Warning: No metadata.json in " << parent << "\n";
+                    // 标记为空，避免后续重复尝试加载
+                    dir_to_file_meta[parent] = {};
                     continue;
                 }
 
                 std::ifstream meta_file(meta_path);
                 if (!meta_file.is_open()) {
                     std::cerr << "Error: Could not open " << meta_path << "\n";
+                    dir_to_file_meta[parent] = {};
                     continue;
                 }
 
                 nlohmann::json j;
-                meta_file >> j;
+                try {
+                    meta_file >> j;
+                } catch (const std::exception& e) {
+                    std::cerr << "Error: Failed to parse " << meta_path
+                              << ": " << e.what() << "\n";
+                    dir_to_file_meta[parent] = {};
+                    continue;
+                }
 
-                std::unordered_map<std::string, std::string> file_ns;
-                if (j.contains("ZoneFiles")) {
+                std::unordered_map<std::string, FileMeta> file_meta_map;
+
+                if (j.contains("ZoneFiles") && j["ZoneFiles"].is_array()) {
                     for (const auto& zf : j["ZoneFiles"]) {
-                        if (zf.contains("FileName") && zf.contains("NameServer")) {
-                            std::string fname = zf["FileName"];
-                            std::string ns = zf["NameServer"];
-                            file_ns[fname] = ns;
+                        if (!zf.contains("FileName") || !zf.contains("NameServer")) {
+                            continue;
                         }
+
+                        std::string fname = zf["FileName"].get<std::string>();
+
+                        FileMeta meta;
+                        meta.name_server = zf["NameServer"].get<std::string>();
+
+                        if (zf.contains("Origin") && !zf["Origin"].is_null()) {
+                            meta.origin = normalize_origin(zf["Origin"].get<std::string>());
+                        }
+
+                        file_meta_map[fname] = std::move(meta);
                     }
                 }
-                dir_to_file_ns[parent] = std::move(file_ns);
+
+                dir_to_file_meta[parent] = std::move(file_meta_map);
             }
 
-            auto& file_ns = dir_to_file_ns[parent];
+            auto& file_meta_map = dir_to_file_meta[parent];
             std::string fname = p.filename().string();
 
-            if (file_ns.find(fname) != file_ns.end()) {
-                std::string server_id = file_ns[fname];
-                std::string origin = origin_from_filename(p);
+            auto it = file_meta_map.find(fname);
+            if (it != file_meta_map.end()) {
+                const FileMeta& meta = it->second;
+
+                std::string server_id = meta.name_server;
+                std::string origin = meta.origin.has_value()
+                    ? *meta.origin
+                    : origin_from_filename(p);
+
                 tasks.push_back(Task{p, server_id, origin});
             } else {
-                std::cerr << "Warning: No NameServer for " << fname
+                std::cerr << "Warning: No metadata entry for " << fname
                           << " in " << parent << "\n";
             }
         }
