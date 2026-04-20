@@ -143,6 +143,7 @@ OccNS(s, z, n, t, ttl, d) :-
 OccD(s, z, n, t, ttl, d) :-
     ZoneRecord(s, z, n, t, ttl, d),
     ZoneRecord(s, z, owner, "DNAME", _, _),
+    t != "DNAME",
     IsDescendant(n, owner).
 
 .decl IsShadow(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
