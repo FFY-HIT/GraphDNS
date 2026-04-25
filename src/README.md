@@ -1,5 +1,3 @@
-## GraphDNS
-
 ## Environment Requirements
 
 ### Hardware Requirements
