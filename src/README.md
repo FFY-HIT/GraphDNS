@@ -1,4 +1,4 @@
-## LogicDNS
+## GraphDNS
 
 ## Environment Requirements
 
@@ -35,7 +35,7 @@ g++ -O3 -std=c++17 -fopenmp main.cpp -o direct_verifier
 
 ## Outputs
 
-Depending on the enabled rules, LogicDNS may generate:
+Depending on the enabled rules, GraphDNS may generate:
 
 * error reports
 * intermediate fact files
