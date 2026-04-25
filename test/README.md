@@ -13,7 +13,7 @@
 
 ## Dataset Layout
 
-LogicDNS expects input datasets to follow a specific directory structure:
+GraphDNS expects input datasets to follow a specific directory structure:
 
 ```text
 dataset/
@@ -63,18 +63,18 @@ chmod +x ./run_experiments.sh
 
 ## Experimental Scope
 
-LogicDNS supports several categories of experiments:
+GraphDNS supports several categories of experiments:
 
 ### 1. Detection Coverage Evaluation
 
-Compare LogicDNS and GRoot on synthetic datasets to validate:
+Compare GraphDNS and GRoot on synthetic datasets to validate:
 
 * equivalent capability on shared path vulnerabilities
 * additional coverage for orphan and shadow records
 
 ### 2. Real-World Validation
 
-Evaluate LogicDNS on production DNS data (e.g., ZDNS) to determine:
+Evaluate GraphDNS on production DNS data (e.g., ZDNS) to determine:
 
 * whether real historical errors can be uncovered
 * whether the framework provides practical operational value
