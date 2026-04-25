@@ -1,8 +1,8 @@
 
-# LogicDNS: A Large-Scale Framework for DNS Configuration Verification Based on Global Resolution Semantics
+# GraphDNS: Resolution Relation Graph Abstraction for Large-Scale Analysis of Static DNS Configurations
 
 <!-- <p align="center">
-  <img src="docs/logo.png" alt="LogicDNS Logo" width="160"/>
+  <img src="docs/logo.png" alt="GraphDNS Logo" width="160"/>
 </p> -->
 
 <p align="center">
@@ -18,12 +18,12 @@
 
 ## Overview
 
-**LogicDNS** is a research-oriented framework for large-scale DNS configuration verification.  
-Rather than modeling DNS verification as a problem of constructing queries and simulating resolution paths, LogicDNS reformulates it as:
+**GraphDNS** is a research-oriented framework for large-scale DNS configuration verification.  
+Rather than modeling DNS verification as a problem of constructing queries and simulating resolution paths, GraphDNS reformulates it as:
 
 > **the direct computation of the global resolution semantics induced by static configurations**
 
-Under this perspective, LogicDNS uniformly characterizes and detects three classes of DNS configuration errors:
+Under this perspective, GraphDNS uniformly characterizes and detects three classes of DNS configuration errors:
 
 - **Path Vulnerabilities**
 - **Orphan Records**
@@ -43,7 +43,7 @@ This design works well for path-level failures, but it has two fundamental limit
 1. It focuses on **behaviors exposed by queries**
 2. It is less effective at uniformly characterizing anomalies that **exist in the configuration itself but may not be directly exposed by any single query**
 
-LogicDNS addresses this limitation by:
+GraphDNS addresses this limitation by:
 
 - taking **static authoritative configurations** as input
 - constructing a **global resolution relation graph**
@@ -51,7 +51,7 @@ LogicDNS addresses this limitation by:
 - deriving a **reachable-path view**
 - verifying configuration errors under a unified semantic framework
 
-This enables LogicDNS to cover not only traditional path vulnerabilities, but also structural anomalies such as:
+This enables GraphDNS to cover not only traditional path vulnerabilities, but also structural anomalies such as:
 
 - **orphan records**, which lose valid delegation support but remain reachable
 - **shadow records**, which remain in the configuration but no longer participate in any legal resolution path
@@ -60,7 +60,7 @@ This enables LogicDNS to cover not only traditional path vulnerabilities, but al
 
 ## Architecture
 
-LogicDNS follows a two-stage architecture:
+GraphDNS follows a two-stage architecture:
 
 ### 1. Preprocessing Stage (C++ Frontend)
 Responsible for:
@@ -83,10 +83,10 @@ Responsible for:
 ## Repository Structure
 
 ```text
-LogicDNS/
+GraphDNS/
 ├── src/
 │   ├── synthetic_dataset/     # Synthetic dataset
-│   ├── dns_verify.dl          # Main Soufflé Datalog rules of LogicDNS
+│   ├── dns_verify.dl          # Main Soufflé Datalog rules of GraphDNS
 │   ├── main.cpp               # C++ frontend for zone parsing and fact generation
 │   └── README.md              # Documentation for the src directory
 ├── test/
@@ -101,7 +101,7 @@ LogicDNS/
 
 ## Use Cases
 
-LogicDNS is suitable for:
+GraphDNS is suitable for:
 
 * offline auditing of large DNS configurations
 * configuration pre-checking for DNS hosting providers
