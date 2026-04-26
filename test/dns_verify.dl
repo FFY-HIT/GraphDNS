@@ -2,10 +2,10 @@
 // 1. 类型定义 (Type Definitions)
 // ==========================================
 .type ServerID <: symbol
-.type Domain <: symbol
-.type RType <: symbol
-.type Content <: symbol
-.type TTL <: number
+.type Domain   <: symbol
+.type RType    <: symbol
+.type Content  <: symbol
+.type TTL      <: number
 
 // ==========================================
 // 2. 输入数据定义 (Input Schema)
@@ -17,20 +17,11 @@
 // 3. 基础辅助视图 (Helpers)
 // ==========================================
 
-.decl GlobalRecord(zone: Domain, name: Domain, type: RType, data: Content)
-GlobalRecord(z, n, t, d) :- ZoneRecord(_, z, n, t, _, d).
-
-.decl DomainExists(name: Domain)
-DomainExists(n) :- GlobalRecord(_, n, _, _).
-
-.decl CNAME_Edge(src: Domain, dst: Domain)
-CNAME_Edge(src, as(dst, Domain)) :- GlobalRecord(_, src, "CNAME", dst).
-
 .decl AllNames(name: Domain)
 AllNames(n) :- ZoneRecord(_, _, n, _, _, _).
 AllNames(as(d, Domain)) :-
     ZoneRecord(_, _, _, t, _, d),
-    (t = "CNAME"; t = "DNAME"; t = "NS"; t = "MX"; t = "PTR"; t = "SRV").
+    (t = "CNAME"; t = "DNAME"; t = "NS").
 
 .decl DotScan(name: Domain, i: number)
 DotScan(n, 0) :- AllNames(n).
@@ -40,7 +31,9 @@ DotScan(n, i + 1) :-
     substr(n, i, 1) != ".".
 
 .decl FirstDot(name: Domain, pos: number)
-FirstDot(n, pos) :- DotScan(n, pos), substr(n, pos, 1) = ".".
+FirstDot(n, pos) :-
+    DotScan(n, pos),
+    substr(n, pos, 1) = ".".
 
 .decl ParentOf(parent: Domain, child: Domain)
 ParentOf(parent, child) :-
@@ -51,38 +44,13 @@ ParentOf(parent, child) :-
 
 .decl IsDescendant(child: Domain, ancestor: Domain)
 IsDescendant(c, p) :- ParentOf(p, c).
-IsDescendant(c, a) :- ParentOf(p, c), IsDescendant(p, a).
+IsDescendant(c, a) :-
+    ParentOf(p, c),
+    IsDescendant(p, a).
 
 .decl ZoneApex(zone: Domain)
-ZoneApex(z) :- ZoneRecord(_, z, z, "SOA", _, _).
-
-.decl ExplicitRecord(name: Domain)
-ExplicitRecord(n) :- ZoneRecord(_, _, n, _, _, _).
-
-.decl EmptyNonTerminal(name: Domain)
-EmptyNonTerminal(n) :- ParentOf(n, c), ExplicitRecord(c), !ExplicitRecord(n).
-EmptyNonTerminal(n) :- ParentOf(n, c), EmptyNonTerminal(c), !ExplicitRecord(n).
-
-.decl NodeExists(name: Domain)
-NodeExists(n) :- ExplicitRecord(n).
-NodeExists(n) :- EmptyNonTerminal(n).
-
-.decl WildcardRecord(encloser: Domain)
-WildcardRecord(e) :-
-    ZoneRecord(_, _, w, _, _, _),
-    match("^\\*\\..*$", w),
-    e = substr(w, 2, strlen(w) - 2).
-
-.decl CoveredByWildcard(query: Domain, encloser: Domain)
-CoveredByWildcard(q, e) :-
-    AllNames(q),
-    WildcardRecord(e),
-    ParentOf(e, q),
-    !NodeExists(q).
-
-.decl Resolvable(name: Domain)
-Resolvable(n) :- NodeExists(n).
-Resolvable(n) :- CoveredByWildcard(n, _).
+ZoneApex(z) :-
+    ZoneRecord(_, z, z, "SOA", _, _).
 
 .decl BelongsToZone(name: Domain, zone: Domain)
 BelongsToZone(n, z) :-
@@ -94,10 +62,118 @@ InBailiwick(ns, z) :-
     ZoneApex(z),
     (ns = z ; IsDescendant(ns, z)).
 
+
+// ==========================================
+// 3.x 影子记录检测与纯化记录集
+// ==========================================
+
+// In-bailiwick glue records:
+// A/AAAA records in the same zone whose owner is the target of a non-apex NS record.
+.decl GlueRecord(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+GlueRecord(s, z, n, t, ttl, d) :-
+    ZoneRecord(s, z, owner, "NS", _, ns_content),
+    owner != z,
+    n = as(ns_content, Domain),
+    InBailiwick(n, z),
+    ZoneRecord(s, z, n, t, ttl, d),
+    (t = "A"; t = "AAAA").
+
+// NS shadowing:
+// Ordinary parent-zone records strictly below a delegated zone cut are shadowed.
+// In-bailiwick glue records are retained because they support delegation.
+.decl OccNS(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+OccNS(s, z, n, t, ttl, d) :-
+    ZoneRecord(s, z, n, t, ttl, d),
+    ZoneRecord(s, z, cut, "NS", _, _),
+    cut != z,
+    IsDescendant(n, cut),
+    !GlueRecord(s, z, n, t, ttl, d).
+
+// DNAME shadowing:
+// Ordinary records strictly below a DNAME owner are shadowed.
+.decl OccD(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+OccD(s, z, n, t, ttl, d) :-
+    ZoneRecord(s, z, n, t, ttl, d),
+    ZoneRecord(s, z, owner, "DNAME", _, _),
+    t != "DNAME",
+    IsDescendant(n, owner).
+
+// Unified shadow predicate.
+.decl IsShadow(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+IsShadow(s, z, n, t, ttl, d) :-
+    OccNS(s, z, n, t, ttl, d).
+IsShadow(s, z, n, t, ttl, d) :-
+    OccD(s, z, n, t, ttl, d).
+
+// Purified record set R*.
+.decl RClean(server: ServerID, zone: Domain, name: Domain, type: RType, ttl: TTL, data: Content)
+RClean(s, z, n, t, ttl, d) :-
+    ZoneRecord(s, z, n, t, ttl, d),
+    !IsShadow(s, z, n, t, ttl, d).
+
+
+// ==========================================
+// 3.y 基于 RClean 的全局辅助视图
+// ==========================================
+
+.decl GlobalRecord(zone: Domain, name: Domain, type: RType, data: Content)
+GlobalRecord(z, n, t, d) :-
+    RClean(_, z, n, t, _, d).
+
+.decl DomainExists(name: Domain)
+DomainExists(n) :-
+    GlobalRecord(_, n, _, _).
+
+.decl CNAME_Edge(src: Domain, dst: Domain)
+CNAME_Edge(src, as(dst, Domain)) :-
+    GlobalRecord(_, src, "CNAME", dst).
+
+.decl ExplicitRecord(name: Domain)
+ExplicitRecord(n) :-
+    RClean(_, _, n, _, _, _).
+
+.decl EmptyNonTerminal(name: Domain)
+EmptyNonTerminal(n) :-
+    ParentOf(n, c),
+    ExplicitRecord(c),
+    !ExplicitRecord(n).
+
+EmptyNonTerminal(n) :-
+    ParentOf(n, c),
+    EmptyNonTerminal(c),
+    !ExplicitRecord(n).
+
+.decl NodeExists(name: Domain)
+NodeExists(n) :-
+    ExplicitRecord(n).
+
+NodeExists(n) :-
+    EmptyNonTerminal(n).
+
+.decl WildcardRecord(encloser: Domain)
+WildcardRecord(e) :-
+    RClean(_, _, w, _, _, _),
+    match("^\\*\\..*$", w),
+    e = substr(w, 2, strlen(w) - 2).
+
+.decl CoveredByWildcard(query: Domain, encloser: Domain)
+CoveredByWildcard(q, e) :-
+    AllNames(q),
+    WildcardRecord(e),
+    ParentOf(e, q),
+    !NodeExists(q).
+
+.decl Resolvable(name: Domain)
+Resolvable(n) :-
+    NodeExists(n).
+
+Resolvable(n) :-
+    CoveredByWildcard(n, _).
+
 .decl DNAME_Edge(src: Domain, dst: Domain)
 DNAME_Edge(src, dst) :-
     AllNames(src),
-    ZoneRecord(_, _, owner, "DNAME", _, target_content),
+    RClean(_, _, owner, "DNAME", _, target_content),
     target = as(target_content, Domain),
     IsDescendant(src, owner),
     len_s = strlen(src),
@@ -106,11 +182,16 @@ DNAME_Edge(src, dst) :-
     dst = cat(prefix, target).
 
 .decl AliasEdge(src: Domain, dst: Domain)
-AliasEdge(s, d) :- CNAME_Edge(s, d).
-AliasEdge(s, d) :- DNAME_Edge(s, d).
+AliasEdge(s, d) :-
+    CNAME_Edge(s, d).
+
+AliasEdge(s, d) :-
+    DNAME_Edge(s, d).
 
 .decl CNAME_Path(src: Domain, dst: Domain)
-CNAME_Path(src, dst) :- AliasEdge(src, dst).
+CNAME_Path(src, dst) :-
+    AliasEdge(src, dst).
+
 CNAME_Path(src, final) :-
     CNAME_Path(src, mid),
     AliasEdge(mid, final),
@@ -120,6 +201,7 @@ CNAME_Path(src, final) :-
 Rewrite_Terminal(src, final) :-
     CNAME_Path(src, final),
     !AliasEdge(final, _).
+
 
 // ==========================================
 // 4. 属性验证规则 (Verification Rules)
@@ -132,10 +214,13 @@ Rewrite_Terminal(src, final) :-
 .output Error_DelegationConsistency
 
 .decl ParentNS(parent: Domain, child: Domain, ns: Content)
-ParentNS(p, c, ns) :- ZoneRecord(_, p, c, "NS", _, ns), p != c.
+ParentNS(p, c, ns) :-
+    RClean(_, p, c, "NS", _, ns),
+    p != c.
 
 .decl ChildNS(child: Domain, ns: Content)
-ChildNS(c, ns) :- ZoneRecord(_, c, c, "NS", _, ns).
+ChildNS(c, ns) :-
+    RClean(_, c, c, "NS", _, ns).
 
 // 父区有、子区没有
 Error_DelegationConsistency(p, c, ns, "NS set mismatch between parent and child") :-
@@ -173,17 +258,17 @@ NSRequiresCheck(ns, p, c) :-
 Error_DelegationConsistency(parent, child, as(ns, Content), "Inconsistent A/AAAA records for NS") :-
     NSRequiresCheck(ns, parent, child),
     (
-        (ZoneRecord(_, parent, ns, "A", _, _), !ZoneRecord(_, child, ns, "A", _, _))
+        (RClean(_, parent, ns, "A", _, _), !RClean(_, child, ns, "A", _, _))
         ;
-        (ZoneRecord(_, child, ns, "A", _, _), !ZoneRecord(_, parent, ns, "A", _, _))
+        (RClean(_, child, ns, "A", _, _), !RClean(_, parent, ns, "A", _, _))
         ;
-        (ZoneRecord(_, parent, ns, "A", _, ip_parent), ZoneRecord(_, child, ns, "A", _, ip_child), ip_parent != ip_child)
+        (RClean(_, parent, ns, "A", _, ip_parent), RClean(_, child, ns, "A", _, ip_child), ip_parent != ip_child)
         ;
-        (ZoneRecord(_, parent, ns, "AAAA", _, _), !ZoneRecord(_, child, ns, "AAAA", _, _))
+        (RClean(_, parent, ns, "AAAA", _, _), !RClean(_, child, ns, "AAAA", _, _))
         ;
-        (ZoneRecord(_, child, ns, "AAAA", _, _), !ZoneRecord(_, parent, ns, "AAAA", _, _))
+        (RClean(_, child, ns, "AAAA", _, _), !RClean(_, parent, ns, "AAAA", _, _))
         ;
-        (ZoneRecord(_, parent, ns, "AAAA", _, ip_parent), ZoneRecord(_, child, ns, "AAAA", _, ip_child), ip_parent != ip_child)
+        (RClean(_, parent, ns, "AAAA", _, ip_parent), RClean(_, child, ns, "AAAA", _, ip_child), ip_parent != ip_child)
     ).
 
 
@@ -193,7 +278,8 @@ Error_DelegationConsistency(parent, child, as(ns, Content), "Inconsistent A/AAAA
 .decl Info_AliasChain(src: Domain, canonical: Domain)
 .output Info_AliasChain
 
-Info_AliasChain(src, dst) :- CNAME_Path(src, dst).
+Info_AliasChain(src, dst) :-
+    CNAME_Path(src, dst).
 
 
 // ------------------------------------------
@@ -203,7 +289,8 @@ Info_AliasChain(src, dst) :- CNAME_Path(src, dst).
 .output Error_LameDelegation
 
 .decl HasSOA(server: ServerID, zone: Domain)
-HasSOA(s, z) :- ZoneRecord(s, z, z, "SOA", _, _).
+HasSOA(s, z) :-
+    RClean(s, z, z, "SOA", _, _).
 
 Error_LameDelegation(child, ns, "NS server not authoritative") :-
     ParentOf(parent, child),
@@ -223,8 +310,8 @@ Error_MissingGlueRecords(c, ns, "Missing glue for in-bailiwick NS") :-
     ParentNS(p, c, ns_content),
     ns = as(ns_content, Domain),
     InBailiwick(ns, c),
-    !ZoneRecord(_, p, ns, "A", _, _),
-    !ZoneRecord(_, p, ns, "AAAA", _, _).
+    !RClean(_, p, ns, "A", _, _),
+    !RClean(_, p, ns, "AAAA", _, _).
 
 
 // ------------------------------------------
@@ -235,13 +322,15 @@ Error_MissingGlueRecords(c, ns, "Missing glue for in-bailiwick NS") :-
 
 .decl NSDepends(server1: Domain, server2: Domain, domain: Domain)
 NSDepends(svr1, svr2, dmn) :-
-    ZoneRecord(svr1_id, _, dmn, "NS", _, ns_content),
+    RClean(svr1_id, _, dmn, "NS", _, ns_content),
     svr1 = as(svr1_id, Domain),
     svr2 = as(ns_content, Domain),
     svr1 != svr2.
 
 .decl NSReachable(server1: Domain, server2: Domain, domain: Domain)
-NSReachable(svr1, svr2, dmn) :- NSDepends(svr1, svr2, dmn).
+NSReachable(svr1, svr2, dmn) :-
+    NSDepends(svr1, svr2, dmn).
+
 NSReachable(svr1, svr3, dmn) :-
     NSReachable(svr1, svr2, dmn),
     NSDepends(svr2, svr3, dmn).
@@ -267,8 +356,8 @@ Error_RewriteLoop(n, "Rewrite loop detected") :-
 .output Error_ResponseInconsistency
 
 Error_ResponseInconsistency(z, n, t, s1, s2) :-
-    ZoneRecord(s1, z, n, t, _, data1),
-    ZoneRecord(s2, z, n, t, _, data2),
+    RClean(s1, z, n, t, _, data1),
+    RClean(s2, z, n, t, _, data2),
     s1 != s2,
     data1 != data2.
 
@@ -287,7 +376,7 @@ Error_RewriteBlackhole(src, target, "CNAME target points to configured domain bu
 
 // DNAME blackholing
 Error_RewriteBlackhole(owner, target, "DNAME target points to configured domain but is not resolvable") :-
-    ZoneRecord(_, _, owner, "DNAME", _, target_content),
+    RClean(_, _, owner, "DNAME", _, target_content),
     target = as(target_content, Domain),
     BelongsToZone(target, zone),
     !Resolvable(target).
@@ -300,7 +389,7 @@ Error_RewriteBlackhole(owner, target, "DNAME target points to configured domain 
 .output Error_ZeroTTL
 
 Error_ZeroTTL(s, n, t) :-
-    ZoneRecord(s, _, n, t, ttl, _),
+    RClean(s, _, n, t, ttl, _),
     ttl = 0.
 
 
@@ -311,13 +400,21 @@ Error_ZeroTTL(s, n, t) :-
 .output Error_QueryExceedsMaximumLength
 
 .decl DNAMERecords(zone: Domain, target: Domain)
-DNAMERecords(zone, as(target, Domain)) :- GlobalRecord(zone, zone, "DNAME", target).
+DNAMERecords(zone, as(target, Domain)) :-
+    GlobalRecord(zone, zone, "DNAME", target).
 
 .decl AllDomains(name: Domain)
-AllDomains(zone) :- GlobalRecord(zone, _, _, _).
-AllDomains(name) :- GlobalRecord(_, name, _, _).
-AllDomains(src) :- CNAME_Edge(src, _).
-AllDomains(target) :- CNAME_Edge(_, target).
+AllDomains(zone) :-
+    GlobalRecord(zone, _, _, _).
+
+AllDomains(name) :-
+    GlobalRecord(_, name, _, _).
+
+AllDomains(src) :-
+    CNAME_Edge(src, _).
+
+AllDomains(target) :-
+    CNAME_Edge(_, target).
 
 .decl DNAMECheck(query: Domain, zone: Domain, target: Domain)
 DNAMECheck(query, zone, target) :-
