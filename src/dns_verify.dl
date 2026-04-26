@@ -36,7 +36,7 @@
 AllNames(n) :- ZoneRecord(_, _, n, _, _, _).
 AllNames(as(d, Domain)) :-
     ZoneRecord(_, _, _, t, _, d),
-    (t = "CNAME"; t = "DNAME"; t = "NS"; t = "MX"; t = "PTR"; t = "SRV").
+    (t = "CNAME"; t = "DNAME"; t = "NS").
 
 .decl DotScan(name: Domain, i: number)
 DotScan(n, 0) :- AllNames(n).
