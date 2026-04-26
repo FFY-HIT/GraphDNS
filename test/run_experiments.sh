@@ -6,7 +6,7 @@
 
 # 配置参数
 PROGRAM="./direct_verifier"
-DATA_DIR="./census"
+DATA_DIR="./test_dataset"
 
 # 记录数配置数组
 RECORD_COUNTS=(100000 200000 300000 400000 500000 
