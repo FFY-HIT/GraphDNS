@@ -1,0 +1,7 @@
+target_regions,records,nodes,edges,graph_build_seconds,traverse_dfs_seconds,semantic_peak_rss_mb,status,measurement_note
+1000,13212.0,14661.0,16275.0,0.046,0.141,70.7,ok,Measured successfully
+5000,71746.0,79793.0,91094.0,0.36,0.559,338.7,ok,Measured successfully
+10000,152540.0,167819.0,193360.0,0.551,1.592,718.0,ok,Measured successfully
+50000,1061489.0,976354.0,1352261.0,4.301,42.448,4278.0,ok,Measured successfully
+100000,24544156.0,,,0.0,0.0,7310.4,oom,semantic_graph exceeded the memory available on the 8 GB host
+270021,,,,,,,not_run,Full Census was not attempted after the 100000-region memory failure

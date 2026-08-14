@@ -1,0 +1,15 @@
+template,method,total,consistent,agreement_pct
+add_delegation_shadows_parent,Full GraphDNS,16,16,100.0
+add_delegation_shadows_parent,VeriDNS-RSG reproduction,16,0,0.0
+add_dname_introduces_loop,Full GraphDNS,16,16,100.0
+add_dname_introduces_loop,VeriDNS-RSG reproduction,16,0,0.0
+add_dname_shadows_descendant,Full GraphDNS,16,16,100.0
+add_dname_shadows_descendant,VeriDNS-RSG reproduction,16,0,0.0
+add_wildcard_activates_answer,Full GraphDNS,16,16,100.0
+add_wildcard_activates_answer,VeriDNS-RSG reproduction,16,0,0.0
+delete_dname_reactivates_descendant,Full GraphDNS,16,16,100.0
+delete_dname_reactivates_descendant,VeriDNS-RSG reproduction,16,16,100.0
+delete_exact_activates_wildcard,Full GraphDNS,16,16,100.0
+delete_exact_activates_wildcard,VeriDNS-RSG reproduction,16,16,100.0
+modify_dname_target,Full GraphDNS,16,16,100.0
+modify_dname_target,VeriDNS-RSG reproduction,16,16,100.0

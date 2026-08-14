@@ -1,0 +1,17 @@
+$ORIGIN ai.techuni.edu.
+$TTL 300
+@ IN SOA ns.ai.techuni.edu. hostmaster.ai.techuni.edu. (
+    2026072801 3600 600 86400 300
+)
+@ IN NS ns.ai.techuni.edu.
+ns IN A 127.0.0.1
+
+old-lab IN DNAME merged-lab.ai.techuni.edu.
+legacy-ml IN DNAME ml.ai.techuni.edu.
+
+api.old-lab IN A 10.20.66.10
+db.old-lab IN AAAA 2001:db8:20:66::10
+train.legacy-ml IN A 10.20.77.11
+
+ml IN A 10.20.20.1
+project1.ml IN A 10.20.20.2

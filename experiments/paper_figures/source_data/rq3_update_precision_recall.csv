@@ -1,0 +1,5 @@
+method,metric,value
+VeriDNS-RSG reproduction,Precision,0.75
+VeriDNS-RSG reproduction,Recall,0.42857142857142855
+Full GraphDNS,Precision,1.0
+Full GraphDNS,Recall,1.0

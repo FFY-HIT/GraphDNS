@@ -1,0 +1,5191 @@
+{
+  "description": "112 controlled single-record updates expanded from 7 RFC boundary templates.",
+  "validity_scope": {
+    "background": "All records from the selected Experiment 02 Census case are retained.",
+    "control": "Shared fixture records are present in both snapshots.",
+    "delta": "Before and after differ by exactly one ADD, DELETE, or MODIFY.",
+    "history": "These are controlled interventions, not observed historical Census changes."
+  },
+  "expectations": {
+    "veridns_mismatch_pairs": [
+      "census_add_dname_shadows_descendant_c01",
+      "census_add_wildcard_activates_answer_c01",
+      "census_add_delegation_shadows_parent_c01",
+      "census_add_dname_introduces_loop_c01",
+      "census_add_dname_shadows_descendant_c02",
+      "census_add_wildcard_activates_answer_c02",
+      "census_add_delegation_shadows_parent_c02",
+      "census_add_dname_introduces_loop_c02",
+      "census_add_dname_shadows_descendant_c03",
+      "census_add_wildcard_activates_answer_c03",
+      "census_add_delegation_shadows_parent_c03",
+      "census_add_dname_introduces_loop_c03",
+      "census_add_dname_shadows_descendant_c04",
+      "census_add_wildcard_activates_answer_c04",
+      "census_add_delegation_shadows_parent_c04",
+      "census_add_dname_introduces_loop_c04",
+      "census_add_dname_shadows_descendant_c05",
+      "census_add_wildcard_activates_answer_c05",
+      "census_add_delegation_shadows_parent_c05",
+      "census_add_dname_introduces_loop_c05",
+      "census_add_dname_shadows_descendant_c06",
+      "census_add_wildcard_activates_answer_c06",
+      "census_add_delegation_shadows_parent_c06",
+      "census_add_dname_introduces_loop_c06",
+      "census_add_dname_shadows_descendant_c07",
+      "census_add_wildcard_activates_answer_c07",
+      "census_add_delegation_shadows_parent_c07",
+      "census_add_dname_introduces_loop_c07",
+      "census_add_dname_shadows_descendant_c08",
+      "census_add_wildcard_activates_answer_c08",
+      "census_add_delegation_shadows_parent_c08",
+      "census_add_dname_introduces_loop_c08",
+      "census_add_dname_shadows_descendant_c09",
+      "census_add_wildcard_activates_answer_c09",
+      "census_add_delegation_shadows_parent_c09",
+      "census_add_dname_introduces_loop_c09",
+      "census_add_dname_shadows_descendant_c10",
+      "census_add_wildcard_activates_answer_c10",
+      "census_add_delegation_shadows_parent_c10",
+      "census_add_dname_introduces_loop_c10",
+      "census_add_dname_shadows_descendant_c11",
+      "census_add_wildcard_activates_answer_c11",
+      "census_add_delegation_shadows_parent_c11",
+      "census_add_dname_introduces_loop_c11",
+      "census_add_dname_shadows_descendant_c12",
+      "census_add_wildcard_activates_answer_c12",
+      "census_add_delegation_shadows_parent_c12",
+      "census_add_dname_introduces_loop_c12",
+      "census_add_dname_shadows_descendant_c13",
+      "census_add_wildcard_activates_answer_c13",
+      "census_add_delegation_shadows_parent_c13",
+      "census_add_dname_introduces_loop_c13",
+      "census_add_dname_shadows_descendant_c14",
+      "census_add_wildcard_activates_answer_c14",
+      "census_add_delegation_shadows_parent_c14",
+      "census_add_dname_introduces_loop_c14",
+      "census_add_dname_shadows_descendant_c15",
+      "census_add_wildcard_activates_answer_c15",
+      "census_add_delegation_shadows_parent_c15",
+      "census_add_dname_introduces_loop_c15",
+      "census_add_dname_shadows_descendant_c16",
+      "census_add_wildcard_activates_answer_c16",
+      "census_add_delegation_shadows_parent_c16",
+      "census_add_dname_introduces_loop_c16"
+    ],
+    "veridns_consistent_pairs": [
+      "census_delete_exact_activates_wildcard_c01",
+      "census_delete_dname_reactivates_descendant_c01",
+      "census_modify_dname_target_c01",
+      "census_delete_exact_activates_wildcard_c02",
+      "census_delete_dname_reactivates_descendant_c02",
+      "census_modify_dname_target_c02",
+      "census_delete_exact_activates_wildcard_c03",
+      "census_delete_dname_reactivates_descendant_c03",
+      "census_modify_dname_target_c03",
+      "census_delete_exact_activates_wildcard_c04",
+      "census_delete_dname_reactivates_descendant_c04",
+      "census_modify_dname_target_c04",
+      "census_delete_exact_activates_wildcard_c05",
+      "census_delete_dname_reactivates_descendant_c05",
+      "census_modify_dname_target_c05",
+      "census_delete_exact_activates_wildcard_c06",
+      "census_delete_dname_reactivates_descendant_c06",
+      "census_modify_dname_target_c06",
+      "census_delete_exact_activates_wildcard_c07",
+      "census_delete_dname_reactivates_descendant_c07",
+      "census_modify_dname_target_c07",
+      "census_delete_exact_activates_wildcard_c08",
+      "census_delete_dname_reactivates_descendant_c08",
+      "census_modify_dname_target_c08",
+      "census_delete_exact_activates_wildcard_c09",
+      "census_delete_dname_reactivates_descendant_c09",
+      "census_modify_dname_target_c09",
+      "census_delete_exact_activates_wildcard_c10",
+      "census_delete_dname_reactivates_descendant_c10",
+      "census_modify_dname_target_c10",
+      "census_delete_exact_activates_wildcard_c11",
+      "census_delete_dname_reactivates_descendant_c11",
+      "census_modify_dname_target_c11",
+      "census_delete_exact_activates_wildcard_c12",
+      "census_delete_dname_reactivates_descendant_c12",
+      "census_modify_dname_target_c12",
+      "census_delete_exact_activates_wildcard_c13",
+      "census_delete_dname_reactivates_descendant_c13",
+      "census_modify_dname_target_c13",
+      "census_delete_exact_activates_wildcard_c14",
+      "census_delete_dname_reactivates_descendant_c14",
+      "census_modify_dname_target_c14",
+      "census_delete_exact_activates_wildcard_c15",
+      "census_delete_dname_reactivates_descendant_c15",
+      "census_modify_dname_target_c15",
+      "census_delete_exact_activates_wildcard_c16",
+      "census_delete_dname_reactivates_descendant_c16",
+      "census_modify_dname_target_c16"
+    ],
+    "graphdns_all_consistent": true
+  },
+  "matrix": {
+    "template_count": 7,
+    "copies_per_template": 16,
+    "update_count": 112
+  },
+  "updates": [
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c01",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 1: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c01-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c01-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c01_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c01-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c01_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c01-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c01",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 1: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c01-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c01-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c01_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c01-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c01_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c01-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c01_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c01-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c01-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c01",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 1: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c01-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c01_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c01-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c01_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c01-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c01_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c01-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c01-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c01",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 1: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c01-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c01-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c01_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c01-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c01_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c01-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c01-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c01",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 1: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c01-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c01_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c01-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c01_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c01-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c01_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c01-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c01-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c01_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c01-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c01-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c01",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 1: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c01-del.cmu.edu.": "ns.child.graphdns-exp-c01-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c01-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c01-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c01_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c01-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c01_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c01-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c01_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c01-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c01-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c01-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c01_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c01-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c01-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c01",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 1: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c01-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c01-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c01_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c01-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c01_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c01-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c01_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c01-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c01-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c02",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 2: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c02-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c02-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c02_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c02-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c02_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c02-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c02",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 2: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c02-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c02-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c02_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c02-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c02_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c02-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c02_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c02-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c02-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c02",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 2: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c02-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c02_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c02-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c02_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c02-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c02_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c02-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c02-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c02",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 2: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c02-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c02-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c02_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c02-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c02_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c02-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c02-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c02",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 2: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c02-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c02_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c02-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c02_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c02-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c02_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c02-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c02-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c02_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c02-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c02-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c02",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 2: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c02-del.cmu.edu.": "ns.child.graphdns-exp-c02-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c02-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c02-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c02_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c02-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c02_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c02-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c02_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c02-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c02-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c02-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c02_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c02-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c02-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c02",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 2: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c02-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c02-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c02_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c02-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c02_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c02-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c02_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c02-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c02-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c03",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 3: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c03-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c03-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c03_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c03-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c03_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c03-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c03",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 3: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c03-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c03-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c03_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c03-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c03_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c03-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c03_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c03-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c03-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c03",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 3: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c03-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c03_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c03-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c03_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c03-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c03_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c03-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c03-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c03",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 3: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c03-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c03-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c03_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c03-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c03_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c03-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c03-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c03",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 3: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c03-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c03_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c03-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c03_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c03-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c03_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c03-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c03-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c03_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c03-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c03-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c03",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 3: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c03-del.cmu.edu.": "ns.child.graphdns-exp-c03-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c03-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c03-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c03_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c03-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c03_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c03-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c03_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c03-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c03-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c03-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c03_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c03-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c03-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c03",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 3: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c03-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c03-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c03_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c03-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c03_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c03-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c03_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c03-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c03-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c04",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 4: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c04-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c04-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c04_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c04-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c04_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c04-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c04",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 4: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c04-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c04-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c04_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c04-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c04_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c04-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c04_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c04-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c04-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c04",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 4: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c04-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c04_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c04-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c04_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c04-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c04_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c04-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c04-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c04",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 4: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c04-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c04-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c04_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c04-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c04_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c04-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c04-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c04",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 4: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c04-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c04_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c04-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c04_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c04-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c04_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c04-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c04-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c04_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c04-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c04-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c04",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 4: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c04-del.cmu.edu.": "ns.child.graphdns-exp-c04-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c04-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c04-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c04_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c04-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c04_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c04-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c04_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c04-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c04-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c04-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c04_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c04-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c04-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c04",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 4: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c04-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c04-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c04_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c04-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c04_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c04-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c04_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c04-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c04-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c05",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 5: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c05-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c05-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c05_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c05-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c05_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c05-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c05",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 5: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c05-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c05-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c05_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c05-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c05_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c05-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c05_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c05-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c05-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c05",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 5: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c05-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c05_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c05-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c05_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c05-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c05_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c05-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c05-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c05",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 5: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c05-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c05-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c05_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c05-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c05_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c05-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c05-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c05",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 5: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c05-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c05_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c05-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c05_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c05-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c05_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c05-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c05-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c05_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c05-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c05-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c05",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 5: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c05-del.cmu.edu.": "ns.child.graphdns-exp-c05-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c05-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c05-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c05_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c05-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c05_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c05-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c05_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c05-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c05-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c05-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c05_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c05-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c05-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c05",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 5: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c05-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c05-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c05_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c05-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c05_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c05-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c05_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c05-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c05-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c06",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 6: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c06-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c06-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c06_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c06-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c06_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c06-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c06",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 6: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c06-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c06-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c06_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c06-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c06_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c06-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c06_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c06-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c06-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c06",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 6: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c06-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c06_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c06-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c06_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c06-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c06_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c06-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c06-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c06",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 6: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c06-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c06-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c06_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c06-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c06_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c06-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c06-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c06",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 6: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c06-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c06_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c06-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c06_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c06-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c06_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c06-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c06-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c06_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c06-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c06-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c06",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 6: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c06-del.cmu.edu.": "ns.child.graphdns-exp-c06-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c06-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c06-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c06_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c06-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c06_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c06-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c06_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c06-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c06-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c06-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c06_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c06-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c06-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c06",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 6: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c06-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c06-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c06_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c06-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c06_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c06-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c06_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c06-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c06-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c07",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 7: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c07-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c07-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c07_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c07-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c07_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c07-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c07",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 7: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c07-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c07-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c07_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c07-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c07_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c07-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c07_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c07-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c07-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c07",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 7: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c07-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c07_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c07-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c07_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c07-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c07_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c07-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c07-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c07",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 7: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c07-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c07-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c07_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c07-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c07_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c07-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c07-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c07",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 7: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c07-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c07_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c07-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c07_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c07-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c07_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c07-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c07-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c07_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c07-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c07-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c07",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 7: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c07-del.cmu.edu.": "ns.child.graphdns-exp-c07-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c07-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c07-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c07_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c07-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c07_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c07-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c07_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c07-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c07-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c07-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c07_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c07-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c07-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c07",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 7: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c07-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c07-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c07_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c07-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c07_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c07-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c07_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c07-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c07-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c08",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 8: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c08-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c08-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c08_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c08-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c08_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c08-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c08",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 8: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c08-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c08-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c08_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c08-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c08_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c08-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c08_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c08-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c08-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c08",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 8: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c08-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c08_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c08-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c08_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c08-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c08_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c08-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c08-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c08",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 8: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c08-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c08-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c08_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c08-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c08_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c08-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c08-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c08",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 8: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c08-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c08_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c08-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c08_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c08-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c08_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c08-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c08-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c08_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c08-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c08-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c08",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 8: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c08-del.cmu.edu.": "ns.child.graphdns-exp-c08-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c08-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c08-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c08_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c08-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c08_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c08-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c08_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c08-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c08-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c08-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c08_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c08-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c08-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c08",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 8: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c08-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c08-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c08_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c08-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c08_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c08-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c08_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c08-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c08-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c09",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 9: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c09-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c09-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c09_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c09-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c09_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c09-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c09",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 9: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c09-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c09-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c09_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c09-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c09_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c09-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c09_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c09-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c09-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c09",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 9: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c09-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c09_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c09-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c09_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c09-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c09_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c09-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c09-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c09",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 9: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c09-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c09-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c09_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c09-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c09_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c09-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c09-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c09",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 9: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c09-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c09_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c09-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c09_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c09-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c09_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c09-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c09-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c09_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c09-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c09-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c09",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 9: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c09-del.cmu.edu.": "ns.child.graphdns-exp-c09-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c09-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c09-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c09_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c09-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c09_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c09-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c09_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c09-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c09-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c09-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c09_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c09-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c09-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c09",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 9: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c09-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c09-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c09_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c09-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c09_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c09-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c09_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c09-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c09-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c10",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 10: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c10-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c10-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c10_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c10-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c10_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c10-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c10",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 10: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c10-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c10-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c10_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c10-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c10_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c10-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c10_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c10-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c10-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c10",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 10: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c10-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c10_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c10-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c10_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c10-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c10_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c10-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c10-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c10",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 10: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c10-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c10-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c10_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c10-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c10_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c10-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c10-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c10",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 10: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c10-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c10_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c10-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c10_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c10-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c10_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c10-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c10-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c10_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c10-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c10-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c10",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 10: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c10-del.cmu.edu.": "ns.child.graphdns-exp-c10-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c10-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c10-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c10_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c10-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c10_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c10-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c10_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c10-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c10-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c10-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c10_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c10-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c10-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c10",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 10: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c10-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c10-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c10_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c10-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c10_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c10-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c10_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c10-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c10-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c11",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 11: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c11-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c11-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c11_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c11-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c11_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c11-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c11",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 11: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c11-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c11-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c11_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c11-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c11_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c11-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c11_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c11-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c11-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c11",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 11: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c11-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c11_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c11-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c11_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c11-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c11_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c11-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c11-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c11",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 11: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c11-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c11-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c11_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c11-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c11_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c11-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c11-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c11",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 11: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c11-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c11_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c11-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c11_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c11-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c11_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c11-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c11-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c11_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c11-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c11-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c11",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 11: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c11-del.cmu.edu.": "ns.child.graphdns-exp-c11-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c11-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c11-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c11_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c11-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c11_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c11-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c11_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c11-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c11-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c11-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c11_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c11-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c11-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c11",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 11: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c11-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c11-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c11_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c11-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c11_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c11-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c11_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c11-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c11-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c12",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 12: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c12-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c12-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c12_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c12-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c12_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c12-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c12",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 12: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c12-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c12-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c12_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c12-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c12_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c12-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c12_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c12-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c12-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c12",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 12: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c12-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c12_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c12-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c12_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c12-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c12_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c12-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c12-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c12",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 12: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c12-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c12-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c12_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c12-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c12_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c12-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c12-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c12",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 12: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c12-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c12_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c12-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c12_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c12-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c12_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c12-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c12-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c12_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c12-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c12-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c12",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 12: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c12-del.cmu.edu.": "ns.child.graphdns-exp-c12-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c12-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c12-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c12_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c12-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c12_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c12-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c12_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c12-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c12-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c12-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c12_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c12-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c12-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c12",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 12: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c12-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c12-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c12_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c12-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c12_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c12-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c12_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c12-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c12-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c13",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 13: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c13-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c13-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c13_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c13-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c13_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c13-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c13",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 13: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c13-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c13-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c13_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c13-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c13_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c13-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c13_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c13-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c13-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c13",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 13: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c13-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c13_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c13-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c13_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c13-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c13_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c13-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c13-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c13",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 13: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c13-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c13-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c13_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c13-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c13_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c13-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c13-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c13",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 13: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c13-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c13_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c13-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c13_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c13-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c13_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c13-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c13-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c13_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c13-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c13-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c13",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 13: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c13-del.cmu.edu.": "ns.child.graphdns-exp-c13-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c13-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c13-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c13_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c13-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c13_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c13-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c13_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c13-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c13-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c13-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c13_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c13-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c13-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c13",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 13: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c13-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c13-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c13_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c13-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c13_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c13-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c13_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c13-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c13-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c14",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 14: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c14-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c14-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c14_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c14-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c14_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c14-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c14",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 14: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c14-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c14-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c14_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c14-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c14_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c14-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c14_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c14-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c14-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c14",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 14: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c14-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c14_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c14-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c14_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c14-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c14_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c14-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c14-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c14",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 14: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c14-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c14-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c14_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c14-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c14_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c14-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c14-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c14",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 14: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c14-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c14_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c14-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c14_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c14-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c14_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c14-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c14-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c14_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c14-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c14-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c14",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 14: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c14-del.cmu.edu.": "ns.child.graphdns-exp-c14-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c14-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c14-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c14_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c14-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c14_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c14-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c14_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c14-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c14-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c14-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c14_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c14-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c14-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c14",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 14: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c14-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c14-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c14_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c14-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c14_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c14-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c14_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c14-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c14-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c15",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 15: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c15-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c15-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c15_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c15-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c15_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c15-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c15",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 15: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c15-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c15-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c15_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c15-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c15_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c15-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c15_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c15-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c15-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c15",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 15: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c15-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c15_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c15-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c15_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c15-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c15_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c15-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c15-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c15",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 15: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c15-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c15-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c15_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c15-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c15_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c15-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c15-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c15",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 15: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c15-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c15_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c15-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c15_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c15-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c15_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c15-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c15-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c15_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c15-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c15-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c15",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 15: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c15-del.cmu.edu.": "ns.child.graphdns-exp-c15-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c15-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c15-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c15_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c15-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c15_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c15-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c15_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c15-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c15-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c15-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c15_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c15-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c15-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c15",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 15: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c15-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c15-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c15_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c15-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c15_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c15-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c15_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c15-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c15-loop.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_exact_activates_wildcard_c16",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 16: Delete an exact address so that a pre-existing wildcard becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "www.graphdns-exp-c16-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "api.graphdns-exp-c16-wild.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c16_bme_wildcard",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "*.graphdns-exp-c16-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.102"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c16_bme_exact",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.graphdns-exp-c16-wild.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.101"
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_shadows_descendant_c16",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 16: Add an ancestor DNAME that shadows an existing descendant address.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c16-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        },
+        {
+          "name": "other.graphdns-exp-c16-dname.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c16_bme_shadowed",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c16-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.111"
+        },
+        {
+          "id": "exp3_c16_bme_active",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "other.graphdns-exp-c16-dname.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.112"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c16_bme_added_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c16-dname.bme.hu.",
+          "type": "DNAME",
+          "value": "missing.graphdns-exp-c16-dname.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_delete_dname_reactivates_descendant_c16",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 16: Delete an ancestor DNAME so that its shadowed descendant address becomes effective.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c16-reactivate.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c16_bme_reactivated",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.legacy.graphdns-exp-c16-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.121"
+        },
+        {
+          "id": "exp3_c16_bme_rewrite_target",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "host.active.graphdns-exp-c16-reactivate.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.122"
+        }
+      ],
+      "change": {
+        "operation": "DELETE",
+        "old_record": {
+          "id": "exp3_c16_bme_deleted_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c16-reactivate.bme.hu.",
+          "type": "DNAME",
+          "value": "active.graphdns-exp-c16-reactivate.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_wildcard_activates_answer_c16",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 16: Add a wildcard CNAME that captures a previously nonexistent query.",
+      "explicit_queries": [
+        {
+          "name": "www.apps.graphdns-exp-c16-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "fixed.graphdns-exp-c16-wild.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c16_cmu_fixed",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "fixed.graphdns-exp-c16-wild.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.131"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c16_cmu_added_wildcard",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "*.apps.graphdns-exp-c16-wild.cmu.edu.",
+          "type": "CNAME",
+          "value": "missing.graphdns-exp-c16-wild.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_modify_dname_target_c16",
+      "base_case_id": "census_bme_hu_bme_hu",
+      "source_region": "bme.hu",
+      "description": "Controlled matrix copy 16: Modify a DNAME target between two reachable suffixes.",
+      "explicit_queries": [
+        {
+          "name": "www.legacy.graphdns-exp-c16-modify.bme.hu.",
+          "symbol_suffix": "bme.hu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c16_bme_blue",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.blue.graphdns-exp-c16-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.141"
+        },
+        {
+          "id": "exp3_c16_bme_green",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "www.green.graphdns-exp-c16-modify.bme.hu.",
+          "type": "A",
+          "value": "192.0.2.142"
+        }
+      ],
+      "change": {
+        "operation": "MODIFY",
+        "old_record": {
+          "id": "exp3_c16_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c16-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "blue.graphdns-exp-c16-modify.bme.hu."
+        },
+        "new_record": {
+          "id": "exp3_c16_bme_modified_dname",
+          "server": "nic.bme.hu.",
+          "zone": "bme.hu.",
+          "owner": "legacy.graphdns-exp-c16-modify.bme.hu.",
+          "type": "DNAME",
+          "value": "green.graphdns-exp-c16-modify.bme.hu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_delegation_shadows_parent_c16",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 16: Add a non-apex NS cut that replaces a parent-zone descendant answer with a child-zone answer.",
+      "authority_overrides": {
+        "child.graphdns-exp-c16-del.cmu.edu.": "ns.child.graphdns-exp-c16-del.cmu.edu."
+      },
+      "explicit_queries": [
+        {
+          "name": "www.child.graphdns-exp-c16-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "www.graphdns-exp-c16-del.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c16_cmu_parent_answer",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.child.graphdns-exp-c16-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.151"
+        },
+        {
+          "id": "exp3_c16_cmu_parent_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "www.graphdns-exp-c16-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.152"
+        },
+        {
+          "id": "exp3_c16_cmu_child_answer",
+          "server": "ns.child.graphdns-exp-c16-del.cmu.edu.",
+          "zone": "child.graphdns-exp-c16-del.cmu.edu.",
+          "owner": "www.child.graphdns-exp-c16-del.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.153"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c16_cmu_added_cut",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "child.graphdns-exp-c16-del.cmu.edu.",
+          "type": "NS",
+          "value": "ns.child.graphdns-exp-c16-del.cmu.edu."
+        }
+      }
+    },
+    {
+      "pair_id": "census_add_dname_introduces_loop_c16",
+      "base_case_id": "census_cmu_edu_west_cmu_edu",
+      "source_region": "cmu.edu",
+      "start_server": "nsauth-master.net.cmu.edu.",
+      "start_zone": "cmu.edu.",
+      "description": "Controlled matrix copy 16: Add a self-targeting ancestor DNAME that introduces a rewrite loop.",
+      "explicit_queries": [
+        {
+          "name": "host.legacy.graphdns-exp-c16-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        },
+        {
+          "name": "other.graphdns-exp-c16-loop.cmu.edu.",
+          "symbol_suffix": "cmu.edu."
+        }
+      ],
+      "shared_records": [
+        {
+          "id": "exp3_c16_cmu_loop_descendant",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "host.legacy.graphdns-exp-c16-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.161"
+        },
+        {
+          "id": "exp3_c16_cmu_loop_other",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "other.graphdns-exp-c16-loop.cmu.edu.",
+          "type": "A",
+          "value": "192.0.2.162"
+        }
+      ],
+      "change": {
+        "operation": "ADD",
+        "new_record": {
+          "id": "exp3_c16_cmu_added_loop",
+          "server": "nsauth-master.net.cmu.edu.",
+          "zone": "cmu.edu.",
+          "owner": "legacy.graphdns-exp-c16-loop.cmu.edu.",
+          "type": "DNAME",
+          "value": "legacy.graphdns-exp-c16-loop.cmu.edu."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+kind_display,outcome,candidates
+DI,Did not fix original,2
+DI,Valid,5
+MG,Valid,139
+RB,Did not fix original,50
+RB,Introduced new vulnerability,2
+RB,Valid,121
+RL,Did not fix original,51
+RL,Introduced new vulnerability,11
+RL,Valid,86
+SR,Did not fix original,2
+SR,Valid,550

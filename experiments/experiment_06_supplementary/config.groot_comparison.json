@@ -1,0 +1,32 @@
+{
+  "census_dir": "/path/to/census",
+  "sample_size": 10000,
+  "seed": 20260724,
+  "workers": 4,
+  "batch_size": 64,
+  "progress_every": 100,
+  "timeout_seconds": 1800,
+  "preprocess_threads": 1,
+  "graphdns_threads": 1,
+  "server_view_coverage": "sampled",
+  "shared_kinds": ["LD", "DI", "MG", "CZD", "RL", "RB", "ML"],
+  "graphdns": {
+    "preprocess_bin": "experiments/bin/preprocess",
+    "semantic_graph_bin": "experiments/bin/semantic_graph"
+  },
+  "groot": {
+    "command": [
+      "python3",
+      "{repo}/experiments/experiment_06_supplementary/groot_jsonl_wrapper.py",
+      "--region",
+      "{region}",
+      "--region-name",
+      "{region_name}",
+      "--output",
+      "{output}"
+    ],
+    "format": "jsonl",
+    "empty_output_means_zero": true,
+    "require_strong_keys": true
+  }
+}

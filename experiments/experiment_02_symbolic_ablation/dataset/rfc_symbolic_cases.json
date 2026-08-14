@@ -1,0 +1,210 @@
+{
+  "description": "Bounded RFC-oriented DNS configurations for alpha/beta abstraction and binding ablation.",
+  "ablation_expectations": {
+    "concrete_oracle_is_safe": true,
+    "unbound_must_have_false_paths": true,
+    "unbound_must_have_false_vulnerabilities": true
+  },
+  "cases": [
+    {
+      "id": "dname_concrete_wildcard",
+      "description": "A DNAME target contains both an exact address and a wildcard address.",
+      "start_server": "ns.s1.test.",
+      "start_zone": "s1.test.",
+      "authorities": {
+        "s1.test.": "ns.s1.test."
+      },
+      "labels": ["www", "api", "mail", "vpn", "lab", "x", "y", "z"],
+      "query_templates": [
+        {"suffix": "old.s1.test.", "min_depth": 0, "max_depth": 2}
+      ],
+      "records": [
+        {"id": "s1_dname", "server": "ns.s1.test.", "zone": "s1.test.", "owner": "old.s1.test.", "type": "DNAME", "value": "new.s1.test."},
+        {"id": "s1_exact", "server": "ns.s1.test.", "zone": "s1.test.", "owner": "www.new.s1.test.", "type": "A", "value": "192.0.2.1"},
+        {"id": "s1_wild", "server": "ns.s1.test.", "zone": "s1.test.", "owner": "*.new.s1.test.", "type": "A", "value": "192.0.2.2"}
+      ]
+    },
+    {
+      "id": "multi_layer_dname",
+      "description": "Two consecutive DNAME rewrites must preserve the same non-empty prefix.",
+      "start_server": "ns.s2.test.",
+      "start_zone": "s2.test.",
+      "authorities": {
+        "s2.test.": "ns.s2.test."
+      },
+      "labels": ["www", "api", "mail", "vpn", "lab", "x", "y", "z"],
+      "query_templates": [
+        {"suffix": "old.s2.test.", "min_depth": 0, "max_depth": 2}
+      ],
+      "records": [
+        {"id": "s2_dname_1", "server": "ns.s2.test.", "zone": "s2.test.", "owner": "old.s2.test.", "type": "DNAME", "value": "mid.s2.test."},
+        {"id": "s2_dname_2", "server": "ns.s2.test.", "zone": "s2.test.", "owner": "mid.s2.test.", "type": "DNAME", "value": "final.s2.test."},
+        {"id": "s2_exact", "server": "ns.s2.test.", "zone": "s2.test.", "owner": "www.final.s2.test.", "type": "A", "value": "192.0.2.11"},
+        {"id": "s2_wild", "server": "ns.s2.test.", "zone": "s2.test.", "owner": "*.final.s2.test.", "type": "A", "value": "192.0.2.12"}
+      ]
+    },
+    {
+      "id": "cname_then_dname",
+      "description": "Concrete CNAME targets enter a DNAME subtree with different beta bindings.",
+      "start_server": "ns.s3.test.",
+      "start_zone": "s3.test.",
+      "authorities": {
+        "s3.test.": "ns.s3.test."
+      },
+      "explicit_queries": [
+        {"name": "web-alias.s3.test.", "symbol_suffix": "s3.test."},
+        {"name": "api-alias.s3.test.", "symbol_suffix": "s3.test."},
+        {"name": "mail-alias.s3.test.", "symbol_suffix": "s3.test."}
+      ],
+      "records": [
+        {"id": "s3_cname_web", "server": "ns.s3.test.", "zone": "s3.test.", "owner": "web-alias.s3.test.", "type": "CNAME", "value": "www.old.s3.test."},
+        {"id": "s3_cname_api", "server": "ns.s3.test.", "zone": "s3.test.", "owner": "api-alias.s3.test.", "type": "CNAME", "value": "api.old.s3.test."},
+        {"id": "s3_cname_mail", "server": "ns.s3.test.", "zone": "s3.test.", "owner": "mail-alias.s3.test.", "type": "CNAME", "value": "mail.old.s3.test."},
+        {"id": "s3_dname", "server": "ns.s3.test.", "zone": "s3.test.", "owner": "old.s3.test.", "type": "DNAME", "value": "new.s3.test."},
+        {"id": "s3_exact", "server": "ns.s3.test.", "zone": "s3.test.", "owner": "www.new.s3.test.", "type": "A", "value": "192.0.2.21"},
+        {"id": "s3_wild", "server": "ns.s3.test.", "zone": "s3.test.", "owner": "*.new.s3.test.", "type": "A", "value": "192.0.2.22"}
+      ]
+    },
+    {
+      "id": "beta_multiple_successors",
+      "description": "One beta node has multiple exact and wildcard successor candidates.",
+      "start_server": "ns.s4.test.",
+      "start_zone": "s4.test.",
+      "authorities": {
+        "s4.test.": "ns.s4.test."
+      },
+      "labels": ["www", "api", "mail", "vpn", "lab", "x", "y", "z"],
+      "query_templates": [
+        {"suffix": "old.s4.test.", "min_depth": 0, "max_depth": 2}
+      ],
+      "records": [
+        {"id": "s4_dname", "server": "ns.s4.test.", "zone": "s4.test.", "owner": "old.s4.test.", "type": "DNAME", "value": "new.s4.test."},
+        {"id": "s4_exact_www", "server": "ns.s4.test.", "zone": "s4.test.", "owner": "www.new.s4.test.", "type": "A", "value": "192.0.2.31"},
+        {"id": "s4_exact_api", "server": "ns.s4.test.", "zone": "s4.test.", "owner": "api.new.s4.test.", "type": "A", "value": "192.0.2.32"},
+        {"id": "s4_wild", "server": "ns.s4.test.", "zone": "s4.test.", "owner": "*.new.s4.test.", "type": "A", "value": "192.0.2.33"}
+      ]
+    },
+    {
+      "id": "zone_cut_dname_overlap",
+      "description": "A DNAME target falls under a delegated child zone.",
+      "start_server": "ns.parent.s5.test.",
+      "start_zone": "s5.test.",
+      "authorities": {
+        "s5.test.": "ns.parent.s5.test.",
+        "dept.s5.test.": "ns.dept.s5.test."
+      },
+      "labels": ["www", "api", "mail", "vpn", "lab", "x", "y", "z"],
+      "query_templates": [
+        {"suffix": "legacy.s5.test.", "min_depth": 0, "max_depth": 1},
+        {"suffix": "dept.s5.test.", "min_depth": 0, "max_depth": 1}
+      ],
+      "records": [
+        {"id": "s5_cut", "server": "ns.parent.s5.test.", "zone": "s5.test.", "owner": "dept.s5.test.", "type": "NS", "value": "ns.dept.s5.test."},
+        {"id": "s5_dname", "server": "ns.parent.s5.test.", "zone": "s5.test.", "owner": "legacy.s5.test.", "type": "DNAME", "value": "dept.s5.test."},
+        {"id": "s5_exact", "server": "ns.dept.s5.test.", "zone": "dept.s5.test.", "owner": "www.dept.s5.test.", "type": "A", "value": "192.0.2.41"},
+        {"id": "s5_wild", "server": "ns.dept.s5.test.", "zone": "dept.s5.test.", "owner": "*.dept.s5.test.", "type": "A", "value": "192.0.2.42"}
+      ]
+    },
+    {
+      "id": "delete_concrete_before",
+      "pair_id": "delete_concrete",
+      "snapshot": "before",
+      "description": "Before deleting an exact owner, the exact address overrides the wildcard.",
+      "start_server": "ns.s6.test.",
+      "start_zone": "s6.test.",
+      "authorities": {
+        "s6.test.": "ns.s6.test."
+      },
+      "labels": ["www", "api", "mail", "vpn", "lab", "x", "y", "z"],
+      "query_templates": [
+        {"suffix": "old.s6.test.", "min_depth": 0, "max_depth": 2}
+      ],
+      "records": [
+        {"id": "s6_dname", "server": "ns.s6.test.", "zone": "s6.test.", "owner": "old.s6.test.", "type": "DNAME", "value": "new.s6.test."},
+        {"id": "s6_exact", "server": "ns.s6.test.", "zone": "s6.test.", "owner": "www.new.s6.test.", "type": "A", "value": "192.0.2.51"},
+        {"id": "s6_wild", "server": "ns.s6.test.", "zone": "s6.test.", "owner": "*.new.s6.test.", "type": "A", "value": "192.0.2.52"}
+      ]
+    },
+    {
+      "id": "delete_concrete_after",
+      "pair_id": "delete_concrete",
+      "snapshot": "after",
+      "description": "After deleting the exact owner, the wildcard becomes reachable.",
+      "start_server": "ns.s6.test.",
+      "start_zone": "s6.test.",
+      "authorities": {
+        "s6.test.": "ns.s6.test."
+      },
+      "labels": ["www", "api", "mail", "vpn", "lab", "x", "y", "z"],
+      "query_templates": [
+        {"suffix": "old.s6.test.", "min_depth": 0, "max_depth": 2}
+      ],
+      "records": [
+        {"id": "s6_dname", "server": "ns.s6.test.", "zone": "s6.test.", "owner": "old.s6.test.", "type": "DNAME", "value": "new.s6.test."},
+        {"id": "s6_wild", "server": "ns.s6.test.", "zone": "s6.test.", "owner": "*.new.s6.test.", "type": "A", "value": "192.0.2.52"}
+      ]
+    },
+    {
+      "id": "delete_dname_before",
+      "pair_id": "delete_dname",
+      "snapshot": "before",
+      "description": "Before deleting an ancestor DNAME, a descendant address is shadowed.",
+      "start_server": "ns.s7.test.",
+      "start_zone": "s7.test.",
+      "authorities": {
+        "s7.test.": "ns.s7.test."
+      },
+      "explicit_queries": [
+        {"name": "host.legacy.s7.test.", "symbol_suffix": "legacy.s7.test."}
+      ],
+      "records": [
+        {"id": "s7_dname", "server": "ns.s7.test.", "zone": "s7.test.", "owner": "legacy.s7.test.", "type": "DNAME", "value": "active.s7.test."},
+        {"id": "s7_shadowed", "server": "ns.s7.test.", "zone": "s7.test.", "owner": "host.legacy.s7.test.", "type": "A", "value": "192.0.2.61"},
+        {"id": "s7_active", "server": "ns.s7.test.", "zone": "s7.test.", "owner": "host.active.s7.test.", "type": "A", "value": "192.0.2.62"}
+      ]
+    },
+    {
+      "id": "delete_dname_after",
+      "pair_id": "delete_dname",
+      "snapshot": "after",
+      "description": "After deleting the DNAME, the formerly shadowed address becomes reachable.",
+      "start_server": "ns.s7.test.",
+      "start_zone": "s7.test.",
+      "authorities": {
+        "s7.test.": "ns.s7.test."
+      },
+      "explicit_queries": [
+        {"name": "host.legacy.s7.test.", "symbol_suffix": "legacy.s7.test."}
+      ],
+      "records": [
+        {"id": "s7_shadowed", "server": "ns.s7.test.", "zone": "s7.test.", "owner": "host.legacy.s7.test.", "type": "A", "value": "192.0.2.61"},
+        {"id": "s7_active", "server": "ns.s7.test.", "zone": "s7.test.", "owner": "host.active.s7.test.", "type": "A", "value": "192.0.2.62"}
+      ]
+    },
+    {
+      "id": "binding_guard_prevents_false_rl",
+      "description": "Two safe DNAME paths form an abstract old/new cycle only when incompatible beta bindings are combined.",
+      "start_server": "ns.parent.s8.test.",
+      "start_zone": "s8.test.",
+      "authorities": {
+        "s8.test.": "ns.parent.s8.test.",
+        "www.new.s8.test.": "ns.www-new.s8.test.",
+        "api.old.s8.test.": "ns.api-old.s8.test."
+      },
+      "explicit_queries": [
+        {"name": "www.start-a.s8.test.", "symbol_suffix": "start-a.s8.test."},
+        {"name": "api.start-b.s8.test.", "symbol_suffix": "start-b.s8.test."}
+      ],
+      "records": [
+        {"id": "s8_start_a_old", "server": "ns.parent.s8.test.", "zone": "s8.test.", "owner": "start-a.s8.test.", "type": "DNAME", "value": "old.s8.test."},
+        {"id": "s8_old_new", "server": "ns.parent.s8.test.", "zone": "s8.test.", "owner": "old.s8.test.", "type": "DNAME", "value": "new.s8.test."},
+        {"id": "s8_start_b_new", "server": "ns.parent.s8.test.", "zone": "s8.test.", "owner": "start-b.s8.test.", "type": "DNAME", "value": "new.s8.test."},
+        {"id": "s8_new_old", "server": "ns.parent.s8.test.", "zone": "s8.test.", "owner": "new.s8.test.", "type": "DNAME", "value": "old.s8.test."},
+        {"id": "s8_cut_www_new", "server": "ns.parent.s8.test.", "zone": "s8.test.", "owner": "www.new.s8.test.", "type": "NS", "value": "ns.www-new.s8.test."},
+        {"id": "s8_cut_api_old", "server": "ns.parent.s8.test.", "zone": "s8.test.", "owner": "api.old.s8.test.", "type": "NS", "value": "ns.api-old.s8.test."},
+        {"id": "s8_www_answer", "server": "ns.www-new.s8.test.", "zone": "www.new.s8.test.", "owner": "www.new.s8.test.", "type": "A", "value": "192.0.2.81"},
+        {"id": "s8_api_answer", "server": "ns.api-old.s8.test.", "zone": "api.old.s8.test.", "owner": "api.old.s8.test.", "type": "A", "value": "192.0.2.82"}
+      ]
+    }
+  ]
+}

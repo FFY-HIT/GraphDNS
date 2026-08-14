@@ -1,0 +1,5 @@
+method,nodes,edges,oracle_paths,predicted_paths,true_paths,false_paths,missed_paths,precision,recall,reported_vulnerabilities,true_vulnerabilities,false_vulnerabilities,missed_vulnerabilities,reported_RL,reported_RB,reported_ML
+Concrete,1438,997,444,444,444,0,0,1.0,1.0,429,429,0,0,0,429,0
+alpha-only,452,452,444,49284,444,48840,0,0.009009009009009,1.0,442,429,13,0,2,440,0
+"alpha+beta, no binding",452,452,444,48844,444,48400,0,0.0090901646056834,1.0,442,429,13,0,2,440,0
+Full GraphDNS,452,452,444,444,444,0,0,1.0,1.0,429,429,0,0,0,429,0

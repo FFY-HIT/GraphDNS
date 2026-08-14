@@ -1,0 +1,19 @@
+a.gtld-server.net.	com.	bank.com.	NS	ns1.bank.com.
+a.gtld-server.net.	com.	coinsbank.com.	NS	ns1.coinsbank.com.
+a.gtld-server.net.	com.	ns1.bank.com.	A	16.17.16.17
+a.gtld-server.net.	com.	ns1.coinsbank.com.	A	16.17.16.18
+ns1.bank.com.	bank.com.	bank.com.	NS	ns1.bank.com.
+ns1.bank.com.	bank.com.	ns1.bank.com.	A	10.0.0.1
+ns1.bank.com.	bank.com.	money.bank.com.	DNAME	coinsbank.com.
+ns1.bank.com.	bank.com.	www.bank.com.	CNAME	m.coinsbank.com.
+ns1.bank.com.	bank.com.	*.bank.com.	A	10.0.0.9
+ns1.bank.com.	bank.com.	mail.bank.com.	MX	mx.bank.com.
+ns1.bank.com.	bank.com.	txt.bank.com.	TXT	"bank txt"
+ns1.bank.com.	coinsbank.com.	coinsbank.com.	NS	ns1.bank.com.
+ns1.bank.com.	coinsbank.com.	m.coinsbank.com.	A	10.0.1.1
+ns1.bank.com.	coinsbank.com.	*.coinsbank.com.	TXT	"wild coinsbank"
+ns1.bank.com.	coinsbank.com.	alias.coinsbank.com.	CNAME	m.coinsbank.com.
+ns1.coinsbank.com.	coinsbank.com.	coinsbank.com.	NS	ns1.coinsbank.com.
+ns1.coinsbank.com.	coinsbank.com.	ns1.coinsbank.com.	A	10.0.2.1
+ns1.coinsbank.com.	coinsbank.com.	m.coinsbank.com.	A	10.0.2.2
+ns1.coinsbank.com.	coinsbank.com.	*.coinsbank.com.	A	10.0.2.9

@@ -1,0 +1,21 @@
+{
+  "census_dir": "census",
+  "sample_size": 2,
+  "seed": 20260724,
+  "workers": 2,
+  "batch_size": 2,
+  "progress_every": 1,
+  "timeout_seconds": 120,
+  "preprocess_threads": 1,
+  "graphdns_threads": 1,
+  "graphdns": {
+    "preprocess_bin": "experiments/bin/preprocess",
+    "semantic_graph_bin": "experiments/bin/semantic_graph"
+  },
+  "groot": {
+    "command": [],
+    "format": "jsonl",
+    "empty_output_means_zero": true,
+    "require_strong_keys": true
+  }
+}

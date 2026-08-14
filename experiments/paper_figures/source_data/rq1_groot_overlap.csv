@@ -1,0 +1,8 @@
+kind,shared_scope,graphdns_raw_reports,groot_raw_reports,graphdns_unique_cases,groot_unique_cases,intersection,graphdns_only,groot_only,union,jaccard_pct,graphdns_coverage_of_groot_pct,groot_coverage_of_graphdns_pct,exact_region_agreement_pct
+DI,True,15,9,8,9,6,2,3,11,54.54545454545455,66.66666666666667,75.0,99.97
+LD,True,0,2590,0,2590,0,0,2590,2590,0.0,0.0,,99.8
+MG,True,203,400,203,293,203,0,90,293,69.28327645051195,69.28327645051195,100.0,99.84
+CZD,True,0,385,0,385,0,0,385,385,0.0,0.0,,98.56
+RL,True,18,6,18,6,6,12,0,18,33.333333333333336,100.0,33.333333333333336,99.89
+RB,True,23,38,23,38,16,7,22,45,35.55555555555556,42.10526315789474,69.56521739130434,99.88
+ML,True,0,0,0,0,0,0,0,0,,,,100.0

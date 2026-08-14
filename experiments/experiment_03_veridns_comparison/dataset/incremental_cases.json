@@ -1,0 +1,265 @@
+{
+  "description": "Controlled DNS updates for comparing explicit-RSG and semantic-dependency incremental validation.",
+  "expectations": {
+    "veridns_mismatch_pairs": [
+      "add_dname_shadows_descendant",
+      "add_wildcard_activates_answer",
+      "add_delegation_shadows_parent",
+      "add_dname_introduces_loop"
+    ],
+    "veridns_consistent_pairs": [
+      "delete_exact_activates_wildcard",
+      "delete_dname_reactivates_descendant",
+      "modify_dname_target"
+    ],
+    "graphdns_all_consistent": true
+  },
+  "cases": [
+    {
+      "id": "delete_exact_before",
+      "pair_id": "delete_exact_activates_wildcard",
+      "snapshot": "before",
+      "description": "An exact address currently overrides a wildcard.",
+      "start_server": "ns.u1.test.",
+      "start_zone": "u1.test.",
+      "authorities": {"u1.test.": "ns.u1.test."},
+      "explicit_queries": [
+        {"name": "www.apps.u1.test.", "symbol_suffix": "u1.test."},
+        {"name": "api.apps.u1.test.", "symbol_suffix": "u1.test."}
+      ],
+      "records": [
+        {"id": "u1_exact", "server": "ns.u1.test.", "zone": "u1.test.", "owner": "www.apps.u1.test.", "type": "A", "value": "192.0.2.1"},
+        {"id": "u1_wild", "server": "ns.u1.test.", "zone": "u1.test.", "owner": "*.apps.u1.test.", "type": "A", "value": "192.0.2.2"}
+      ]
+    },
+    {
+      "id": "delete_exact_after",
+      "pair_id": "delete_exact_activates_wildcard",
+      "snapshot": "after",
+      "description": "Deleting the exact address activates the wildcard.",
+      "start_server": "ns.u1.test.",
+      "start_zone": "u1.test.",
+      "authorities": {"u1.test.": "ns.u1.test."},
+      "explicit_queries": [
+        {"name": "www.apps.u1.test.", "symbol_suffix": "u1.test."},
+        {"name": "api.apps.u1.test.", "symbol_suffix": "u1.test."}
+      ],
+      "records": [
+        {"id": "u1_wild", "server": "ns.u1.test.", "zone": "u1.test.", "owner": "*.apps.u1.test.", "type": "A", "value": "192.0.2.2"}
+      ]
+    },
+    {
+      "id": "add_dname_before",
+      "pair_id": "add_dname_shadows_descendant",
+      "snapshot": "before",
+      "description": "A descendant address is directly reachable before adding DNAME.",
+      "start_server": "ns.u2.test.",
+      "start_zone": "u2.test.",
+      "authorities": {"u2.test.": "ns.u2.test."},
+      "explicit_queries": [
+        {"name": "host.legacy.u2.test.", "symbol_suffix": "u2.test."},
+        {"name": "other.u2.test.", "symbol_suffix": "u2.test."}
+      ],
+      "records": [
+        {"id": "u2_shadowed", "server": "ns.u2.test.", "zone": "u2.test.", "owner": "host.legacy.u2.test.", "type": "A", "value": "192.0.2.21"},
+        {"id": "u2_active", "server": "ns.u2.test.", "zone": "u2.test.", "owner": "host.active.u2.test.", "type": "A", "value": "192.0.2.22"}
+      ]
+    },
+    {
+      "id": "add_dname_after",
+      "pair_id": "add_dname_shadows_descendant",
+      "snapshot": "after",
+      "description": "Adding an ancestor DNAME shadows the descendant address and rewrites to a missing target.",
+      "start_server": "ns.u2.test.",
+      "start_zone": "u2.test.",
+      "authorities": {"u2.test.": "ns.u2.test."},
+      "explicit_queries": [
+        {"name": "host.legacy.u2.test.", "symbol_suffix": "u2.test."},
+        {"name": "other.u2.test.", "symbol_suffix": "u2.test."}
+      ],
+      "records": [
+        {"id": "u2_shadowed", "server": "ns.u2.test.", "zone": "u2.test.", "owner": "host.legacy.u2.test.", "type": "A", "value": "192.0.2.21"},
+        {"id": "u2_active", "server": "ns.u2.test.", "zone": "u2.test.", "owner": "host.active.u2.test.", "type": "A", "value": "192.0.2.22"},
+        {"id": "u2_dname", "server": "ns.u2.test.", "zone": "u2.test.", "owner": "legacy.u2.test.", "type": "DNAME", "value": "missing.u2.test."}
+      ]
+    },
+    {
+      "id": "delete_dname_before",
+      "pair_id": "delete_dname_reactivates_descendant",
+      "snapshot": "before",
+      "description": "An ancestor DNAME shadows a descendant address.",
+      "start_server": "ns.u3.test.",
+      "start_zone": "u3.test.",
+      "authorities": {"u3.test.": "ns.u3.test."},
+      "explicit_queries": [
+        {"name": "host.legacy.u3.test.", "symbol_suffix": "u3.test."}
+      ],
+      "records": [
+        {"id": "u3_dname", "server": "ns.u3.test.", "zone": "u3.test.", "owner": "legacy.u3.test.", "type": "DNAME", "value": "active.u3.test."},
+        {"id": "u3_shadowed", "server": "ns.u3.test.", "zone": "u3.test.", "owner": "host.legacy.u3.test.", "type": "A", "value": "192.0.2.31"},
+        {"id": "u3_active", "server": "ns.u3.test.", "zone": "u3.test.", "owner": "host.active.u3.test.", "type": "A", "value": "192.0.2.32"}
+      ]
+    },
+    {
+      "id": "delete_dname_after",
+      "pair_id": "delete_dname_reactivates_descendant",
+      "snapshot": "after",
+      "description": "Deleting DNAME reactivates the descendant address.",
+      "start_server": "ns.u3.test.",
+      "start_zone": "u3.test.",
+      "authorities": {"u3.test.": "ns.u3.test."},
+      "explicit_queries": [
+        {"name": "host.legacy.u3.test.", "symbol_suffix": "u3.test."}
+      ],
+      "records": [
+        {"id": "u3_shadowed", "server": "ns.u3.test.", "zone": "u3.test.", "owner": "host.legacy.u3.test.", "type": "A", "value": "192.0.2.31"},
+        {"id": "u3_active", "server": "ns.u3.test.", "zone": "u3.test.", "owner": "host.active.u3.test.", "type": "A", "value": "192.0.2.32"}
+      ]
+    },
+    {
+      "id": "add_wildcard_before",
+      "pair_id": "add_wildcard_activates_answer",
+      "snapshot": "before",
+      "description": "The query is NX before adding a wildcard.",
+      "start_server": "ns.u4.test.",
+      "start_zone": "u4.test.",
+      "authorities": {"u4.test.": "ns.u4.test."},
+      "explicit_queries": [
+        {"name": "www.apps.u4.test.", "symbol_suffix": "u4.test."},
+        {"name": "fixed.u4.test.", "symbol_suffix": "u4.test."}
+      ],
+      "records": [
+        {"id": "u4_fixed", "server": "ns.u4.test.", "zone": "u4.test.", "owner": "fixed.u4.test.", "type": "A", "value": "192.0.2.41"}
+      ]
+    },
+    {
+      "id": "add_wildcard_after",
+      "pair_id": "add_wildcard_activates_answer",
+      "snapshot": "after",
+      "description": "The new wildcard rewrites a previously nonexistent name to a missing target.",
+      "start_server": "ns.u4.test.",
+      "start_zone": "u4.test.",
+      "authorities": {"u4.test.": "ns.u4.test."},
+      "explicit_queries": [
+        {"name": "www.apps.u4.test.", "symbol_suffix": "u4.test."},
+        {"name": "fixed.u4.test.", "symbol_suffix": "u4.test."}
+      ],
+      "records": [
+        {"id": "u4_fixed", "server": "ns.u4.test.", "zone": "u4.test.", "owner": "fixed.u4.test.", "type": "A", "value": "192.0.2.41"},
+        {"id": "u4_wild", "server": "ns.u4.test.", "zone": "u4.test.", "owner": "*.apps.u4.test.", "type": "CNAME", "value": "missing.u4.test."}
+      ]
+    },
+    {
+      "id": "modify_dname_before",
+      "pair_id": "modify_dname_target",
+      "snapshot": "before",
+      "description": "A DNAME points to the first reachable target.",
+      "start_server": "ns.u5.test.",
+      "start_zone": "u5.test.",
+      "authorities": {"u5.test.": "ns.u5.test."},
+      "explicit_queries": [
+        {"name": "www.legacy.u5.test.", "symbol_suffix": "u5.test."}
+      ],
+      "records": [
+        {"id": "u5_dname", "server": "ns.u5.test.", "zone": "u5.test.", "owner": "legacy.u5.test.", "type": "DNAME", "value": "blue.u5.test."},
+        {"id": "u5_blue", "server": "ns.u5.test.", "zone": "u5.test.", "owner": "www.blue.u5.test.", "type": "A", "value": "192.0.2.51"},
+        {"id": "u5_green", "server": "ns.u5.test.", "zone": "u5.test.", "owner": "www.green.u5.test.", "type": "A", "value": "192.0.2.52"}
+      ]
+    },
+    {
+      "id": "modify_dname_after",
+      "pair_id": "modify_dname_target",
+      "snapshot": "after",
+      "description": "The DNAME target is modified to another reachable suffix.",
+      "start_server": "ns.u5.test.",
+      "start_zone": "u5.test.",
+      "authorities": {"u5.test.": "ns.u5.test."},
+      "explicit_queries": [
+        {"name": "www.legacy.u5.test.", "symbol_suffix": "u5.test."}
+      ],
+      "records": [
+        {"id": "u5_dname", "server": "ns.u5.test.", "zone": "u5.test.", "owner": "legacy.u5.test.", "type": "DNAME", "value": "green.u5.test."},
+        {"id": "u5_blue", "server": "ns.u5.test.", "zone": "u5.test.", "owner": "www.blue.u5.test.", "type": "A", "value": "192.0.2.51"},
+        {"id": "u5_green", "server": "ns.u5.test.", "zone": "u5.test.", "owner": "www.green.u5.test.", "type": "A", "value": "192.0.2.52"}
+      ]
+    },
+    {
+      "id": "add_delegation_before",
+      "pair_id": "add_delegation_shadows_parent",
+      "snapshot": "before",
+      "description": "A parent-zone descendant address answers before adding a child cut.",
+      "start_server": "ns.parent.u6.test.",
+      "start_zone": "u6.test.",
+      "authorities": {
+        "u6.test.": "ns.parent.u6.test.",
+        "child.u6.test.": "ns.child.u6.test."
+      },
+      "explicit_queries": [
+        {"name": "www.child.u6.test.", "symbol_suffix": "u6.test."},
+        {"name": "www.u6.test.", "symbol_suffix": "u6.test."}
+      ],
+      "records": [
+        {"id": "u6_parent_answer", "server": "ns.parent.u6.test.", "zone": "u6.test.", "owner": "www.child.u6.test.", "type": "A", "value": "192.0.2.61"},
+        {"id": "u6_parent_other", "server": "ns.parent.u6.test.", "zone": "u6.test.", "owner": "www.u6.test.", "type": "A", "value": "192.0.2.62"},
+        {"id": "u6_child_answer", "server": "ns.child.u6.test.", "zone": "child.u6.test.", "owner": "www.child.u6.test.", "type": "A", "value": "192.0.2.63"}
+      ]
+    },
+    {
+      "id": "add_delegation_after",
+      "pair_id": "add_delegation_shadows_parent",
+      "snapshot": "after",
+      "description": "Adding the cut delegates the query to the child-zone answer.",
+      "start_server": "ns.parent.u6.test.",
+      "start_zone": "u6.test.",
+      "authorities": {
+        "u6.test.": "ns.parent.u6.test.",
+        "child.u6.test.": "ns.child.u6.test."
+      },
+      "explicit_queries": [
+        {"name": "www.child.u6.test.", "symbol_suffix": "u6.test."},
+        {"name": "www.u6.test.", "symbol_suffix": "u6.test."}
+      ],
+      "records": [
+        {"id": "u6_cut", "server": "ns.parent.u6.test.", "zone": "u6.test.", "owner": "child.u6.test.", "type": "NS", "value": "ns.child.u6.test."},
+        {"id": "u6_parent_answer", "server": "ns.parent.u6.test.", "zone": "u6.test.", "owner": "www.child.u6.test.", "type": "A", "value": "192.0.2.61"},
+        {"id": "u6_parent_other", "server": "ns.parent.u6.test.", "zone": "u6.test.", "owner": "www.u6.test.", "type": "A", "value": "192.0.2.62"},
+        {"id": "u6_child_answer", "server": "ns.child.u6.test.", "zone": "child.u6.test.", "owner": "www.child.u6.test.", "type": "A", "value": "192.0.2.63"}
+      ]
+    },
+    {
+      "id": "add_loop_before",
+      "pair_id": "add_dname_introduces_loop",
+      "snapshot": "before",
+      "description": "A descendant address terminates before adding a DNAME self-rewrite.",
+      "start_server": "ns.u7.test.",
+      "start_zone": "u7.test.",
+      "authorities": {"u7.test.": "ns.u7.test."},
+      "explicit_queries": [
+        {"name": "host.legacy.u7.test.", "symbol_suffix": "u7.test."},
+        {"name": "other.u7.test.", "symbol_suffix": "u7.test."}
+      ],
+      "records": [
+        {"id": "u7_descendant", "server": "ns.u7.test.", "zone": "u7.test.", "owner": "host.legacy.u7.test.", "type": "A", "value": "192.0.2.71"},
+        {"id": "u7_other", "server": "ns.u7.test.", "zone": "u7.test.", "owner": "other.u7.test.", "type": "A", "value": "192.0.2.72"}
+      ]
+    },
+    {
+      "id": "add_loop_after",
+      "pair_id": "add_dname_introduces_loop",
+      "snapshot": "after",
+      "description": "An ancestor DNAME rewrites the descendant query to itself.",
+      "start_server": "ns.u7.test.",
+      "start_zone": "u7.test.",
+      "authorities": {"u7.test.": "ns.u7.test."},
+      "explicit_queries": [
+        {"name": "host.legacy.u7.test.", "symbol_suffix": "u7.test."},
+        {"name": "other.u7.test.", "symbol_suffix": "u7.test."}
+      ],
+      "records": [
+        {"id": "u7_descendant", "server": "ns.u7.test.", "zone": "u7.test.", "owner": "host.legacy.u7.test.", "type": "A", "value": "192.0.2.71"},
+        {"id": "u7_other", "server": "ns.u7.test.", "zone": "u7.test.", "owner": "other.u7.test.", "type": "A", "value": "192.0.2.72"},
+        {"id": "u7_loop", "server": "ns.u7.test.", "zone": "u7.test.", "owner": "legacy.u7.test.", "type": "DNAME", "value": "legacy.u7.test."}
+      ]
+    }
+  ]
+}

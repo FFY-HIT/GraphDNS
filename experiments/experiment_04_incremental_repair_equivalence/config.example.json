@@ -1,0 +1,20 @@
+{
+  "census_dir": "/path/to/census",
+  "target_regions": 100,
+  "screening_pool_size": 20000,
+  "min_repairable_reports_per_region": 1,
+  "seed": 20260725,
+  "workers": 8,
+  "candidate_workers": 1,
+  "screening_batch_size": 64,
+  "progress_every": 10,
+  "timeout_seconds": 1800,
+  "max_zone_files_per_region": 200,
+  "max_records_per_region": 5000,
+  "max_generated_candidates_per_region": 100,
+  "server_view_coverage": "sampled",
+  "di_is_severe": false,
+  "max_candidates_per_region": 0,
+  "preprocess_bin": "experiments/bin/preprocess",
+  "semantic_graph_bin": "experiments/bin/semantic_graph"
+}

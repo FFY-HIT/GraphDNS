@@ -1,0 +1,59 @@
+# Build products
+/build/
+/bin/
+/preprocess
+/semantic_graph
+*.o
+*.obj
+*.exe
+
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Experiment outputs
+/experiments/bin/
+/experiments/runs/
+/experiments/paper_figures/output/
+/benchmark_runs/
+/artifacts/
+/tmp/
+/ZoneRecord.facts
+
+# Large or private datasets
+/census/
+/spamh/
+/pstu/
+/ourtoolbar/
+/test_dataset/
+/synthetic_dataset/
+
+# Local development and previous experiment trees
+/eval/
+/eval1/
+/docx_edits/
+/.tmp_bind_dname_test/
+/终稿/
+
+# Paper drafts and generated LaTeX files
+/*.aux
+/*.log
+/*.out
+/*.synctex.gz
+/*_extracted.txt
+/*_raw.txt
+/0
+/1
+/ALGORITHM_DESIGN.md
+/DEVELOPER_DOCUMENTATION.md
+/ccs2026b-paper416*
+/graphdns_revised*
+/graphdns_security_full_draft*
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

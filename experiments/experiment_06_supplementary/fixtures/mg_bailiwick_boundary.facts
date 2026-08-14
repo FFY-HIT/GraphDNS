@@ -1,0 +1,8 @@
+ns.parent.example.	parent.example.	parent.example.	NS	ns.parent.example.
+ns.parent.example.	parent.example.	ns.parent.example.	A	192.0.2.1
+ns.parent.example.	parent.example.	child.parent.example.	NS	child.parent.example.
+ns.parent.example.	parent.example.	deep.parent.example.	NS	ns.deep.parent.example.
+ns.parent.example.	parent.example.	external.parent.example.	NS	ns.external.example.
+child.parent.example.	child.parent.example.	child.parent.example.	NS	child.parent.example.
+ns.deep.parent.example.	deep.parent.example.	deep.parent.example.	NS	ns.deep.parent.example.
+ns.external.example.	external.parent.example.	external.parent.example.	NS	ns.external.example.
