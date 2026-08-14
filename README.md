@@ -17,9 +17,6 @@ datasets are intentionally not redistributed.
 src/
   preprocess.cpp                 Zone files -> normalized facts
   semantic_graph.cpp             SRAG construction, analysis, and repair
-scripts/
-  benchmark_census.py            Standalone Census scaling utility
-  plot_benchmark_census.py       Plots for the standalone benchmark
 experiments/
   experiment_01_census_consistency/
   experiment_02_symbolic_ablation/
